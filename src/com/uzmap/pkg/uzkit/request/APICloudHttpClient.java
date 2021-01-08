@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.request;
 
 import android.content.Context;
@@ -11,15 +6,12 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.uzmap.pkg.a.b.e;
+import com.uzmap.pkg.a.b.cc.d;
+import com.uzmap.pkg.a.b.cc.g;
 import com.uzmap.pkg.a.b.i;
+import com.uzmap.pkg.a.b.j;
 import com.uzmap.pkg.a.b.k;
 import com.uzmap.pkg.a.b.o;
-import com.uzmap.pkg.a.b.c.d;
-import com.uzmap.pkg.a.b.c.j;
-import com.uzmap.pkg.a.b.c.d.c;
-import com.uzmap.pkg.a.b.d.b;
-import com.uzmap.pkg.a.b.d.c.a;
 
 public final class APICloudHttpClient {
     private k a;
@@ -32,7 +24,7 @@ public final class APICloudHttpClient {
         this.c = context.getApplicationContext();
         this.d = com.uzmap.pkg.a.b.e.a(context);
         this.requestQueueInitialize();
-        com.uzmap.pkg.a.b.d.b.a(context);
+        com.uzmap.pkg.a.b.dd.b.a(context);
     }
 
     public static APICloudHttpClient instance() {
@@ -60,20 +52,20 @@ public final class APICloudHttpClient {
             req.setTag(TextUtils.isEmpty(tag) ? "engine" : tag);
         }
 
-        this.a.a(req);
+        this.a.a((j) req);
     }
 
     public HttpResult doRequest(Request req) {
         if (Looper.myLooper() == Looper.getMainLooper()) {
             throw new RuntimeException("Network can not run in ui thread");
         } else {
-            j<i> future = j.a();
+            com.uzmap.pkg.a.b.cc.j<i> future = com.uzmap.pkg.a.b.cc.j.a();
             req.setErrorListener(future);
             req.setSyncListener(future);
-            this.a.a(req);
+            this.a.a((j) req);
 
             try {
-                i response = (i)future.get();
+                i response = future.get();
                 if (response != null) {
                     HttpResult result = new HttpResult(response.a);
                     result.headers = response.c;
@@ -97,8 +89,8 @@ public final class APICloudHttpClient {
 
     public Bitmap getImage(APICloudHttpClient.ImageOption option, final APICloudHttpClient.BitmapListener callback) {
         this.checkLoaderQueue();
-        com.uzmap.pkg.a.b.c.d.d listener = new com.uzmap.pkg.a.b.c.d.d() {
-            public void onResponse(c response, boolean isImmediate) {
+        com.uzmap.pkg.a.b.cc.d.d1 listener = new com.uzmap.pkg.a.b.cc.d.d1() {
+            public void onResponse(com.uzmap.pkg.a.b.cc.d.c1 response, boolean isImmediate) {
                 if (callback != null) {
                     callback.onFinish(response.a(), isImmediate);
                 }
@@ -112,19 +104,19 @@ public final class APICloudHttpClient {
 
             }
         };
-        c container = this.b.a(option.a, listener, option.b, option.c, option.d);
+        com.uzmap.pkg.a.b.cc.d.c1 container = this.b.abm(option.a, listener, option.b, option.c, option.d);
         return container.a();
     }
 
     public void disPlayImage(APICloudHttpClient.ImageOption option, ImageView view) {
         this.checkLoaderQueue();
-        com.uzmap.pkg.a.b.c.d.d listener = com.uzmap.pkg.a.b.c.d.a(view, option.e, option.f);
-        this.b.a(option.a, listener, option.b, option.c, option.d);
+        com.uzmap.pkg.a.b.cc.d.d1 listener = com.uzmap.pkg.a.b.cc.d.abm(view, option.e, option.f);
+        this.b.abm(option.a, listener, option.b, option.c, option.d);
     }
 
     public void download(HttpDownload request) {
         this.checkLoaderQueue();
-        this.b.a(request);
+        this.b.abm(request);
     }
 
     public void cancelDownload(Object tag) {
@@ -132,7 +124,7 @@ public final class APICloudHttpClient {
 
     public final APICloudHttpClient.ImageEntity hasDiskImageCache(String url) {
         this.checkLoaderQueue();
-        a entity = this.b.a(url);
+        com.uzmap.pkg.a.b.dd.c.a1 entity = this.b.abm(url);
         if (entity != null) {
             APICloudHttpClient.ImageEntity iEntity = new APICloudHttpClient.ImageEntity();
             entity.copy(iEntity);
@@ -144,7 +136,7 @@ public final class APICloudHttpClient {
 
     public void clearDiskImageCache(long timeThreshold) {
         if (this.b != null) {
-            this.b.a(timeThreshold);
+            this.b.abm(timeThreshold);
         }
 
     }
@@ -155,7 +147,7 @@ public final class APICloudHttpClient {
 
     private k requestQueueInitialize() {
         if (this.a == null) {
-            this.a = com.uzmap.pkg.a.b.c.k.a(this.c, this.d, new APICloudHttpClient.InUrlRewriter((APICloudHttpClient.InUrlRewriter)null));
+            this.a = com.uzmap.pkg.a.b.cc.k.a(this.c, this.d, new InUrlRewriter(null));
         }
 
         return this.a;
@@ -163,7 +155,7 @@ public final class APICloudHttpClient {
 
     private void checkLoaderQueue() {
         if (this.b == null) {
-            this.b = com.uzmap.pkg.a.b.c.k.b(this.c, this.d, new APICloudHttpClient.InUrlRewriter((APICloudHttpClient.InUrlRewriter)null));
+            this.b = com.uzmap.pkg.a.b.cc.k.b(this.c, this.d, new APICloudHttpClient.InUrlRewriter(null));
         }
 
     }
@@ -178,9 +170,7 @@ public final class APICloudHttpClient {
         void onError(int var1);
     }
 
-    public static class ImageEntity extends a {
-        public ImageEntity() {
-        }
+    public static class ImageEntity extends com.uzmap.pkg.a.b.dd.c.a1 {
     }
 
     public static class ImageOption {
@@ -213,12 +203,17 @@ public final class APICloudHttpClient {
         }
     }
 
-    private class InUrlRewriter implements com.uzmap.pkg.a.b.c.g.a {
+    private class InUrlRewriter implements g.a {
         private InUrlRewriter() {
         }
 
         public String rewriteUrl(String originalUrl) {
             return com.uzmap.pkg.a.b.e.f(originalUrl);
+        }
+
+        // $FF: synthetic method
+        InUrlRewriter(APICloudHttpClient.InUrlRewriter var2) {
+            this();
         }
     }
 }

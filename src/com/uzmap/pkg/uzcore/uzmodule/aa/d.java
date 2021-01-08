@@ -1,13 +1,7 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.e;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import org.json.JSONObject;
 
@@ -24,7 +18,7 @@ public final class d extends UZModuleContext {
     protected void a() {
         if (!this.empty()) {
             String name = this.optString("name");
-            this.a = e.a(name);
+            this.a = com.uzmap.pkg.uzcore.e.a(name);
             this.b = this.optString("extra");
             if (!TextUtils.isEmpty(this.b)) {
                 try {

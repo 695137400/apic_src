@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 public class o extends Exception {
@@ -41,7 +36,7 @@ public class o extends Exception {
     }
 
     public String c() {
-        switch(this.c) {
+        switch (this.c) {
             case 0:
                 return "ERROR_NORMAL";
             case 1:

@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package compile;
 
 public class Properties {
@@ -26,9 +21,6 @@ public class Properties {
     static final boolean AUTH = !"https://a.apicloud.com".contains("apicloud") && !"https://a.apicloud.com".contains("192.168.13.183");
     static final boolean TELEVISION = false;
     static final boolean PROMOTION = false;
-
-    public Properties() {
-    }
 
     public static boolean promotion() {
         return false;

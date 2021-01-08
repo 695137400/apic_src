@@ -1,18 +1,14 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class g extends f {
     public String p;
@@ -43,7 +39,7 @@ public class g extends f {
             if (len > 0) {
                 this.w = new ArrayList(len);
 
-                for(int i = 0; i < len; ++i) {
+                for (int i = 0; i < len; ++i) {
                     JSONObject json = fras.optJSONObject(i);
                     if (json != null) {
                         try {
@@ -66,8 +62,8 @@ public class g extends f {
         if (this.w != null) {
             Iterator var5 = this.w.iterator();
 
-            while(var5.hasNext()) {
-                f frame = (f)var5.next();
+            while (var5.hasNext()) {
+                f frame = (f) var5.next();
                 frame.a(this.A);
                 frame.a(g, domain, wgtInfo);
             }

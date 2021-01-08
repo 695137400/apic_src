@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzapp;
 
 import android.content.BroadcastReceiver;
@@ -26,7 +21,7 @@ public class UPMessage extends BroadcastReceiver {
         if (intent != null && this.a != null) {
             String msg = "success";
             boolean status = true;
-            switch(this.getResultCode()) {
+            switch (this.getResultCode()) {
                 case -1:
                     msg = "success";
                     break;

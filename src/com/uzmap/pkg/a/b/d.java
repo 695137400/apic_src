@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 public class d implements n {
@@ -31,7 +26,7 @@ public class d implements n {
 
     public void a(o error) throws o {
         ++this.b;
-        this.a = (int)((float)this.a + (float)this.a * this.d);
+        this.a = (int) ((float) this.a + (float) this.a * this.d);
         if (!this.c()) {
             throw error;
         }

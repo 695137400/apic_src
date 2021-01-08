@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore;
 
 import android.content.Context;
@@ -32,9 +27,6 @@ public final class UZResourcesIDFinder {
     public static final String styleable = "styleable";
     public static final String integer = "integer";
     public static final String integerArray = "integer-array";
-
-    public UZResourcesIDFinder() {
-    }
 
     public static void init(Context ctx) {
         packageName = ctx.getPackageName();
@@ -146,7 +138,7 @@ public final class UZResourcesIDFinder {
 
     public static int dipToPixels(int dip) {
         float density = resources.getDisplayMetrics().density;
-        int valuePixels = (int)((float)dip * density + 0.5F);
+        int valuePixels = (int) ((float) dip * density + 0.5F);
         return valuePixels;
     }
 

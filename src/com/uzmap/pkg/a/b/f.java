@@ -1,11 +1,7 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 import android.os.Handler;
+
 import java.util.concurrent.Executor;
 
 public class f implements m {
@@ -20,7 +16,7 @@ public class f implements m {
     }
 
     public void a(j<?> request, l<?> response) {
-        this.a(request, response, (Runnable)null);
+        this.a(request, response, null);
     }
 
     public void a(j<?> request, l<?> response, Runnable runnable) {
@@ -38,7 +34,7 @@ public class f implements m {
     public void a(j<?> request, o error) {
         request.addMarker("post-error");
         l<?> response = l.a(error);
-        f.a delivery = new f.a(request, response, (Runnable)null);
+        f.a delivery = new f.a(request, response, null);
         if (request.isDeliverInThread()) {
             delivery.run();
         } else {

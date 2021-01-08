@@ -1,14 +1,10 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import android.content.res.AssetFileDescriptor;
 import android.os.AsyncTask;
 import android.os.ParcelFileDescriptor;
 import android.os.ParcelFileDescriptor.AutoCloseOutputStream;
+
 import java.io.IOException;
 
 public class d {
@@ -17,7 +13,7 @@ public class d {
         ParcelFileDescriptor readSide = pipe[0];
         ParcelFileDescriptor writeSide = pipe[1];
         AutoCloseOutputStream out = new AutoCloseOutputStream(writeSide);
-        (new d.a(data, out)).execute((Object[])null);
+        (new d.a(data, out)).execute((Object[]) null);
         return readSide;
     }
 
@@ -41,7 +37,7 @@ public class d {
             try {
                 ParcelFileDescriptor fd = a(content);
                 if (fd != null) {
-                    assetFdes = new AssetFileDescriptor(fd, 0L, (long)length);
+                    assetFdes = new AssetFileDescriptor(fd, 0L, length);
                 }
 
                 return assetFdes;
@@ -72,7 +68,7 @@ public class d {
             AssetFileDescriptor assetFdes = null;
             ParcelFileDescriptor fd = a(content);
             if (fd != null) {
-                assetFdes = new AssetFileDescriptor(fd, 0L, (long)length);
+                assetFdes = new AssetFileDescriptor(fd, 0L, length);
                 return assetFdes;
             }
         } catch (IOException var6) {

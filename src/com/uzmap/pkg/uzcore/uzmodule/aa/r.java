@@ -1,17 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.uzmodule.d;
 import org.json.JSONObject;
 
 public class r extends b {
     public String d;
-    public d e;
+    public com.uzmap.pkg.uzcore.uzmodule.d e;
     public String f;
     public boolean g;
 
@@ -22,10 +16,10 @@ public class r extends b {
 
     protected void b() {
         if (!this.empty()) {
-            this.d = this.optString("id", (String)null);
+            this.d = this.optString("id", null);
             String param = this.optString("wgtParam");
-            this.e = new d(param);
-            this.f = this.optString("retData", (String)null);
+            this.e = new com.uzmap.pkg.uzcore.uzmodule.d(param);
+            this.f = this.optString("retData", null);
             this.g = this.optBoolean("silent");
         }
     }

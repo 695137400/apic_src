@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.text.TextUtils;
@@ -59,7 +54,7 @@ public class n extends UZModuleContext {
             this.g = "刷新中";
         }
 
-        this.h = this.optString("textTime", (String)null);
+        this.h = this.optString("textTime", null);
         this.i = this.optBoolean("showTime", true);
     }
 

@@ -1,15 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.text.TextUtils;
 import android.widget.RelativeLayout.LayoutParams;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.external.l;
 import org.json.JSONObject;
 
 public class f extends s {
@@ -27,7 +21,7 @@ public class f extends s {
     public String o;
 
     public f(String json) {
-        super(json, (UZWebView)null, false);
+        super(json, null, false);
         this.i();
     }
 

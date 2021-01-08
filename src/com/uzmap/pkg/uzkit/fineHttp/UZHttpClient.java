@@ -1,14 +1,8 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.fineHttp;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import com.uzmap.pkg.uzcore.b;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 
 public class UZHttpClient {
@@ -17,15 +11,12 @@ public class UZHttpClient {
     private static UZHttpClient instance;
     static boolean TransitionPhase = true;
 
-    public UZHttpClient() {
-    }
-
     public static synchronized UZHttpClient get() {
         if (instance == null) {
             if (!TransitionPhase) {
                 instance = new UZHttpClient();
             } else {
-                instance = new m(b.a().b(), (Object)null);
+                instance = new m(com.uzmap.pkg.uzcore.b.a().b(), null);
             }
         }
 
@@ -49,7 +40,7 @@ public class UZHttpClient {
             return null;
         } else {
             u<?> request = null;
-            switch(argument.method) {
+            switch (argument.method) {
                 case 0:
                     request = new p(argument);
                     break;
@@ -67,7 +58,7 @@ public class UZHttpClient {
             }
 
             if (request != null) {
-                String result = (String)((u)request).e();
+                String result = (String) ((u) request).e();
                 return !TextUtils.isEmpty(result) ? result : null;
             } else {
                 return null;
@@ -78,7 +69,7 @@ public class UZHttpClient {
     public void execute(RequestParam argument, RequestListener listener) {
         if (argument != null) {
             u<?> request = null;
-            switch(argument.method) {
+            switch (argument.method) {
                 case 0:
                     request = new p(argument);
                     break;
@@ -99,13 +90,13 @@ public class UZHttpClient {
             }
 
             if (request != null) {
-                ((u)request).a(listener);
+                request.a(listener);
                 if (argument.method != 5) {
                     if (this.mAjaxPool == null) {
                         this.mAjaxPool = new k();
                     }
 
-                    this.mAjaxPool.a((Runnable)request);
+                    this.mAjaxPool.a(request);
                 } else {
                     if (this.mDownloadPool == null) {
                         this.mDownloadPool = new l();
@@ -115,7 +106,7 @@ public class UZHttpClient {
                         return;
                     }
 
-                    this.mDownloadPool.a((Runnable)request);
+                    this.mDownloadPool.a(request);
                 }
             }
 

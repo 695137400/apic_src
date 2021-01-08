@@ -1,19 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.external.aa;
 
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.net.Uri;
@@ -21,14 +11,14 @@ import android.os.Parcel;
 import android.text.format.DateFormat;
 import android.util.Log;
 import com.uzmap.pkg.uzcore.external.Alarm;
-import com.uzmap.pkg.uzcore.external.Alarm.a;
+
 import java.util.Calendar;
 
 public class d {
     public static long a(Context context, Alarm alarm) {
         ContentValues values = a(alarm);
         Uri uri = context.getContentResolver().insert(e.a, values);
-        alarm.a = (int)ContentUris.parseId(uri);
+        alarm.a = (int) ContentUris.parseId(uri);
         long timeInMillis = b(alarm);
         if (alarm.b) {
             a(context, timeInMillis);
@@ -42,14 +32,14 @@ public class d {
         if (alarmId != -1) {
             ContentResolver contentResolver = context.getContentResolver();
             b(context, alarmId);
-            Uri uri = ContentUris.withAppendedId(e.a, (long)alarmId);
-            contentResolver.delete(uri, "", (String[])null);
+            Uri uri = ContentUris.withAppendedId(e.a, alarmId);
+            contentResolver.delete(uri, "", null);
             b(context);
         }
     }
 
     private static Cursor a(ContentResolver contentResolver) {
-        return contentResolver.query(e.a, b.a, "enabled=1", (String[])null, (String)null);
+        return contentResolver.query(e.a, b.a, "enabled=1", null, null);
     }
 
     private static ContentValues a(Alarm alarm) {
@@ -81,7 +71,7 @@ public class d {
     }
 
     public static Alarm a(ContentResolver contentResolver, int alarmId) {
-        Cursor cursor = contentResolver.query(ContentUris.withAppendedId(e.a, (long)alarmId), b.a, (String)null, (String[])null, (String)null);
+        Cursor cursor = contentResolver.query(ContentUris.withAppendedId(e.a, alarmId), b.a, null, null, null);
         Alarm alarm = null;
         if (cursor != null) {
             if (cursor.moveToFirst()) {
@@ -97,7 +87,7 @@ public class d {
     public static long b(Context context, Alarm alarm) {
         ContentValues values = a(alarm);
         ContentResolver resolver = context.getContentResolver();
-        resolver.update(ContentUris.withAppendedId(e.a, (long)alarm.a), values, (String)null, (String[])null);
+        resolver.update(ContentUris.withAppendedId(e.a, alarm.a), values, null, null);
         long timeInMillis = b(alarm);
         if (alarm.b) {
             b(context, alarm.a);
@@ -133,13 +123,13 @@ public class d {
                 b(context, alarm.a);
             }
 
-            resolver.update(ContentUris.withAppendedId(e.a, (long)alarm.a), values, (String)null, (String[])null);
+            resolver.update(ContentUris.withAppendedId(e.a, alarm.a), values, null, null);
         }
     }
 
     public static Alarm a(Context context) {
         Alarm alarm = null;
-        long minTime = 9223372036854775807L;
+        long minTime = Long.MAX_VALUE;
         long now = System.currentTimeMillis();
         Cursor cursor = a(context.getContentResolver());
         if (cursor != null) {
@@ -157,7 +147,7 @@ public class d {
                         minTime = a.f;
                         alarm = a;
                     }
-                } while(cursor.moveToNext());
+                } while (cursor.moveToNext());
             }
 
             cursor.close();
@@ -179,7 +169,7 @@ public class d {
     }
 
     private static void a(Context context, Alarm alarm, long atTimeInMillis) {
-        AlarmManager am = (AlarmManager)context.getSystemService("alarm");
+        AlarmManager am = (AlarmManager) context.getSystemService("alarm");
         Intent intent = new Intent("android.intent.apicloud.notification");
         intent.setPackage(context.getPackageName());
         Parcel out = Parcel.obtain();
@@ -195,7 +185,7 @@ public class d {
     }
 
     static void c(Context context) {
-        AlarmManager am = (AlarmManager)context.getSystemService("alarm");
+        AlarmManager am = (AlarmManager) context.getSystemService("alarm");
         PendingIntent sender = PendingIntent.getBroadcast(context, 0, new Intent("android.intent.apicloud.notification"), 268435456);
         am.cancel(sender);
         a(context, "");
@@ -215,7 +205,7 @@ public class d {
     private static void a(Context context, SharedPreferences prefs) {
         int alarmId = prefs.getInt("snooze_id", -1);
         if (alarmId != -1) {
-            NotificationManager nm = (NotificationManager)context.getSystemService("notification");
+            NotificationManager nm = (NotificationManager) context.getSystemService("notification");
             nm.cancel(alarmId);
         }
 
@@ -247,7 +237,7 @@ public class d {
         return a(alarm.c, alarm.d, alarm.e).getTimeInMillis();
     }
 
-    private static Calendar a(int hour, int minute, a daysOfWeek) {
+    private static Calendar a(int hour, int minute, Alarm.a daysOfWeek) {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
         int nowHour = c.get(11);
@@ -270,7 +260,7 @@ public class d {
 
     private static String a(Context context, Calendar c) {
         String format = e(context) ? "E k:mm" : "E h:mm aa";
-        return c == null ? "" : (String)DateFormat.format(format, c);
+        return c == null ? "" : (String) DateFormat.format(format, c);
     }
 
     private static void a(Context context, String timeString) {

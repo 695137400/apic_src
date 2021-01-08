@@ -1,11 +1,7 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import com.uzmap.pkg.uzcore.UZCoreUtil;
+
 import java.util.Random;
 
 public final class a {
@@ -58,7 +54,7 @@ public final class a {
         Random r = new Random();
         String result = "";
 
-        for(int i = 0; i < l; ++i) {
+        for (int i = 0; i < l; ++i) {
             result = result + A[r.nextInt(max)];
         }
 

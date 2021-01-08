@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzsocket.api;
 
 import android.content.BroadcastReceiver;
@@ -45,7 +40,7 @@ public class Receiver extends BroadcastReceiver {
         if (!TextUtils.isEmpty(data)) {
             try {
                 JSONArray offLineMsg = null;
-                String off_line_msg = this.mDelegate.a().b("off_line_msg", (String)null);
+                String off_line_msg = this.mDelegate.a().b("off_line_msg", null);
                 if (TextUtils.isEmpty(off_line_msg)) {
                     offLineMsg = new JSONArray();
                 } else {
@@ -56,7 +51,7 @@ public class Receiver extends BroadcastReceiver {
                 JSONArray msgs = json.optJSONArray("value");
                 int l = msgs.length();
 
-                for(int i = 0; i < l; ++i) {
+                for (int i = 0; i < l; ++i) {
                     Object o = msgs.opt(i);
                     if (o != null) {
                         offLineMsg.put(o);

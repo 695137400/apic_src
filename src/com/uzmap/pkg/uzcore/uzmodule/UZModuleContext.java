@@ -1,15 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.a;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,7 +12,7 @@ public class UZModuleContext {
     private static String b;
     private int c;
     private int d = -1;
-    private a e;
+    private com.uzmap.pkg.uzcore.a e;
     private JSONObject f;
 
     static {
@@ -30,7 +24,7 @@ public class UZModuleContext {
     }
 
     public UZModuleContext(UZWebView webView) {
-        this.e = (a)webView;
+        this.e = (com.uzmap.pkg.uzcore.a) webView;
         if (this.e != null) {
             this.c = this.e.A();
         }
@@ -38,7 +32,7 @@ public class UZModuleContext {
     }
 
     public UZModuleContext(String json, UZWebView webView) {
-        this.e = (a)webView;
+        this.e = (com.uzmap.pkg.uzcore.a) webView;
         if (this.e != null) {
             this.c = this.e.A();
         }
@@ -172,7 +166,7 @@ public class UZModuleContext {
     }
 
     public final double optDouble(String key) {
-        return this.f != null ? this.f.optDouble(key) : 0.0D / 0.0;
+        return this.f != null ? this.f.optDouble(key) : Double.NaN;
     }
 
     public final double optDouble(String key, double fallback) {
@@ -202,7 +196,7 @@ public class UZModuleContext {
     protected final String transcode(String input) {
         char[] c = input.toCharArray();
 
-        for(int i = 0; i < c.length; ++i) {
+        for (int i = 0; i < c.length; ++i) {
             if (c[i] == 12288) {
                 c[i] = ' ';
             } else if (c[i] > '\uff00' && c[i] < '｟') {

@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzsocket;
 
 import android.app.Service;
@@ -10,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
-import com.uzmap.pkg.uzsocket.g.a;
 import com.uzmap.pkg.uzsocket.g.c;
 
 public class UPnsService extends Service {

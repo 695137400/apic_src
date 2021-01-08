@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzapp;
 
 import android.content.ContentProvider;
@@ -10,27 +5,19 @@ import android.content.ContentValues;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.CancellationSignal;
-import android.os.ParcelFileDescriptor;
 import android.os.Process;
-import com.uzmap.pkg.uzcore.a.b;
-import com.uzmap.pkg.uzcore.a.d;
-import com.uzmap.pkg.uzcore.a.j;
-import com.uzmap.pkg.uzcore.external.a.e;
+import android.os.*;
+import com.uzmap.pkg.uzcore.aa.j;
+
 import java.io.FileNotFoundException;
 
 public final class UProvider extends ContentProvider {
     private int a;
     private int b;
-    private e c;
-
-    public UProvider() {
-    }
+    private com.uzmap.pkg.uzcore.external.aa.e c;
 
     public boolean onCreate() {
-        this.c = new e();
+        this.c = new com.uzmap.pkg.uzcore.external.aa.e();
         this.c.c(this.getContext());
         this.a = Process.myPid();
         this.b = Process.myUid();
@@ -89,10 +76,10 @@ public final class UProvider extends ContentProvider {
         if (!this.a()) {
             return null;
         } else {
-            String u = com.uzmap.pkg.uzcore.a.b.a(uri);
+            String u = com.uzmap.pkg.uzcore.aa.b.a(uri);
             String e = j.d(u);
             boolean s = j.e(e);
-            return !s ? d.a(u, e) : d.a(u);
+            return !s ? com.uzmap.pkg.uzcore.aa.d.a(u, e) : com.uzmap.pkg.uzcore.aa.d.a(u);
         }
     }
 

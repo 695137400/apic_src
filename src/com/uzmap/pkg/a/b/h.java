@@ -1,15 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 import android.annotation.TargetApi;
 import android.net.TrafficStats;
+import android.os.Build.VERSION;
 import android.os.Process;
 import android.os.SystemClock;
-import android.os.Build.VERSION;
+
 import java.util.concurrent.BlockingQueue;
 
 public class h extends Thread {
@@ -43,14 +39,14 @@ public class h extends Thread {
         Process.setThreadPriority(10);
         this.setName("##Thread-" + Thread.currentThread().getId() + "##");
 
-        while(true) {
+        while (true) {
             long startTimeMs;
             j request;
-            while(true) {
+            while (true) {
                 startTimeMs = SystemClock.elapsedRealtime();
 
                 try {
-                    request = (j)this.a.take();
+                    request = this.a.take();
                     break;
                 } catch (InterruptedException var6) {
                     if (this.e) {
@@ -85,7 +81,7 @@ public class h extends Thread {
                 var7.a(SystemClock.elapsedRealtime() - startTimeMs);
                 this.a(request, var7);
             } catch (Exception var8) {
-                p.a(var8, "Unhandled exception %s", new Object[]{var8.toString()});
+                p.a(var8, "Unhandled exception %s", var8.toString());
                 o volleyError = new o(var8);
                 volleyError.a(SystemClock.elapsedRealtime() - startTimeMs);
                 this.d.a(request, volleyError);

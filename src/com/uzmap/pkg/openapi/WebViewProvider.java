@@ -1,12 +1,8 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.openapi;
 
 import android.graphics.Bitmap;
 import com.uzmap.pkg.uzcore.a;
+
 import java.util.Map;
 
 public final class WebViewProvider {

@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.text.TextUtils;
@@ -48,7 +43,7 @@ public class a extends UZModuleContext implements ProgressListener {
                 var7.printStackTrace();
             }
 
-            this.error((JSONObject)null, json, true);
+            this.error(null, json, true);
         } else {
             boolean needToJson = this.a();
             boolean validFormat = true;
@@ -83,7 +78,7 @@ public class a extends UZModuleContext implements ProgressListener {
                     var9.printStackTrace();
                 }
 
-                this.error((JSONObject)null, json, true);
+                this.error(null, json, true);
             } else {
                 if (!this.b()) {
                     this.success(content.toString(), needToJson, true);

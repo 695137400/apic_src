@@ -1,24 +1,16 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzapp;
 
 import android.app.Application;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.b;
+
 import java.util.Locale;
 
 public class UZApplication extends Application {
-    private b a;
+    private com.uzmap.pkg.uzcore.b a;
     private Resources b;
     private static UZApplication c;
-
-    public UZApplication() {
-    }
 
     public void onCreate() {
         super.onCreate();

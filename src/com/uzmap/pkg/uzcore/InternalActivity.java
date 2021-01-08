@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore;
 
 import android.graphics.Bitmap;
@@ -11,9 +6,6 @@ import com.uzmap.pkg.openapi.WebViewProvider;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 
 public class InternalActivity extends UZAppActivity {
-    public InternalActivity() {
-    }
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

@@ -1,14 +1,8 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.external.aa;
 
 import android.content.Context;
 import android.util.Log;
 import com.uzmap.pkg.uzcore.external.Alarm;
-import com.uzmap.pkg.uzcore.external.Alarm.a;
 
 public class c {
     private static int a = -1;
@@ -18,7 +12,7 @@ public class c {
         alarm.a = a;
         if (time > 0L) {
             alarm.f = time;
-            alarm.e = a((int[])null);
+            alarm.e = a(null);
         } else {
             alarm.c = hour;
             alarm.d = minutes;
@@ -46,13 +40,13 @@ public class c {
         d.a(context, alarmId);
     }
 
-    private static a a(int[] days) {
-        a daysOfWeek = new a(0);
+    private static Alarm.a a(int[] days) {
+        Alarm.a daysOfWeek = new Alarm.a(0);
         if (days != null && days.length != 0) {
             int[] var5 = days;
             int var4 = days.length;
 
-            for(int var3 = 0; var3 < var4; ++var3) {
+            for (int var3 = 0; var3 < var4; ++var3) {
                 int d = var5[var3];
                 --d;
                 if (d >= 0 && d <= 6) {

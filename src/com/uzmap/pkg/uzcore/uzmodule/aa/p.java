@@ -1,13 +1,7 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.uzmodule.d;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZConstant;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 import org.json.JSONObject;
@@ -44,15 +38,15 @@ public class p extends s {
                 this.g.z = fixedPane.optString("url");
                 this.g.B = fixedPane.optBoolean("bounces", false);
                 this.g.C = fixedPane.optBoolean("opaque", true);
-                bg = fixedPane.optString("bg", (String)null);
+                bg = fixedPane.optString("bg", null);
                 if (bg == null) {
-                    bg = fixedPane.optString("bgColor", (String)null);
+                    bg = fixedPane.optString("bgColor", null);
                 }
 
                 this.g.G = bg;
                 this.g.I = fixedPane.optBoolean("vScrollBarEnabled", true);
                 this.g.J = fixedPane.optBoolean("hScrollBarEnabled", true);
-                this.g.H = new d(fixedPane.optString("pageParam"));
+                this.g.H = new com.uzmap.pkg.uzcore.uzmodule.d(fixedPane.optString("pageParam"));
             }
 
             if (slidPane != null) {
@@ -61,15 +55,15 @@ public class p extends s {
                 this.h.z = slidPane.optString("url");
                 this.h.B = slidPane.optBoolean("bounces", false);
                 this.h.C = slidPane.optBoolean("opaque", true);
-                bg = fixedPane.optString("bg", (String)null);
+                bg = fixedPane.optString("bg", null);
                 if (bg == null) {
-                    bg = fixedPane.optString("bgColor", (String)null);
+                    bg = fixedPane.optString("bgColor", null);
                 }
 
                 this.h.G = bg;
                 this.h.I = slidPane.optBoolean("vScrollBarEnabled", true);
                 this.h.J = slidPane.optBoolean("hScrollBarEnabled", true);
-                this.h.H = new d(slidPane.optString("pageParam"));
+                this.h.H = new com.uzmap.pkg.uzcore.uzmodule.d(slidPane.optString("pageParam"));
             }
 
             JSONObject slidPaneStyle = this.optJSONObject("slidPaneStyle");

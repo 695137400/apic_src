@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import java.io.IOException;
@@ -45,7 +40,7 @@ public class c extends InputStream {
             } else {
                 int copylen = this.b - this.c < byteCount ? this.b - this.c : byteCount;
 
-                for(int i = 0; i < copylen; ++i) {
+                for (int i = 0; i < copylen; ++i) {
                     buffer[byteOffset + i] = this.a[this.c + i];
                 }
 
@@ -72,15 +67,15 @@ public class c extends InputStream {
             return 0L;
         } else {
             int numskipped;
-            if ((long)(this.b - this.c) < charCount) {
+            if ((long) (this.b - this.c) < charCount) {
                 numskipped = this.b - this.c;
                 this.c = this.b;
             } else {
-                numskipped = (int)charCount;
-                this.c = (int)((long)this.c + charCount);
+                numskipped = (int) charCount;
+                this.c = (int) ((long) this.c + charCount);
             }
 
-            return (long)numskipped;
+            return numskipped;
         }
     }
 

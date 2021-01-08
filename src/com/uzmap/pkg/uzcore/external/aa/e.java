@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.external.aa;
 
 import android.content.ContentUris;
@@ -23,9 +18,6 @@ public class e {
     private static final UriMatcher b = new UriMatcher(-1);
     public static Uri a = null;
     private SQLiteOpenHelper c;
-
-    public e() {
-    }
 
     public static String a(Context context) {
         return context.getPackageName() + ".ups";
@@ -56,21 +48,21 @@ public class e {
         this.d(context);
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         int match = b.match(url);
-        switch(match) {
+        switch (match) {
             case 1:
                 qb.setTables("alarms");
                 break;
             case 2:
                 qb.setTables("alarms");
                 qb.appendWhere("_id=");
-                qb.appendWhere((CharSequence)url.getPathSegments().get(1));
+                qb.appendWhere(url.getPathSegments().get(1));
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URL " + url);
         }
 
         SQLiteDatabase db = this.c.getReadableDatabase();
-        Cursor ret = qb.query(db, projectionIn, selection, selectionArgs, (String)null, (String)null, sort);
+        Cursor ret = qb.query(db, projectionIn, selection, selectionArgs, null, null, sort);
         if (ret != null) {
             ret.setNotificationUri(context.getContentResolver(), url);
         }
@@ -80,7 +72,7 @@ public class e {
 
     public String b(Uri url) {
         int match = b.match(url);
-        switch(match) {
+        switch (match) {
             case 1:
                 return "vnd.android.cursor.dir/alarms";
             case 2:
@@ -95,12 +87,12 @@ public class e {
         long rowId = 0L;
         int match = b.match(url);
         SQLiteDatabase db = this.c.getWritableDatabase();
-        switch(match) {
+        switch (match) {
             case 2:
-                String segment = (String)url.getPathSegments().get(1);
+                String segment = url.getPathSegments().get(1);
                 rowId = Long.parseLong(segment);
-                int count = db.update("alarms", values, "_id=" + rowId, (String[])null);
-                context.getContentResolver().notifyChange(url, (ContentObserver)null);
+                int count = db.update("alarms", values, "_id=" + rowId, null);
+                context.getContentResolver().notifyChange(url, null);
                 return count;
             default:
                 throw new UnsupportedOperationException("Cannot update URL: " + url);
@@ -119,7 +111,7 @@ public class e {
                 throw new SQLException("Failed to insert row into " + url);
             } else {
                 Uri newUrl = ContentUris.withAppendedId(b(context), rowId);
-                context.getContentResolver().notifyChange(newUrl, (ContentObserver)null);
+                context.getContentResolver().notifyChange(newUrl, null);
                 return newUrl;
             }
         }
@@ -130,12 +122,12 @@ public class e {
         SQLiteDatabase db = this.c.getWritableDatabase();
         long rowId = 0L;
         int count;
-        switch(b.match(url)) {
+        switch (b.match(url)) {
             case 1:
                 count = db.delete("alarms", where, whereArgs);
                 break;
             case 2:
-                String segment = (String)url.getPathSegments().get(1);
+                String segment = url.getPathSegments().get(1);
                 rowId = Long.parseLong(segment);
                 if (TextUtils.isEmpty(where)) {
                     where = "_id=" + segment;
@@ -150,13 +142,13 @@ public class e {
         }
 
         Log.d("alarm", "rowId: " + rowId);
-        context.getContentResolver().notifyChange(url, (ContentObserver)null);
+        context.getContentResolver().notifyChange(url, null);
         return count;
     }
 
     private void d(Context context) {
         if (this.c == null) {
-            this.c = new a(context, "notification.db", 1);
+            this.c = new a1(context, "notification.db", 1);
         }
 
     }

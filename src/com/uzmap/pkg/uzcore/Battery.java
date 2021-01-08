@@ -1,18 +1,14 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
 
 class Battery extends BroadcastReceiver {
     private static Battery a;
@@ -38,7 +34,7 @@ class Battery extends BroadcastReceiver {
 
     public void a(Battery.a listener) {
         if (listener != null) {
-            synchronized(this.d) {
+            synchronized (this.d) {
                 if (!this.d.contains(listener)) {
                     this.d.add(listener);
                 }
@@ -52,7 +48,7 @@ class Battery extends BroadcastReceiver {
     }
 
     public void b(Battery.a listener) {
-        synchronized(this.d) {
+        synchronized (this.d) {
             this.d.remove(listener);
             if (this.d.isEmpty()) {
                 this.c();
@@ -98,11 +94,11 @@ class Battery extends BroadcastReceiver {
                 low = true;
             }
 
-            synchronized(this.d) {
+            synchronized (this.d) {
                 Iterator var11 = this.d.iterator();
 
-                while(var11.hasNext()) {
-                    Battery.a listener = (Battery.a)var11.next();
+                while (var11.hasNext()) {
+                    Battery.a listener = (Battery.a) var11.next();
                     listener.a(low, json);
                 }
 

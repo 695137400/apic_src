@@ -1,14 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 import android.content.Context;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import com.uzmap.pkg.a.b.d.f;
+
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.SoftReference;
@@ -17,14 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.TimeZone;
+import java.util.*;
 
 public class e {
     private static final char[] b = "0123456789ABCDEF".toCharArray();
@@ -34,7 +22,7 @@ public class e {
     private static String b(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
 
-        for(int j = 0; j < bytes.length; ++j) {
+        for (int j = 0; j < bytes.length; ++j) {
             int v = bytes[j] & 255;
             hexChars[j * 2] = b[v >>> 4];
             hexChars[j * 2 + 1] = b[v & 15];
@@ -76,9 +64,9 @@ public class e {
         String[] var7 = localDateFormats;
         int var6 = localDateFormats.length;
 
-        for(int var5 = 0; var5 < var6; ++var5) {
+        for (int var5 = 0; var5 < var6; ++var5) {
             String dateFormat = var7[var5];
-            SimpleDateFormat dateParser = e.aa.a(dateFormat);
+            SimpleDateFormat dateParser = e.a1.a(dateFormat);
             dateParser.set2DigitYearStart(localStartDate);
             ParsePosition pos = new ParsePosition(0);
             Date result = dateParser.parse(v, pos);
@@ -136,12 +124,12 @@ public class e {
         }
     }
 
-    public static String a(List<? extends f> parameters, String encoding) {
+    public static String a(List<? extends com.uzmap.pkg.a.b.dd.f> parameters, String encoding) {
         StringBuilder result = new StringBuilder();
         Iterator var4 = parameters.iterator();
 
-        while(var4.hasNext()) {
-            f parameter = (f)var4.next();
+        while (var4.hasNext()) {
+            com.uzmap.pkg.a.b.dd.f parameter = (com.uzmap.pkg.a.b.dd.f) var4.next();
             String encodedName = b(parameter.a(), encoding);
             String value = parameter.b();
             String encodedValue = value != null ? b(value, encoding) : "";
@@ -196,7 +184,7 @@ public class e {
             StringBuffer sb = new StringBuffer();
             StringTokenizer tokenizer = new StringTokenizer(query, "&");
 
-            while(tokenizer.hasMoreElements()) {
+            while (tokenizer.hasMoreElements()) {
                 String valuePair = tokenizer.nextToken();
                 if (valuePair.length() > 0) {
                     int assignmentIndex = valuePair.indexOf(61);
@@ -236,26 +224,31 @@ public class e {
         }
     }
 
-    static final class aa {
+    static final class a1 {
         private static final ThreadLocal<SoftReference<Map<String, SimpleDateFormat>>> a = new ThreadLocal<SoftReference<Map<String, SimpleDateFormat>>>() {
             protected SoftReference<Map<String, SimpleDateFormat>> a() {
                 return new SoftReference(new HashMap());
             }
+
+            // $FF: synthetic method
+            protected SoftReference<Map<String, SimpleDateFormat>> initialValue() {
+                return this.a();
+            }
         };
 
         public static SimpleDateFormat a(String pattern) {
-            SoftReference<Map<String, SimpleDateFormat>> ref = (SoftReference)a.get();
-            Map<String, SimpleDateFormat> formats = (Map)ref.get();
+            SoftReference<Map<String, SimpleDateFormat>> ref = a.get();
+            Map<String, SimpleDateFormat> formats = ref.get();
             if (formats == null) {
                 formats = new HashMap();
                 a.set(new SoftReference(formats));
             }
 
-            SimpleDateFormat format = (SimpleDateFormat)((Map)formats).get(pattern);
+            SimpleDateFormat format = (SimpleDateFormat) ((Map) formats).get(pattern);
             if (format == null) {
                 format = new SimpleDateFormat(pattern, Locale.US);
                 format.setTimeZone(TimeZone.getTimeZone("GMT"));
-                ((Map)formats).put(pattern, format);
+                ((Map) formats).put(pattern, format);
             }
 
             return format;

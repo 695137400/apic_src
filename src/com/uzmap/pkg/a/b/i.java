@@ -1,11 +1,5 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
-import com.uzmap.pkg.a.b.c.e;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
@@ -31,7 +25,7 @@ public class i {
     public String a() {
         String parsed;
         try {
-            parsed = new String(this.b, com.uzmap.pkg.a.b.c1.e.a(this.c));
+            parsed = new String(this.b, com.uzmap.pkg.a.b.cc.e.a(this.c));
         } catch (UnsupportedEncodingException var3) {
             parsed = new String(this.b);
         }

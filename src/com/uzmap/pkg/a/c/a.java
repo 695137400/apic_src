@@ -1,19 +1,14 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.c;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.app.AlertDialog.Builder;
+import android.app.DownloadManager;
 import android.app.DownloadManager.Request;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.net.http.AndroidHttpClient;
@@ -23,10 +18,11 @@ import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 import android.widget.Toast;
 import com.uzmap.pkg.uzapp.e;
-import java.io.IOException;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpHead;
+
+import java.io.IOException;
 
 public class a {
     public static void a(Activity activity, String url, String userAgent, String contentDisposition, String mimetype) {
@@ -64,7 +60,7 @@ public class a {
                 title = "无 SD 卡";
             }
 
-            (new Builder(activity)).setTitle(title).setIcon(17301543).setMessage(msg).setPositiveButton("确定", (OnClickListener)null).show();
+            (new Builder(activity)).setTitle(title).setIcon(17301543).setMessage(msg).setPositiveButton("确定", null).show();
         } else {
             Uri uri = Uri.parse(url);
 
@@ -88,9 +84,9 @@ public class a {
                     return;
                 }
 
-                (new com.uzmap.pkg.a.c.a.a(activity, request, url, cookies, userAgent)).start();
+                (new at(activity, request, url, cookies, userAgent)).start();
             } else {
-                final DownloadManager manager = (DownloadManager)activity.getSystemService("download");
+                final DownloadManager manager = (DownloadManager) activity.getSystemService("download");
                 (new Thread("APICloud download") {
                     public void run() {
                         manager.enqueue(request);
@@ -102,14 +98,14 @@ public class a {
         }
     }
 
-    static class aa extends Thread {
+    static class at extends Thread {
         private Context a;
         private Request b;
         private String c;
         private String d;
         private String e;
 
-        public aa(Context context, Request request, String uri, String cookies, String userAgent) {
+        public at(Context context, Request request, String uri, String cookies, String userAgent) {
             this.a = context.getApplicationContext();
             this.b = request;
             this.c = uri;
@@ -170,7 +166,7 @@ public class a {
                 this.b.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, newMimeType);
             }
 
-            DownloadManager manager = (DownloadManager)this.a.getSystemService("download");
+            DownloadManager manager = (DownloadManager) this.a.getSystemService("download");
             manager.enqueue(this.b);
         }
     }

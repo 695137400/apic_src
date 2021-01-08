@@ -1,0 +1,9 @@
+{modules:[{
+	name:'push',
+	class:'com.uzmap.pkg.uzmodules.uzpush.UPush'
+}
+,{
+    name:'mam',
+    class:'com.uzmap.pkg.uzmodules.uzmam.UzMAM'
+}
+]}

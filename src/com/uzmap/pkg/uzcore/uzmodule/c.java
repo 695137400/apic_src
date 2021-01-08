@@ -1,20 +1,12 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import com.uzmap.pkg.uzcore.UZWebView;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.*;
 
 public final class c {
     private Hashtable<String, com.uzmap.pkg.uzcore.uzmodule.a> a = new Hashtable();
@@ -51,25 +43,9 @@ public final class c {
         return this.a;
     }
 
-    public List<ApplicationDelegate> b() {
-        List<ApplicationDelegate> list = new ArrayList();
-        Iterator var3 = this.b.iterator();
-
-        while(var3.hasNext()) {
-            Class<?> clazz = (Class)var3.next();
-            ApplicationDelegate intance = null;
-
-            try {
-                intance = (ApplicationDelegate)clazz.newInstance();
-            } catch (Exception var6) {
-            }
-
-            if (intance != null) {
-                list.add(intance);
-            }
-        }
-
-        return list;
+    public static boolean a(String module) {
+        c.a contain = c.get(module);
+        return contain != null && contain.c;
     }
 
     public static boolean c() {
@@ -92,9 +68,25 @@ public final class c {
         return a("baiduMap");
     }
 
-    public static boolean a(String module) {
-        c.a contain = (c.a)c.get(module);
-        return contain != null ? contain.c : false;
+    public List<ApplicationDelegate> b() {
+        List<ApplicationDelegate> list = new ArrayList();
+        Iterator var3 = this.b.iterator();
+
+        while (var3.hasNext()) {
+            Class<?> clazz = (Class) var3.next();
+            ApplicationDelegate intance = null;
+
+            try {
+                intance = (ApplicationDelegate) clazz.newInstance();
+            } catch (Exception var6) {
+            }
+
+            if (intance != null) {
+                list.add(intance);
+            }
+        }
+
+        return list;
     }
 
     private void b(String moduleJson) {
@@ -111,7 +103,7 @@ public final class c {
             int length = moduleList.length();
             Class<?> delegateClass = ApplicationDelegate.class;
 
-            for(int i = 0; i < length; ++i) {
+            for (int i = 0; i < length; ++i) {
                 JSONObject moduleitem = moduleList.optJSONObject(i);
                 if (moduleitem != null) {
                     String moduleName = moduleitem.optString("name");
@@ -145,7 +137,7 @@ public final class c {
                                     Method[] var17 = methods;
                                     int var16 = methods.length;
 
-                                    for(int var15 = 0; var15 < var16; ++var15) {
+                                    for (int var15 = 0; var15 < var16; ++var15) {
                                         Method method = var17[var15];
                                         String name = method.getName();
                                         if (name.startsWith("jsmethod_")) {
@@ -169,8 +161,8 @@ public final class c {
             Collection<com.uzmap.pkg.uzcore.uzmodule.a> values = this.a.values();
             Iterator var26 = values.iterator();
 
-            while(var26.hasNext()) {
-                com.uzmap.pkg.uzcore.uzmodule.a entity = (com.uzmap.pkg.uzcore.uzmodule.a)var26.next();
+            while (var26.hasNext()) {
+                com.uzmap.pkg.uzcore.uzmodule.a entity = (com.uzmap.pkg.uzcore.uzmodule.a) var26.next();
                 moduleScript.append(entity.a());
             }
 

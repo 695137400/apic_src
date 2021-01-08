@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.openapi;
 
 import android.graphics.Bitmap;
@@ -12,9 +7,6 @@ import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import org.json.JSONObject;
 
 public class ExternalActivity extends UZAppActivity {
-    public ExternalActivity() {
-    }
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -24,11 +16,11 @@ public class ExternalActivity extends UZAppActivity {
     }
 
     public final void evaluateJavascript(String script) {
-        this.evaluateJavascript((String)null, script);
+        this.evaluateJavascript(null, script);
     }
 
     public final void evaluateJavascript(String winName, String script) {
-        this.evaluateJavascript(winName, (String)null, script);
+        this.evaluateJavascript(winName, null, script);
     }
 
     public final void evaluateJavascript(String winName, String frameName, String script) {
@@ -49,7 +41,7 @@ public class ExternalActivity extends UZAppActivity {
     }
 
     public final void removeAllHtml5EventListener() {
-        this.removeH5EventListener((Html5EventListener)null);
+        this.removeH5EventListener(null);
     }
 
     public final void sendEventToHtml5(String eventName, JSONObject extra) {

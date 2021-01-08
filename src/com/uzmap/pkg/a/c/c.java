@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.c;
 
 import android.app.Activity;
@@ -23,13 +18,13 @@ public class c extends b {
         super(context, activityResult);
     }
 
-    public void a(int resultCode, Intent intent) {
+    public void av(int resultCode, Intent intent) {
         Uri[] uris = this.b(resultCode, intent);
         this.h.onReceiveValue(uris);
         this.d = true;
     }
 
-    public void a(ValueCallback<Uri[]> callback, FileChooserParams fileChooserParams) {
+    public void av(ValueCallback<Uri[]> callback, FileChooserParams fileChooserParams) {
         if (this.h == null) {
             this.h = callback;
             this.i = fileChooserParams;
@@ -46,7 +41,7 @@ public class c extends b {
                 intent.putExtra("android.intent.extra.INTENT", fileChooserParams.createIntent());
             }
 
-            this.a(intent);
+            this.av(intent);
         }
     }
 
@@ -68,9 +63,9 @@ public class c extends b {
         }
     }
 
-    private void a(Intent intent) {
+    private void av(Intent intent) {
         try {
-            f engine = f.b(this.f);
+            f engine = com.uzmap.pkg.uzcore.f.b(this.f);
             if (engine == null) {
                 throw new ActivityNotFoundException();
             }
@@ -91,19 +86,19 @@ public class c extends b {
 
         Intent[] intents;
         if (mimeType.equals("image/*")) {
-            intents = new Intent[]{this.a(this.a())};
+            intents = new Intent[]{this.av(this.av())};
         } else if (mimeType.equals("video/*")) {
             intents = new Intent[]{this.b()};
         } else if (mimeType.equals("audio/*")) {
             intents = new Intent[]{this.c()};
         } else {
-            intents = new Intent[]{this.a(this.a()), this.b(), this.c()};
+            intents = new Intent[]{this.av(this.av()), this.b(), this.c()};
         }
 
         return intents;
     }
 
-    private Intent a(Uri contentUri) {
+    private Intent av(Uri contentUri) {
         if (contentUri == null) {
             throw new IllegalArgumentException();
         } else {

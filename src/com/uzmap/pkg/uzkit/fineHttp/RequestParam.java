@@ -1,23 +1,14 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.fineHttp;
 
 import android.text.TextUtils;
-import com.uzmap.pkg.uzapp.b;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZConstant;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.*;
 
 public class RequestParam {
     public static final String API_APP_ID = "X-APICloud-AppId";
@@ -81,7 +72,7 @@ public class RequestParam {
             this.dataType = UZConstant.mapInt(json.optString("dataType"), 0);
             this.savePath = json.optString("savePath");
             this.charset = json.optString("charset");
-            this.tag = json.optString("tag", (String)null);
+            this.tag = json.optString("tag", null);
             this.transHeads(json.optJSONObject("headers"));
             JSONObject data = json.optJSONObject("data");
             if (data != null) {
@@ -198,8 +189,8 @@ public class RequestParam {
             List<g> newFiles = new ArrayList(this.files.size());
             Iterator var4 = this.files.iterator();
 
-            while(var4.hasNext()) {
-                g pair = (g)var4.next();
+            while (var4.hasNext()) {
+                g pair = (g) var4.next();
                 String key = pair.a();
                 String value = pair.b();
                 value = UZUtility.makeRealPath(value, winfo);
@@ -266,8 +257,8 @@ public class RequestParam {
             Iterator<String> keys = data.keys();
             this.values = new ArrayList(data.length());
 
-            while(keys.hasNext()) {
-                String key = (String)keys.next();
+            while (keys.hasNext()) {
+                String key = keys.next();
                 Object val = data.opt(key);
                 g kvp = new g(key, val);
                 this.values.add(kvp);
@@ -281,8 +272,8 @@ public class RequestParam {
             Iterator<String> keys = data.keys();
             this.files = new ArrayList(data.length());
 
-            while(true) {
-                while(true) {
+            while (true) {
+                while (true) {
                     String key;
                     Object val;
                     do {
@@ -290,16 +281,16 @@ public class RequestParam {
                             return;
                         }
 
-                        key = (String)keys.next();
+                        key = keys.next();
                         val = data.opt(key);
-                    } while(val == null);
+                    } while (val == null);
 
                     if (val instanceof JSONArray) {
-                        JSONArray array = (JSONArray)val;
+                        JSONArray array = (JSONArray) val;
                         int l = array.length();
                         String akey = key;
 
-                        for(int i = 0; i < l; ++i) {
+                        for (int i = 0; i < l; ++i) {
                             Object item = array.opt(i);
                             if (item != null) {
                                 g kvp = new g(akey, item);
@@ -323,8 +314,8 @@ public class RequestParam {
 
             Iterator keys = data.keys();
 
-            while(keys.hasNext()) {
-                String key = (String)keys.next();
+            while (keys.hasNext()) {
+                String key = (String) keys.next();
                 String value = data.optString(key);
                 if (!TextUtils.isEmpty(key)) {
                     value = value != null ? value : "";
@@ -337,7 +328,7 @@ public class RequestParam {
 
     public void setInSecure(String widgetId) {
         this.setRqHeads("X-APICloud-AppId", widgetId);
-        this.setRqHeads("X-APICloud-AppKey", b.a(widgetId));
+        this.setRqHeads("X-APICloud-AppKey", com.uzmap.pkg.uzapp.b.a(widgetId));
         this.setRqHeads("X-APICloud-UUID", UZCoreUtil.getUUID());
         this.setRqHeads("X-APICloud-Platform", "0");
     }
@@ -347,19 +338,19 @@ public class RequestParam {
         g kvp;
         Iterator var4;
         if (this.values != null) {
-            for(var4 = this.values.iterator(); var4.hasNext(); l += kvp.c()) {
-                kvp = (g)var4.next();
+            for (var4 = this.values.iterator(); var4.hasNext(); l += kvp.c()) {
+                kvp = (g) var4.next();
             }
         }
 
         if (this.heads != null) {
             String key;
-            for(var4 = this.heads.values().iterator(); var4.hasNext(); l += (long)key.length()) {
-                key = (String)var4.next();
+            for (var4 = this.heads.values().iterator(); var4.hasNext(); l += key.length()) {
+                key = (String) var4.next();
             }
 
-            for(var4 = this.heads.keySet().iterator(); var4.hasNext(); l += (long)key.length()) {
-                key = (String)var4.next();
+            for (var4 = this.heads.keySet().iterator(); var4.hasNext(); l += key.length()) {
+                key = (String) var4.next();
             }
         }
 

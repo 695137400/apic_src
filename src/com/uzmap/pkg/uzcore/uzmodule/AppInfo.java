@@ -1,27 +1,22 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import android.text.TextUtils;
-import com.uzmap.pkg.uzkit.data.b;
+
 import java.util.Hashtable;
 
 public class AppInfo {
     public String appId;
     public String appName;
-    private Hashtable<String, b> featureList;
+    private final Hashtable<String, com.uzmap.pkg.uzkit.data.b> featureList;
 
-    public AppInfo(Hashtable<String, b> features) {
+    public AppInfo(Hashtable<String, com.uzmap.pkg.uzkit.data.b> features) {
         this.featureList = features;
     }
 
     public String getFeatureValue(String featureName, String paramName) {
         if (!TextUtils.isEmpty(featureName) && !TextUtils.isEmpty(paramName)) {
             if (this.featureList != null) {
-                b feature = (b)this.featureList.get(featureName);
+                com.uzmap.pkg.uzkit.data.b feature = this.featureList.get(featureName);
                 if (feature != null) {
                     return feature.a(paramName);
                 }

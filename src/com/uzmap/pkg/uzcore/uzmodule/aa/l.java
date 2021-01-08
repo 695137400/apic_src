@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import com.uzmap.pkg.uzcore.UZWebView;
@@ -26,14 +21,14 @@ public final class l extends UZModuleContext {
         if (!this.empty()) {
             this.a = this.optJSONObject("notify");
             this.e = this.optJSONObject("alarm");
-            this.c = this.optString("sound", (String)null);
+            this.c = this.optString("sound", null);
             this.d = this.optBoolean("light");
             JSONArray l = this.optJSONArray("vibrate");
             int s = l != null ? l.length() : 0;
             if (s > 0) {
                 this.b = new long[s];
 
-                for(int i = 0; i < s; ++i) {
+                for (int i = 0; i < s; ++i) {
                     this.b[i] = l.optLong(i);
                 }
             } else if (!this.isNull("vibrate")) {

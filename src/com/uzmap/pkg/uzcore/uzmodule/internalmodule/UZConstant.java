@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.internalmodule;
 
 import java.util.Hashtable;
@@ -198,15 +193,12 @@ public class UZConstant {
         ConstantMap.put("auto_portrait", 7);
     }
 
-    public UZConstant() {
-    }
-
     public static int mapInt(String str, int defalut) {
         if (str == null) {
             return defalut;
         } else {
             str = str.toLowerCase();
-            Integer value = (Integer)ConstantMap.get(str);
+            Integer value = ConstantMap.get(str);
             return value == null ? defalut : value;
         }
     }

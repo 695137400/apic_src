@@ -1,0 +1,1 @@
+java -cp  "/media/lzc/Sdcard/ProgramFiles/IDEA/idea-IU-192.6817.14/plugins/java-decompiler/lib/java-decompiler.jar" org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler -dgs=true ./libs/apiEngine.jar .

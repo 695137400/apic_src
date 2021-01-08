@@ -1,15 +1,8 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import android.net.Uri;
 import com.uzmap.pkg.uzapp.UZFileSystem;
-import com.uzmap.pkg.uzcore.d;
-import com.uzmap.pkg.uzcore.n;
-import com.uzmap.pkg.uzcore.external.l;
+
 import java.text.SimpleDateFormat;
 import java.util.Hashtable;
 import java.util.Locale;
@@ -52,7 +45,7 @@ public class b {
         i = new Hashtable();
         StringTokenizer st = new StringTokenizer("css\t\ttext/css htm\t\ttext/html html\t\ttext/html xhtml\ttext/html js\t\ttext/javascript jpg\t\timage/jpeg jpeg\t\timage/jpeg png\t\timage/png gif\t\timage/gif xml\t\ttext/xml svg\t\timage/svg+xml txt\t\ttext/plain asc\t\ttext/plain mp3\t\taudio/mpeg m3u\t\taudio/mpeg-url mp4\t\tvideo/mp4 qdv\t\tvideo/mp4 ogv\t\tvideo/ogg flv\t\tvideo/x-flv mov\t\tvideo/quicktime swf\t\tapplication/x-shockwave-flash pdf\t\tapplication/pdf doc\t\tapplication/msword ogg\t\tapplication/x-ogg zip\t\tapplication/octet-stream exe\t\tapplication/octet-stream class\tapplication/octet-stream ");
 
-        while(st.hasMoreTokens()) {
+        while (st.hasMoreTokens()) {
             i.put(st.nextToken(), st.nextToken());
         }
 
@@ -65,7 +58,7 @@ public class b {
     }
 
     public static final String a(String extension) {
-        return (String)i.get(extension);
+        return i.get(extension);
     }
 
     public static final String b() {

@@ -1,23 +1,13 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzapp;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.d;
 import com.uzmap.pkg.uzkit.UZUtility;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import org.json.JSONObject;
+
+import java.io.*;
 
 public class UZFileSystem {
     static String a = "UZMap/";
@@ -80,7 +70,7 @@ public class UZFileSystem {
                 int var7 = (var8 = b).length;
 
                 String nomediafile;
-                for(int var6 = 0; var6 < var7; ++var6) {
+                for (int var6 = 0; var6 < var7; ++var6) {
                     nomediafile = var8[var6];
                     subdir = maindirs + nomediafile;
                     file = new File(subdir);
@@ -275,7 +265,7 @@ public class UZFileSystem {
             path.mkdirs();
         }
 
-        for(int i = 0; i < files.length; ++i) {
+        for (int i = 0; i < files.length; ++i) {
             String fileName = files[i];
             if (!fileName.contains(".")) {
                 if (assetDir.length() == 0) {
@@ -309,7 +299,7 @@ public class UZFileSystem {
                     byte[] buf = new byte[8192];
 
                     int len;
-                    while((len = inputStream.read(buf)) > 0) {
+                    while ((len = inputStream.read(buf)) > 0) {
                         outStream.write(buf, 0, len);
                     }
 

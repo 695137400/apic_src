@@ -1,14 +1,10 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 import android.net.Uri;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.uzmap.pkg.a.b.a.f;
+
+import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -18,16 +14,15 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import javax.net.ssl.SSLSocketFactory;
 
 public abstract class j<T> implements Comparable<j<T>> {
-    private final com.uzmap.pkg.a.b.p.aa a;
+    private final com.uzmap.pkg.a.b.p.a2 a2;
     private final int b;
     private final String c;
     private String d;
     private String e;
     private final int f;
-    private com.uzmap.pkg.a.b.l.a g;
+    private com.uzmap.pkg.a.b.l.a1 g;
     private Integer h;
     private k i;
     private boolean j;
@@ -35,24 +30,26 @@ public abstract class j<T> implements Comparable<j<T>> {
     private boolean l;
     private long m;
     private n n;
-    private com.uzmap.pkg.a.b.a.aa o;
+    private com.uzmap.pkg.a.b.a.a1 o;
     private Object p;
     private boolean q;
     private HttpURLConnection r;
     private static long s;
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
-    public j(String url, com.uzmap.pkg.a.b.l.a listener) {
+    public j(String url, com.uzmap.pkg.a.b.l.a1 listener) {
         this(-1, url, listener);
     }
 
     public j(int method, String url) {
-        this(method, url, (com.uzmap.pkg.a.b.l.a)null);
+        this(method, url, null);
     }
 
-    public j(int method, String url, com.uzmap.pkg.a.b.l.a listener) {
-        this.a = null;
+    public j(int method, String url, com.uzmap.pkg.a.b.l.a1 listener) {
+        this.a2 = null;
         this.j = true;
         this.k = false;
         this.l = false;
@@ -80,11 +77,11 @@ public abstract class j<T> implements Comparable<j<T>> {
         return this.p;
     }
 
-    public com.uzmap.pkg.a.b.l.a getErrorListener() {
+    public com.uzmap.pkg.a.b.l.a1 getErrorListener() {
         return this.g;
     }
 
-    public void setErrorListener(com.uzmap.pkg.a.b.l.a listener) {
+    public void setErrorListener(com.uzmap.pkg.a.b.l.a1 listener) {
         this.g = listener;
     }
 
@@ -125,7 +122,7 @@ public abstract class j<T> implements Comparable<j<T>> {
 
         long requestTime = SystemClock.elapsedRealtime() - this.m;
         if (requestTime >= 3000L) {
-            com.uzmap.pkg.a.b.p.b("%d ms: %s", new Object[]{requestTime, this.toString()});
+            com.uzmap.pkg.a.b.p.b("%d ms: %s", requestTime, this.toString());
         }
 
     }
@@ -168,13 +165,13 @@ public abstract class j<T> implements Comparable<j<T>> {
         return this.getOriginUrl();
     }
 
-    public j<?> setCacheEntry(com.uzmap.pkg.a.b.a.aa entry) {
-        this.o = entry;
-        return this;
+    public com.uzmap.pkg.a.b.a.a1 getCacheEntry() {
+        return this.o;
     }
 
-    public com.uzmap.pkg.a.b.a.aa getCacheEntry() {
-        return this.o;
+    public j<?> setCacheEntry(com.uzmap.pkg.a.b.a.a1 entry) {
+        this.o = entry;
+        return this;
     }
 
     public void cancel() {
@@ -194,36 +191,44 @@ public abstract class j<T> implements Comparable<j<T>> {
         return this.k;
     }
 
-    public Map<String, String> getHeaders() throws com.uzmap.pkg.a.b.a1.a {
+    public Map<String, String> getHeaders() throws com.uzmap.pkg.a.b.aa.a {
         return Collections.emptyMap();
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
-    protected Map<String, String> getPostParams() throws com.uzmap.pkg.a.b.a1.a {
+    protected Map<String, String> getPostParams() throws com.uzmap.pkg.a.b.aa.a {
         return this.getParams();
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
     protected String getPostParamsEncoding() {
         return this.getParamsEncoding();
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
     public String getPostBodyContentType() {
         return this.getBodyContentType();
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
-    public byte[] getPostBody() throws com.uzmap.pkg.a.b.a1.a {
+    public byte[] getPostBody() throws com.uzmap.pkg.a.b.aa.a {
         Map<String, String> postParams = this.getPostParams();
         return postParams != null && postParams.size() > 0 ? this.encodeParameters(postParams, this.getPostParamsEncoding()) : null;
     }
 
-    protected Map<String, String> getParams() throws com.uzmap.pkg.a.b.a1.a {
+    protected Map<String, String> getParams() throws com.uzmap.pkg.a.b.aa.a {
         return null;
     }
 
@@ -235,7 +240,7 @@ public abstract class j<T> implements Comparable<j<T>> {
         return "application/x-www-form-urlencoded; charset=" + this.getParamsEncoding();
     }
 
-    public byte[] getBody() throws com.uzmap.pkg.a.b.a1.a {
+    public byte[] getBody() throws com.uzmap.pkg.a.b.aa.a {
         Map<String, String> params = this.getParams();
         return params != null && params.size() > 0 ? this.encodeParameters(params, this.getParamsEncoding()) : null;
     }
@@ -246,11 +251,11 @@ public abstract class j<T> implements Comparable<j<T>> {
         try {
             Iterator var5 = params.entrySet().iterator();
 
-            while(var5.hasNext()) {
-                Entry<String, String> entry = (Entry)var5.next();
-                encodedParams.append(URLEncoder.encode((String)entry.getKey(), paramsEncoding));
+            while (var5.hasNext()) {
+                Entry<String, String> entry = (Entry) var5.next();
+                encodedParams.append(URLEncoder.encode(entry.getKey(), paramsEncoding));
                 encodedParams.append('=');
-                encodedParams.append(URLEncoder.encode((String)entry.getValue(), paramsEncoding));
+                encodedParams.append(URLEncoder.encode(entry.getValue(), paramsEncoding));
                 encodedParams.append('&');
             }
 
@@ -269,8 +274,8 @@ public abstract class j<T> implements Comparable<j<T>> {
         return this.j;
     }
 
-    public aa getPriority() {
-        return aa.b;
+    public aaemnu getPriority() {
+        return aaemnu.b;
     }
 
     public final int getTimeoutMs() {
@@ -305,8 +310,8 @@ public abstract class j<T> implements Comparable<j<T>> {
     }
 
     public int compareTo(j<T> other) {
-        j.aa left = this.getPriority();
-        j.aa right = other.getPriority();
+        aaemnu left = this.getPriority();
+        aaemnu right = other.getPriority();
         return left == right ? this.h - other.h : right.ordinal() - left.ordinal();
     }
 
@@ -319,14 +324,14 @@ public abstract class j<T> implements Comparable<j<T>> {
         return com.uzmap.pkg.a.b.e.a("Request:" + method + ":" + url + ":" + System.currentTimeMillis() + ":" + s++);
     }
 
-    public boolean isEmpty() throws com.uzmap.pkg.a.b.a1.a {
+    public boolean isEmpty() throws com.uzmap.pkg.a.b.aa.a {
         return this.getParams() == null;
     }
 
-    public void writeTo(OutputStream outstream) throws IOException, com.uzmap.pkg.a.b.a1.a {
+    public void writeTo(OutputStream outstream) throws IOException, com.uzmap.pkg.a.b.aa.a {
     }
 
-    public boolean handleResponse(com.uzmap.pkg.a.b.d.a.a response) throws IOException, f {
+    public boolean handleResponse(com.uzmap.pkg.a.b.dd.aa.a response) throws IOException, com.uzmap.pkg.a.b.aa.f {
         return false;
     }
 
@@ -353,13 +358,10 @@ public abstract class j<T> implements Comparable<j<T>> {
         this.r = connection;
     }
 
-    public static enum aa {
+    public enum aaemnu {
         a,
         b,
         c,
         d;
-
-        private aa() {
-        }
     }
 }

@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import java.lang.reflect.Constructor;
@@ -18,7 +13,7 @@ public final class a {
     public Hashtable<String, Method> d;
 
     public a() {
-        this((Constructor)null);
+        this(null);
     }
 
     public a(Constructor<?> constructor) {
@@ -26,9 +21,9 @@ public final class a {
     }
 
     public Method a(String methodName) {
-        Method result = this.c != null ? (Method)this.c.get(methodName) : null;
+        Method result = this.c != null ? this.c.get(methodName) : null;
         if (result == null) {
-            result = this.d != null ? (Method)this.d.get(methodName) : null;
+            result = this.d != null ? this.d.get(methodName) : null;
         }
 
         return result;
@@ -54,7 +49,7 @@ public final class a {
         UZModule module = null;
 
         try {
-            module = (UZModule)this.b.newInstance(args);
+            module = (UZModule) this.b.newInstance(args);
         } catch (Exception var4) {
             var4.printStackTrace();
         }
@@ -73,8 +68,8 @@ public final class a {
             methods = this.c.keySet();
             var5 = methods.iterator();
 
-            while(var5.hasNext()) {
-                method = (String)var5.next();
+            while (var5.hasNext()) {
+                method = (String) var5.next();
                 script = method + ":function(){" + com.uzmap.pkg.uzcore.aa.a.a + ".E('" + this.a + "','" + method + "'," + com.uzmap.pkg.uzcore.aa.a.a + "$e(arguments));},";
                 buffer.append(script);
             }
@@ -84,8 +79,8 @@ public final class a {
             methods = this.d.keySet();
             var5 = methods.iterator();
 
-            while(var5.hasNext()) {
-                method = (String)var5.next();
+            while (var5.hasNext()) {
+                method = (String) var5.next();
                 script = method + ":" + com.uzmap.pkg.uzcore.aa.a.a + ".ES('" + this.a + "','" + method + "'),";
                 buffer.append(script);
             }

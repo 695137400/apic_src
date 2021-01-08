@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import android.graphics.Bitmap;
@@ -11,15 +6,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.d;
-import com.uzmap.pkg.uzcore.a.j;
 import com.uzmap.pkg.uzcore.external.Enslecb;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
-import com.uzmap.pkg.uzcore.external.l;
-import com.uzmap.pkg.uzcore.uzmodule.a.r;
+import com.uzmap.pkg.uzcore.uzmodule.aa.r;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
-import com.uzmap.pkg.uzkit.data.b;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -75,7 +67,7 @@ public class e implements Cloneable {
     public String T;
     public r U;
     public List<String> V;
-    public Hashtable<String, b> W;
+    public Hashtable<String, com.uzmap.pkg.uzkit.data.b> W;
     private Drawable Y;
     private UZWidgetInfo Z;
     private AppInfo aa;
@@ -145,6 +137,62 @@ public class e implements Cloneable {
         return this.f(this.F);
     }
 
+    public static String c(String id) {
+        if (TextUtils.isEmpty(id)) {
+            return null;
+        } else {
+            String key = b.get(id);
+            if (!TextUtils.isEmpty(key)) {
+                return key;
+            } else if (com.uzmap.pkg.uzcore.d.j) {
+                key = Enslecb.xkm(id);
+                b.put(id, key);
+                return key;
+            } else {
+                key = com.uzmap.pkg.uzapp.b.i();
+                if (TextUtils.isEmpty(key)) {
+                    return null;
+                } else {
+                    key = com.uzmap.pkg.uzcore.aa.j.b(key, id);
+                    if (key != null) {
+                        try {
+                            StringBuffer buffer = new StringBuffer(key);
+                            buffer = buffer.replace(0, 2, "");
+                            buffer = buffer.replace(14, 18, "");
+                            buffer = buffer.replace(32, 34, "");
+                            buffer.insert(8, '-');
+                            buffer.insert(13, '-');
+                            buffer.insert(18, '-');
+                            buffer.insert(23, '-');
+                            key = buffer.toString();
+                        } catch (Exception var3) {
+                            var3.printStackTrace();
+                        }
+                    }
+
+                    b.put(id, key);
+                    return key;
+                }
+            }
+        }
+    }
+
+    public static String d(String wId) {
+        if (TextUtils.isEmpty(wId)) {
+            return "";
+        } else {
+            String token = a.get(wId);
+            if (!TextUtils.isEmpty(token)) {
+                return token;
+            } else {
+                token = wId + "UZ" + UZCoreUtil.getUUID() + "UZ" + c(wId);
+                token = UZCoreUtil.toSHA1(token);
+                a.put(wId, token);
+                return token;
+            }
+        }
+    }
+
     private Drawable f(String res) {
         Drawable drawable = null;
         if (!TextUtils.isEmpty(res)) {
@@ -163,32 +211,7 @@ public class e implements Cloneable {
             drawable = new ColorDrawable(com.uzmap.pkg.uzcore.external.l.c);
         }
 
-        return (Drawable)drawable;
-    }
-
-    public void a(String featureName, String paramName, String paramValue) {
-        if (featureName != null) {
-            if (this.W == null) {
-                this.W = new Hashtable();
-            }
-
-            b feature = (b)this.W.get(featureName);
-            if (feature != null) {
-                feature.a(paramName, paramValue);
-            } else {
-                feature = new b(featureName);
-                if (!TextUtils.isEmpty(paramName) && !TextUtils.isEmpty(paramValue)) {
-                    feature.a(paramName, paramValue);
-                }
-
-                this.W.put(featureName, feature);
-            }
-
-        }
-    }
-
-    public b a(String featureName) {
-        return this.W != null && featureName != null ? (b)this.W.get(featureName) : null;
+        return drawable;
     }
 
     public void b(String permissionName) {
@@ -228,21 +251,24 @@ public class e implements Cloneable {
         }
     }
 
-    public AppInfo h() {
-        if (this.aa != null) {
-            return this.aa;
-        } else {
-            String channel = com.uzmap.pkg.uzcore.d.a().a((String)null);
-            if (channel != null) {
-                this.a("TalkingData", "logEnable", "false");
-                this.a("TalkingData", "exceptionReportEnabled", "true");
-                this.a("TalkingData", "channel", channel);
+    public void a(String featureName, String paramName, String paramValue) {
+        if (featureName != null) {
+            if (this.W == null) {
+                this.W = new Hashtable();
             }
 
-            this.aa = new AppInfo(this.W);
-            this.aa.appId = this.r;
-            this.aa.appName = this.t;
-            return this.aa;
+            com.uzmap.pkg.uzkit.data.b feature = this.W.get(featureName);
+            if (feature != null) {
+                feature.a(paramName, paramValue);
+            } else {
+                feature = new com.uzmap.pkg.uzkit.data.b(featureName);
+                if (!TextUtils.isEmpty(paramName) && !TextUtils.isEmpty(paramValue)) {
+                    feature.a(paramName, paramValue);
+                }
+
+                this.W.put(featureName, feature);
+            }
+
         }
     }
 
@@ -315,59 +341,25 @@ public class e implements Cloneable {
         return sb.toString();
     }
 
-    public static String c(String id) {
-        if (TextUtils.isEmpty(id)) {
-            return null;
-        } else {
-            String key = (String)b.get(id);
-            if (!TextUtils.isEmpty(key)) {
-                return key;
-            } else if (com.uzmap.pkg.uzcore.d.j) {
-                key = Enslecb.xkm(id);
-                b.put(id, key);
-                return key;
-            } else {
-                key = com.uzmap.pkg.uzapp.b.i();
-                if (TextUtils.isEmpty(key)) {
-                    return null;
-                } else {
-                    key = com.uzmap.pkg.uzcore.aa.j.b(key, id);
-                    if (key != null) {
-                        try {
-                            StringBuffer buffer = new StringBuffer(key);
-                            buffer = buffer.replace(0, 2, "");
-                            buffer = buffer.replace(14, 18, "");
-                            buffer = buffer.replace(32, 34, "");
-                            buffer.insert(8, '-');
-                            buffer.insert(13, '-');
-                            buffer.insert(18, '-');
-                            buffer.insert(23, '-');
-                            key = buffer.toString();
-                        } catch (Exception var3) {
-                            var3.printStackTrace();
-                        }
-                    }
-
-                    b.put(id, key);
-                    return key;
-                }
-            }
-        }
+    public com.uzmap.pkg.uzkit.data.b a(String featureName) {
+        return this.W != null && featureName != null ? this.W.get(featureName) : null;
     }
 
-    public static String d(String wId) {
-        if (TextUtils.isEmpty(wId)) {
-            return "";
+    public AppInfo h() {
+        if (this.aa != null) {
+            return this.aa;
         } else {
-            String token = (String)a.get(wId);
-            if (!TextUtils.isEmpty(token)) {
-                return token;
-            } else {
-                token = wId + "UZ" + UZCoreUtil.getUUID() + "UZ" + c(wId);
-                token = UZCoreUtil.toSHA1(token);
-                a.put(wId, token);
-                return token;
+            String channel = com.uzmap.pkg.uzcore.d.a().a((String) null);
+            if (channel != null) {
+                this.a("TalkingData", "logEnable", "false");
+                this.a("TalkingData", "exceptionReportEnabled", "true");
+                this.a("TalkingData", "channel", channel);
             }
+
+            this.aa = new AppInfo(this.W);
+            this.aa.appId = this.r;
+            this.aa.appName = this.t;
+            return this.aa;
         }
     }
 
@@ -386,7 +378,7 @@ public class e implements Cloneable {
 
         e resultInfo;
         try {
-            resultInfo = (e)this.clone();
+            resultInfo = (e) this.clone();
         } catch (CloneNotSupportedException var5) {
             var5.printStackTrace();
             this.z = newUrl;

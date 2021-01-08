@@ -1,16 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.v;
-import com.uzmap.pkg.uzcore.w;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZConstant;
+import com.uzmap.pkg.uzcore.v;
+import com.uzmap.pkg.uzcore.w;
 import org.json.JSONObject;
 
 public class b extends UZModuleContext {
@@ -46,7 +41,7 @@ public class b extends UZModuleContext {
                     duration *= 1000.0D;
                 }
 
-                this.c = (long)duration;
+                this.c = (long) duration;
                 if (0L == this.c) {
                     this.c = 300L;
                 }

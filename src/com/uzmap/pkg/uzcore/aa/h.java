@@ -1,24 +1,17 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import android.text.TextUtils;
 import android.util.Xml;
+import org.xmlpull.v1.XmlPullParser;
+
 import java.io.StringReader;
 import java.util.Hashtable;
-import org.xmlpull.v1.XmlPullParser;
 
 public class h {
     private Hashtable<String, String> a = new Hashtable();
 
-    public h() {
-    }
-
     public String a(String key) {
-        return (String)this.a.get(key);
+        return this.a.get(key);
     }
 
     public void a(byte[] content) {
@@ -38,21 +31,21 @@ public class h {
 
             do {
                 int tokenType = parser.next();
-                switch(tokenType) {
+                switch (tokenType) {
                     case 1:
                         needContinue = false;
                         break;
                     case 2:
                         String localName = parser.getName().toLowerCase();
                         if (!"security".equals(localName) && "item".equals(localName)) {
-                            String name = parser.getAttributeValue((String)null, "name");
-                            String value = parser.getAttributeValue((String)null, "value");
+                            String name = parser.getAttributeValue(null, "name");
+                            String value = parser.getAttributeValue(null, "value");
                             if (!TextUtils.isEmpty(name)) {
                                 this.a.put(name, value);
                             }
                         }
                 }
-            } while(needContinue);
+            } while (needContinue);
         } catch (Exception var10) {
         }
 

@@ -1,34 +1,28 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.uzmap.pkg.uzcore.UZAppActivity;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.a;
 import com.uzmap.pkg.uzcore.f;
 import com.uzmap.pkg.uzcore.m;
 import com.uzmap.pkg.uzcore.uzmodule.aa.o;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
-import com.uzmap.pkg.uzkit.data.b;
-import com.uzmap.pkg.uzkit.data.d;
 
 public abstract class UZModule implements UZActivityResult {
     private String mModuleName;
-    protected a mWebView;
+    protected com.uzmap.pkg.uzcore.a mWebView;
     protected UZAppActivity mContext;
     protected f mEngine;
 
     public UZModule(UZWebView webView) {
-        this.mWebView = (a)webView;
-        this.mContext = (UZAppActivity)webView.getContext();
+        this.mWebView = (com.uzmap.pkg.uzcore.a) webView;
+        this.mContext = (UZAppActivity) webView.getContext();
         this.mEngine = f.b(this.mContext);
     }
 
@@ -51,7 +45,7 @@ public abstract class UZModule implements UZActivityResult {
         } else {
             e info = this.mWebView.u();
             if (info != null) {
-                b feature = info.a(featureName);
+                com.uzmap.pkg.uzkit.data.b feature = info.a(featureName);
                 if (feature != null) {
                     return feature.a(paramName);
                 }
@@ -87,7 +81,7 @@ public abstract class UZModule implements UZActivityResult {
 
     public final void startActivity(Intent intent) {
         if (this.valid()) {
-            this.mEngine.a((UZActivityResult)null, intent, 0, false);
+            this.mEngine.a(null, intent, 0, false);
         }
     }
 
@@ -101,18 +95,18 @@ public abstract class UZModule implements UZActivityResult {
     }
 
     public final void insertViewToCurWindow(View child, LayoutParams parms) {
-        this.insertViewToCurWindow(child, parms, (String)null);
+        this.insertViewToCurWindow(child, parms, null);
     }
 
-    public final void insertViewToCurWindow(View child, android.view.ViewGroup.LayoutParams parms, String frameName) {
+    public final void insertViewToCurWindow(View child, LayoutParams parms, String frameName) {
         this.insertViewToCurWindow(child, parms, frameName, true);
     }
 
-    public final void insertViewToCurWindow(View child, android.view.ViewGroup.LayoutParams parms, String frameName, boolean fixed) {
+    public final void insertViewToCurWindow(View child, LayoutParams parms, String frameName, boolean fixed) {
         this.insertViewToCurWindow(child, parms, frameName, fixed, false);
     }
 
-    public final void insertViewToCurWindow(final View child, final android.view.ViewGroup.LayoutParams parms, final String frameName, final boolean fixed, final boolean needVerScroll) {
+    public final void insertViewToCurWindow(final View child, final LayoutParams parms, final String frameName, final boolean fixed, final boolean needVerScroll) {
         if (this.valid()) {
             Runnable action = new Runnable() {
                 public void run() {
@@ -149,7 +143,7 @@ public abstract class UZModule implements UZActivityResult {
         if (!this.valid()) {
             return false;
         } else {
-            e entity = d.a(widgetId, false);
+            e entity = com.uzmap.pkg.uzkit.data.d.a(widgetId, false);
             if (entity != null) {
                 this.openWidgetWidthInfo(entity);
                 return true;
@@ -174,7 +168,7 @@ public abstract class UZModule implements UZActivityResult {
         if (this.valid()) {
             m curWind = this.mWebView.n();
             if (curWind != null) {
-                o moduleArgs = new o((String)null, this.mWebView);
+                o moduleArgs = new o(null, this.mWebView);
                 moduleArgs.a = winName;
                 moduleArgs.b = frameName;
                 moduleArgs.c = script;

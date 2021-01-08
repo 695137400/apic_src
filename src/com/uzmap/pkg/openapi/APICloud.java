@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.openapi;
 
 import android.app.Application;
@@ -16,7 +11,7 @@ public class APICloud {
     private static APICloud c;
 
     private APICloud(Context context) {
-        this.a = (Application)context.getApplicationContext();
+        this.a = (Application) context.getApplicationContext();
         this.b = com.uzmap.pkg.uzcore.b.a(UZCoreUtil.isMainProcess(context));
         this.b.a(this.a);
     }

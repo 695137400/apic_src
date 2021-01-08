@@ -1,25 +1,16 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.internalmodule;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog.OnTimeSetListener;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.os.Bundle;
@@ -33,14 +24,11 @@ import android.webkit.URLUtil;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import com.uzmap.pkg.a.aa.d;
-import com.uzmap.pkg.a.aa.e;
-import com.uzmap.pkg.a.aa.a.aa;
-import com.uzmap.pkg.a.aa.a.c;
+import com.uzmap.pkg.a.a.d;
+import com.uzmap.pkg.a.a.e;
 import com.uzmap.pkg.uzapp.UPMessage;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.external.g;
 import com.uzmap.pkg.uzcore.external.l;
 import com.uzmap.pkg.uzcore.external.n;
 import com.uzmap.pkg.uzcore.external.q;
@@ -52,21 +40,16 @@ import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 import com.uzmap.pkg.uzkit.fineHttp.RequestParam;
 import com.uzmap.pkg.uzkit.fineHttp.UZHttpClient;
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.OutputStream;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class b {
     private UZCoreModule a;
@@ -74,9 +57,9 @@ public class b {
     private q c;
     private UZModuleContext d;
     private String e;
-    private com.uzmap.pkg.a.aa.b f;
+    private com.uzmap.pkg.a.a.b f;
     private e g;
-    private aa h;
+    private com.uzmap.pkg.a.a.a.a1 h;
     private UPMessage i;
 
     public b(UZCoreModule module) {
@@ -151,7 +134,7 @@ public class b {
 
                 try {
                     result.put("msg", "not find any app");
-                    moduleArgs.error((JSONObject)null, result, true);
+                    moduleArgs.error(null, result, true);
                 } catch (Exception var11) {
                 }
 
@@ -163,8 +146,8 @@ public class b {
         try {
             Iterator keys = json.keys();
 
-            while(keys.hasNext()) {
-                String key = (String)keys.next();
+            while (keys.hasNext()) {
+                String key = (String) keys.next();
                 String value = json.optString(key);
                 if (key != null && value != null) {
                     intent.putExtra(key, value);
@@ -269,15 +252,15 @@ public class b {
                 int length = numbers.length();
                 boolean exception = false;
 
-                for(int i = 0; i < length; ++i) {
+                for (int i = 0; i < length; ++i) {
                     String number = numbers.optString(i);
                     if (!TextUtils.isEmpty(number)) {
                         try {
                             Iterator var19 = messages.iterator();
 
-                            while(var19.hasNext()) {
-                                String msg = (String)var19.next();
-                                smsManager.sendTextMessage(number, (String)null, msg, sentIntent, deliverIntent);
+                            while (var19.hasNext()) {
+                                String msg = (String) var19.next();
+                                smsManager.sendTextMessage(number, null, msg, sentIntent, deliverIntent);
                             }
                         } catch (Exception var23) {
                             var23.printStackTrace();
@@ -333,14 +316,14 @@ public class b {
             String[] addresses = new String[rl];
 
             int al;
-            for(al = 0; al < rl; ++al) {
+            for (al = 0; al < rl; ++al) {
                 addresses[al] = recipients.optString(al);
             }
 
             al = attachments.length();
             String[] atta = new String[al];
 
-            for(int i = 0; i < rl; ++i) {
+            for (int i = 0; i < rl; ++i) {
                 String at = attachments.optString(i);
                 if (!TextUtils.isEmpty(at)) {
                     atta[i] = at;
@@ -359,7 +342,7 @@ public class b {
                 }
 
                 if (!mailAppExist) {
-                    intent.setPackage((String)null);
+                    intent.setPackage(null);
                 }
 
                 intent.putExtra("android.intent.extra.EMAIL", addresses);
@@ -369,7 +352,7 @@ public class b {
                 String[] var16 = atta;
                 int var15 = atta.length;
 
-                for(int var14 = 0; var14 < var15; ++var14) {
+                for (int var14 = 0; var14 < var15; ++var14) {
                     String attchment = var16[var14];
                     String fullPath = this.a.makeRealPath(attchment);
                     File f = new File(fullPath);
@@ -383,7 +366,7 @@ public class b {
                 }
 
                 if (imageUris.size() > 0) {
-                    intent.putExtra("android.intent.extra.STREAM", (Parcelable)imageUris.get(0));
+                    intent.putExtra("android.intent.extra.STREAM", imageUris.get(0));
                 }
 
                 intent.setType("*/*");
@@ -410,7 +393,7 @@ public class b {
         if (type != 0 && 2 != type) {
             if (1 == type) {
                 if (this.c != null) {
-                    moduleContext.error((JSONObject)null, this.a(0, (String)"picker has opened!"), true);
+                    moduleContext.error(null, this.a(0, "picker has opened!"), true);
                     return;
                 }
 
@@ -443,11 +426,11 @@ public class b {
 
                 this.c.show();
             } else {
-                moduleContext.error((JSONObject)null, this.a(0, (String)"unknown case"), true);
+                moduleContext.error(null, this.a(0, "unknown case"), true);
             }
         } else {
             if (this.b != null) {
-                moduleContext.error((JSONObject)null, this.a(0, (String)"picker has opened!"), true);
+                moduleContext.error(null, this.a(0, "picker has opened!"), true);
                 return;
             }
 
@@ -545,7 +528,7 @@ public class b {
                 this.h();
                 Intent intent;
                 Uri data;
-                switch(mContext.a) {
+                switch (mContext.a) {
                     case 0:
                     case 2:
                         intent = new Intent("android.intent.action.PICK");
@@ -655,7 +638,7 @@ public class b {
                 File[] var7 = files;
                 int var6 = files.length;
 
-                for(int var5 = 0; var5 < var6; ++var5) {
+                for (int var5 = 0; var5 < var6; ++var5) {
                     File file = var7[var5];
                     file.delete();
                 }
@@ -669,7 +652,7 @@ public class b {
             int duration = 0;
             String data = "";
             String base64Data = "";
-            j moduleContext = (j)this.d;
+            j moduleContext = (j) this.d;
             if (-1 != resultCode) {
                 data = "";
             } else {
@@ -751,7 +734,7 @@ public class b {
 
     protected void c(int resultCode, Intent data) {
         if (this.d != null) {
-            JSONObject result = this.a((Context)this.a.getContext(), (Intent)data);
+            JSONObject result = this.a(this.a.getContext(), data);
             this.d.success(result, true);
             this.d = null;
         }
@@ -767,7 +750,7 @@ public class b {
             }
 
             if (this.f == null) {
-                this.f = new com.uzmap.pkg.a.aa.b();
+                this.f = new com.uzmap.pkg.a.a.b();
             }
 
             this.f.a(path);
@@ -798,7 +781,7 @@ public class b {
         if (!TextUtils.isEmpty(path)) {
             path = UZUtility.makeRealPath(path, this.a.getWidgetInfo());
             if (this.f == null) {
-                this.f = new com.uzmap.pkg.a.aa.b();
+                this.f = new com.uzmap.pkg.a.a.b();
             }
 
             this.f.a(new d() {
@@ -838,7 +821,7 @@ public class b {
                 var5.printStackTrace();
             }
 
-            moduleContext.error((JSONObject)null, error, true);
+            moduleContext.error(null, error, true);
         }
     }
 
@@ -852,23 +835,23 @@ public class b {
     public void h(final k moduleContext) {
         if (this.a != null) {
             int accuracy = UZConstant.mapInt(moduleContext.optString("accuracy"), 0);
-            float filter = (float)moduleContext.optDouble("filter");
+            float filter = (float) moduleContext.optDouble("filter");
             final boolean autoStop = moduleContext.optBoolean("autoStop", true);
             this.b();
-            this.h = new aa() {
+            this.h = new com.uzmap.pkg.a.a.a.a1() {
                 public void a(JSONObject location) {
                     moduleContext.success(location, autoStop);
                 }
             };
-            c option = new c(accuracy, filter, autoStop);
-            com.uzmap.pkg.a.aa.a.a(this.a.getContext()).a(option, this.h);
+            com.uzmap.pkg.a.a.a.c option = new com.uzmap.pkg.a.a.a.c(accuracy, filter, autoStop);
+            com.uzmap.pkg.a.a.a.a(this.a.getContext()).a(option, this.h);
         }
     }
 
     public void b() {
         if (this.a != null) {
             if (this.h != null) {
-                com.uzmap.pkg.a.aa.a.a(this.a.getContext()).b(this.h);
+                com.uzmap.pkg.a.a.a.a(this.a.getContext()).b(this.h);
                 this.h = null;
             }
 
@@ -877,12 +860,12 @@ public class b {
 
     public void i(final k moduleContext) {
         this.b();
-        this.h = new aa() {
+        this.h = new com.uzmap.pkg.a.a.a.a1() {
             public void a(JSONObject location) {
                 moduleContext.success(location, true);
             }
         };
-        com.uzmap.pkg.a.aa.a.a(this.a.getContext()).a(this.h);
+        com.uzmap.pkg.a.a.a.a(this.a.getContext()).a(this.h);
     }
 
     public void a(String args) {
@@ -905,7 +888,7 @@ public class b {
                 var6.printStackTrace();
             }
 
-            moduleContext.error((JSONObject)null, error, true);
+            moduleContext.error(null, error, true);
         }
 
     }
@@ -919,7 +902,7 @@ public class b {
     }
 
     public void a(com.uzmap.pkg.uzcore.uzmodule.aa.l moduleContext) {
-        int nid = com.uzmap.pkg.a.aa.c.a().a(moduleContext);
+        int nid = com.uzmap.pkg.a.a.c.a().a(moduleContext);
         if (moduleContext.b()) {
             JSONObject json = new JSONObject();
 
@@ -934,7 +917,7 @@ public class b {
             if (nid >= 0) {
                 moduleContext.success(json, true);
             } else {
-                moduleContext.error((JSONObject)null, json, true);
+                moduleContext.error(null, json, true);
             }
         }
 
@@ -942,7 +925,7 @@ public class b {
 
     public void b(com.uzmap.pkg.uzcore.uzmodule.aa.l moduleContext) {
         int nid = moduleContext.optInt("id");
-        com.uzmap.pkg.a.aa.c.a().a(nid);
+        com.uzmap.pkg.a.a.c.a().a(nid);
     }
 
     public void a(k moduleContext, String targetId) {
@@ -1000,21 +983,21 @@ public class b {
                     Iterator var7 = keys.iterator();
 
                     label57:
-                    while(true) {
-                        while(true) {
+                    while (true) {
+                        while (true) {
                             if (!var7.hasNext()) {
                                 break label57;
                             }
 
-                            String key = (String)var7.next();
+                            String key = (String) var7.next();
                             Object value = allExtras.get(key);
                             if (value.getClass().isArray()) {
-                                Object[] array = (Object[])value;
+                                Object[] array = (Object[]) value;
                                 JSONArray jsa = new JSONArray();
                                 Object[] var14 = array;
                                 int var13 = array.length;
 
-                                for(int var12 = 0; var12 < var13; ++var12) {
+                                for (int var12 = 0; var12 < var13; ++var12) {
                                     Object a = var14[var12];
 
                                     try {
@@ -1120,20 +1103,21 @@ public class b {
     protected boolean c() {
         long as = UZCoreUtil.getAvailableSpace();
         if (as < 1L) {
-            String text = null;
+            String noStorageText = null;
             if (as == -1L) {
-                text = "请先插入 SD 卡。";
+                noStorageText = "请先插入 SD 卡。";
             } else if (as == -2L) {
-                text = "正在准备 USB 存储设备...";
+                noStorageText = "正在准备 USB 存储设备...";
             } else if (as == -3L) {
-                text = "无法访问 SD 卡。";
+                noStorageText = "无法访问 SD 卡。";
             } else if (as < 1L) {
-                text = "SD 卡已满。";
+                noStorageText = "SD 卡已满。";
             }
-           final String noStorageText = text;
+
+            String finalNoStorageText = noStorageText;
             Runnable action = new Runnable() {
                 public void run() {
-                    Toast.makeText(b.this.a.getContext(), noStorageText, 1).show();
+                    Toast.makeText(b.this.a.getContext(), finalNoStorageText, 1).show();
                 }
             };
             this.a.runOnUiThread(action);
@@ -1191,7 +1175,7 @@ public class b {
                 byte[] buf = new byte[8192];
 
                 int len;
-                while((len = inputStream.read(buf)) > 0) {
+                while ((len = inputStream.read(buf)) > 0) {
                     out.write(buf, 0, len);
                 }
 
@@ -1230,7 +1214,7 @@ public class b {
                 String nameKey = "display_name";
                 String numberKey = "data1";
                 if (l.a < 11) {
-                    cursor = crls.query(content, (String[])null, (String)null, (String[])null, (String)null);
+                    cursor = crls.query(content, null, null, null, null);
                     nameKey = "display_name";
                     numberKey = "data1";
                 } else {
@@ -1239,7 +1223,7 @@ public class b {
                     String[] projection = new String[]{idKey, nameKey, numberKey};
                     String selection = idKey + "=?";
                     String[] selectionArgs = new String[]{id};
-                    cursor = crls.query(content, projection, selection, selectionArgs, (String)null);
+                    cursor = crls.query(content, projection, selection, selectionArgs, null);
                 }
 
                 if (cursor != null && cursor.moveToFirst()) {
@@ -1254,7 +1238,7 @@ public class b {
                         phone = cursor.getString(phoneIndex);
                     } else {
                         String contactId = cursor.getString(idIndex);
-                        Cursor c = crls.query(Phone.CONTENT_URI, (String[])null, "contact_id=" + contactId, (String[])null, (String)null);
+                        Cursor c = crls.query(Phone.CONTENT_URI, null, "contact_id=" + contactId, null, null);
                         if (c != null && c.moveToFirst()) {
                             phone = c.getString(c.getColumnIndex(numberKey));
                         }

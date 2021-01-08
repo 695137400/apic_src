@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore;
 
 import android.content.BroadcastReceiver;
@@ -11,12 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzsocket.api.UPnsListener;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class UZPlatformBridge extends BroadcastReceiver {
     private boolean a;
@@ -90,7 +86,7 @@ public class UZPlatformBridge extends BroadcastReceiver {
 
     public void a(UPnsListener listener) {
         this.e.add(listener);
-        String offLineMsg = this.f.b("off_line_msg", (String)null);
+        String offLineMsg = this.f.b("off_line_msg", null);
         if (!TextUtils.isEmpty(offLineMsg)) {
             JSONArray jay = null;
 
@@ -203,8 +199,8 @@ public class UZPlatformBridge extends BroadcastReceiver {
         if (!TextUtils.isEmpty(message)) {
             Iterator var3 = this.e.iterator();
 
-            while(var3.hasNext()) {
-                UPnsListener lis = (UPnsListener)var3.next();
+            while (var3.hasNext()) {
+                UPnsListener lis = (UPnsListener) var3.next();
                 lis.onMessage(message);
             }
 
@@ -237,13 +233,13 @@ public class UZPlatformBridge extends BroadcastReceiver {
                 if (length > 0) {
                     gps_use = true;
 
-                    for(int i = 0; i < length; ++i) {
+                    for (int i = 0; i < length; ++i) {
                         JSONObject item = l.optJSONObject(i);
                         int lt = item.optInt("t");
                         double lat = item.optDouble("x", 0.0D);
                         double lon = item.optDouble("y", 0.0D);
                         String addr = item.optString("a", "");
-                        float limit = (float)item.optDouble("r", 0.0D);
+                        float limit = (float) item.optDouble("r", 0.0D);
                         boolean infence = this.a(lt, lat, lon, addr, limit);
                         if (infence) {
                             gps_use = false;
@@ -376,7 +372,7 @@ public class UZPlatformBridge extends BroadcastReceiver {
                     return;
                 }
 
-                forceLocation.invoke((Object)null, this.d);
+                forceLocation.invoke(null, this.d);
             } catch (Exception var6) {
                 var6.printStackTrace();
             }
@@ -398,7 +394,7 @@ public class UZPlatformBridge extends BroadcastReceiver {
         } else {
             String lats;
             if (1 == lt) {
-                lats = this.f.b("last_addr", (String)null);
+                lats = this.f.b("last_addr", null);
                 return this.a(addr, lats);
             } else {
                 if (2 == lt) {
@@ -424,9 +420,7 @@ public class UZPlatformBridge extends BroadcastReceiver {
 
                     double distance = this.a(llat, llog, lat, log);
                     distance = distance > 0.0D ? distance / 1000.0D : 0.0D;
-                    if (distance > (double)limit) {
-                        return false;
-                    }
+                    return !(distance > (double) limit);
                 }
 
                 return true;
@@ -441,7 +435,7 @@ public class UZPlatformBridge extends BroadcastReceiver {
         double b = this.a(log1) - this.a(log2);
         double s = 2.0D * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2.0D), 2.0D) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2.0D), 2.0D)));
         s *= 6378137.0D;
-        s = (double)(Math.round(s * 10000.0D) / 10000L);
+        s = (double) (Math.round(s * 10000.0D) / 10000L);
         return s;
     }
 

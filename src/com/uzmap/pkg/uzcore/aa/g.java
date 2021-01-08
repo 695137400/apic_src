@@ -1,13 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import android.support.v4.util.LruCache;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzkit.UZUtility;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -32,7 +28,7 @@ public class g extends LruCache<String, f> {
 
     public synchronized byte[] a(String url) {
         url = this.d(url);
-        f value = (f)this.get(url);
+        f value = this.get(url);
         return value != null ? value.a : null;
     }
 
@@ -95,5 +91,20 @@ public class g extends LruCache<String, f> {
         }
 
         return null;
+    }
+
+    // $FF: synthetic method
+    protected int sizeOf(String var1, Object var2) {
+        return this.a(var1, (f) var2);
+    }
+
+    // $FF: synthetic method
+    protected void entryRemoved(boolean var1, String var2, Object var3, Object var4) {
+        this.a(var1, var2, (f) var3, (f) var4);
+    }
+
+    // $FF: synthetic method
+    protected f create(String var1) {
+        return this.b(var1);
     }
 }

@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit;
 
 import android.content.Context;
@@ -57,9 +52,6 @@ public class UZOpenApi {
     public static final String ACCESS_TOKEN = "ac_token";
     public static final String APP_PARAM = "appParam";
     public static final String API_ARGUMENTS = "api_arguments";
-
-    public UZOpenApi() {
-    }
 
     public static String getMsmAccessToken() {
         return a.a().b("ac_token", "");

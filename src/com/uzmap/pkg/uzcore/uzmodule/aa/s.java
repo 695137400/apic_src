@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.graphics.Bitmap;
@@ -13,11 +8,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.a.j;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
-import com.uzmap.pkg.uzcore.external.l;
-import com.uzmap.pkg.uzcore.uzmodule.d;
-import com.uzmap.pkg.uzcore.uzmodule.e;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 
@@ -32,16 +23,16 @@ public class s extends b {
     public boolean E;
     public boolean F;
     public String G;
-    public d H;
+    static {
+        x = com.uzmap.pkg.uzcore.external.l.a >= 21 ? 100 : (com.uzmap.pkg.uzcore.external.l.a >= 14 ? 0 : 10);
+    }
     public boolean I;
     public boolean J;
     public boolean K;
     public boolean L;
     public int M;
 
-    static {
-        x = l.a >= 21 ? 100 : (l.a >= 14 ? 0 : 10);
-    }
+    public com.uzmap.pkg.uzcore.uzmodule.d H;
 
     public s() {
     }
@@ -60,16 +51,16 @@ public class s extends b {
             this.y = this.optString("name");
             this.z = this.optString("url");
             String param = this.optString("pageParam");
-            this.H = new d(param);
+            this.H = new com.uzmap.pkg.uzcore.uzmodule.d(param);
             this.B = this.optBoolean("bounces", false);
             this.C = this.optBoolean("opaque", true);
             this.D = this.optBoolean("alone", false);
             this.L = this.optBoolean("reload");
             this.E = this.optBoolean("scaleEnabled", false);
             this.M = this.optInt("delay", x);
-            this.G = this.optString("bg", (String)null);
+            this.G = this.optString("bg", null);
             if (this.G == null) {
-                this.G = this.optString("bgColor", (String)null);
+                this.G = this.optString("bgColor", null);
             }
 
             this.I = this.optBoolean("vScrollBarEnabled", true);
@@ -100,7 +91,7 @@ public class s extends b {
             } else if (this.z.startsWith(com.uzmap.pkg.uzcore.aa.b.f())) {
                 if (this.z.contains(d)) {
                     try {
-                        this.z = j.c(this.z);
+                        this.z = com.uzmap.pkg.uzcore.aa.j.c(this.z);
                     } catch (Exception var5) {
                         var5.printStackTrace();
                     }
@@ -121,7 +112,7 @@ public class s extends b {
         }
     }
 
-    public Drawable a(e info) {
+    public Drawable a(com.uzmap.pkg.uzcore.uzmodule.e info) {
         Drawable drawable = null;
         if (!TextUtils.isEmpty(this.G)) {
             char first = this.G.charAt(0);
@@ -137,17 +128,17 @@ public class s extends b {
                 if (bitmap != null) {
                     drawable = new BitmapDrawable(com.uzmap.pkg.uzcore.b.a().b().getResources(), bitmap);
                 } else {
-                    drawable = new ColorDrawable(l.c);
+                    drawable = new ColorDrawable(com.uzmap.pkg.uzcore.external.l.c);
                 }
             } else {
                 int color = UZCoreUtil.parseColor(this.G);
                 drawable = new ColorDrawable(color);
             }
         } else {
-            drawable = new ColorDrawable(l.c);
+            drawable = new ColorDrawable(com.uzmap.pkg.uzcore.external.l.c);
         }
 
-        return (Drawable)drawable;
+        return drawable;
     }
 
     private void c() {

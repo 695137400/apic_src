@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.data;
 
 import java.io.Serializable;
@@ -22,9 +17,6 @@ public class UZWidgetInfo implements Serializable {
     public String iconPath;
     public String widgetPath;
     private String trimPath;
-
-    public UZWidgetInfo() {
-    }
 
     public String widgetPath() {
         if (this.trimPath != null) {

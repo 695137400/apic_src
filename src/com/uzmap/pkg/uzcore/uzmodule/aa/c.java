@@ -1,15 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
-import java.util.Hashtable;
 import org.json.JSONArray;
+
+import java.util.Hashtable;
 
 public class c extends UZModuleContext {
     static final Hashtable<String, Integer> a = new Hashtable();
@@ -34,37 +30,12 @@ public class c extends UZModuleContext {
         this.a();
     }
 
-    protected void a() {
-        if (this.empty()) {
-            this.b = "提示消息";
-            this.d = " ";
-            this.b();
+    static int a(String type) {
+        if (TextUtils.isEmpty(type)) {
+            return 1;
         } else {
-            this.b = this.optString("title", "提示消息");
-            this.d = this.optString("msg", " ");
-            this.c = this.optString("text", "");
-            this.g = a(this.optString("type", (String)null));
-            JSONArray btns = this.optJSONArray("buttons");
-            if (btns != null) {
-                int length = btns.length();
-                if (length == 0) {
-                    this.b();
-                } else if (this.f == 0) {
-                    this.e = new String[1];
-                    this.e[0] = btns.optString(0);
-                } else if (length < 2) {
-                    this.b();
-                } else {
-                    this.e = new String[length];
-
-                    for(int i = 0; i < length; ++i) {
-                        this.e[i] = btns.optString(i);
-                    }
-                }
-            } else {
-                this.b();
-            }
-
+            Integer o = a.get(type);
+            return o != null ? o : 1;
         }
     }
 
@@ -83,12 +54,37 @@ public class c extends UZModuleContext {
 
     }
 
-    static int a(String type) {
-        if (TextUtils.isEmpty(type)) {
-            return 1;
+    protected void a() {
+        if (this.empty()) {
+            this.b = "提示消息";
+            this.d = " ";
+            this.b();
         } else {
-            Integer o = (Integer)a.get(type);
-            return o != null ? o : 1;
+            this.b = this.optString("title", "提示消息");
+            this.d = this.optString("msg", " ");
+            this.c = this.optString("text", "");
+            this.g = a(this.optString("type", null));
+            JSONArray btns = this.optJSONArray("buttons");
+            if (btns != null) {
+                int length = btns.length();
+                if (length == 0) {
+                    this.b();
+                } else if (this.f == 0) {
+                    this.e = new String[1];
+                    this.e[0] = btns.optString(0);
+                } else if (length < 2) {
+                    this.b();
+                } else {
+                    this.e = new String[length];
+
+                    for (int i = 0; i < length; ++i) {
+                        this.e[i] = btns.optString(i);
+                    }
+                }
+            } else {
+                this.b();
+            }
+
         }
     }
 }

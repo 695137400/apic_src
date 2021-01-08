@@ -1,20 +1,10 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.request;
 
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import com.uzmap.pkg.a.b.d.f;
-import com.uzmap.pkg.a.b.d.a.a;
-import com.uzmap.pkg.a.b.d.a.b;
-import com.uzmap.pkg.a.b.d.a.c;
-import com.uzmap.pkg.a.b.d.a.d;
-import com.uzmap.pkg.a.b.d.a.i;
-import com.uzmap.pkg.a.b.d.a.j;
-import com.uzmap.pkg.a.b.d.a.k;
+import com.uzmap.pkg.a.b.dd.aa.*;
+import com.uzmap.pkg.a.b.dd.f;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
@@ -28,9 +18,6 @@ public class HttpParams implements Params {
     public String fileStream;
     public List<f> values;
     public List<f> files;
-
-    public HttpParams() {
-    }
 
     public boolean addValue(String name, String value) {
         if (TextUtils.isEmpty(name)) {
@@ -111,7 +98,7 @@ public class HttpParams implements Params {
 
         try {
             List<f> files = this.files;
-            f first = (f)files.get(0);
+            f first = files.get(0);
             String value = first.b();
             if (TextUtils.isEmpty(value)) {
                 return entry;
@@ -143,10 +130,10 @@ public class HttpParams implements Params {
             if (temps != null) {
                 var4 = temps.iterator();
 
-                while(var4.hasNext()) {
-                    pair = (f)var4.next();
+                while (var4.hasNext()) {
+                    pair = (f) var4.next();
                     d part = new i(pair.a(), pair.b());
-                    multiEn.a(part);
+                    multiEn.a1(part);
                 }
             }
 
@@ -154,8 +141,8 @@ public class HttpParams implements Params {
             if (temps != null) {
                 var4 = temps.iterator();
 
-                while(var4.hasNext()) {
-                    pair = (f)var4.next();
+                while (var4.hasNext()) {
+                    pair = (f) var4.next();
                     String key = pair.a();
                     String value = pair.b();
                     if (!TextUtils.isEmpty(value)) {
@@ -163,8 +150,8 @@ public class HttpParams implements Params {
                         File file = new File(value);
                         if (file.exists()) {
                             String mimeType = this.mimeTypeFromUrl(value);
-                            d part = new com.uzmap.pkg.a.b.d.a.f(key, file, mimeType, (String)null);
-                            multiEn.a(part);
+                            d part = new com.uzmap.pkg.a.b.dd.aa.f(key, file, mimeType, null);
+                            multiEn.a1(part);
                         }
                     }
                 }

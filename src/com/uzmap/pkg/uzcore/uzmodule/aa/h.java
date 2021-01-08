@@ -1,25 +1,19 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.text.TextUtils;
-import com.uzmap.pkg.a.b.d.c.a;
 import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
-import com.uzmap.pkg.uzcore.external.g;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzkit.fineHttp.ProgressListener;
 import com.uzmap.pkg.uzkit.fineHttp.RequestParam;
 import com.uzmap.pkg.uzkit.fineHttp.Response;
+import org.json.JSONObject;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import org.json.JSONObject;
 
 public class h extends UZModuleContext implements ProgressListener {
     public String a;
@@ -35,7 +29,7 @@ public class h extends UZModuleContext implements ProgressListener {
         if (!this.empty()) {
             this.a = this.optString("url");
             this.c = this.optBoolean("thumbnail", true);
-            String p = this.optString("policy", (String)null);
+            String p = this.optString("policy", null);
             if (p == null) {
                 this.b = 1;
             } else if (p.equalsIgnoreCase("cache_else_network")) {
@@ -53,7 +47,7 @@ public class h extends UZModuleContext implements ProgressListener {
 
     public boolean a() {
         if (this.b == 1 || this.b == 3) {
-            a entity = UzResourceCache.get().hasDiskCache(this.a);
+            com.uzmap.pkg.a.b.dd.c.a1 entity = UzResourceCache.get().hasDiskCache(this.a);
             if (entity != null) {
                 String local;
                 if (this.c) {
@@ -103,7 +97,7 @@ public class h extends UZModuleContext implements ProgressListener {
         String finalUrl = null;
         boolean status = true;
         if (1 == state) {
-            String local = result.optString("savePath", (String)null);
+            String local = result.optString("savePath", null);
             String thumb = null;
             finalUrl = local;
             if (this.c) {
@@ -131,7 +125,7 @@ public class h extends UZModuleContext implements ProgressListener {
     }
 
     private String a(String local) {
-        Bitmap picture = g.a(local, 1);
+        Bitmap picture = com.uzmap.pkg.uzcore.external.g.a(local, 1);
         if (picture != null) {
             File thumb = UzResourceCache.transImageThumbPath(new File(local));
             File p = thumb.getParentFile();

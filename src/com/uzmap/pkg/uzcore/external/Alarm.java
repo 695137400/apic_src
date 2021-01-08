@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.external;
 
 import android.database.Cursor;
@@ -10,10 +5,29 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+
 import java.util.Calendar;
 
 public final class Alarm implements Parcelable {
+    public static final Creator<Alarm> CREATOR = new Creator<Alarm>() {
+        public Alarm a(Parcel p) {
+            return new Alarm(p);
+        }
+
+        public Alarm[] a(int size) {
+            return new Alarm[size];
+        }
+
+        // $FF: synthetic method
+        public Alarm createFromParcel(Parcel var1) {
+            return this.a(var1);
+        }
+
+        // $FF: synthetic method
+        public Alarm[] newArray(int var1) {
+            return this.a(var1);
+        }
+    };
     public int a;
     public boolean b;
     public int c;
@@ -75,7 +89,7 @@ public final class Alarm implements Parcelable {
         this.f = p.readLong();
         this.g = p.readInt() == 1;
         this.h = p.readString();
-        this.i = (Uri)p.readParcelable((ClassLoader)null);
+        this.i = p.readParcelable(null);
         this.j = p.readInt() == 1;
     }
 
@@ -126,7 +140,7 @@ public final class Alarm implements Parcelable {
                 int today = (c.get(7) + 5) % 7;
 
                 int dayCount;
-                for(dayCount = 0; dayCount < 7; ++dayCount) {
+                for (dayCount = 0; dayCount < 7; ++dayCount) {
                     int day = (today + dayCount) % 7;
                     if (this.a(day)) {
                         break;

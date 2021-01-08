@@ -1,15 +1,10 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.internalmodule;
 
 import android.content.Context;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.b;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
+
 import java.io.File;
 
 public class a implements Runnable {
@@ -26,7 +21,7 @@ public class a implements Runnable {
         if (threshold > 0.0F) {
             long now = System.currentTimeMillis();
             long daymillis = 86400000L;
-            long millis = (long)(threshold * (float)daymillis);
+            long millis = (long) (threshold * (float) daymillis);
             this.c = now - millis;
         }
 

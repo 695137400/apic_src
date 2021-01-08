@@ -1,18 +1,15 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 public class l<T> {
     public final T a;
-    public final com.uzmap.pkg.a.b.a1.a b;
+    public final com.uzmap.pkg.a.b.a.a1 b;
     public final o c;
     public boolean d = false;
 
-    public static <T> l<T> a(T result, com.uzmap.pkg.a.b.a1.a cacheEntry) {
-        return new l(result, cacheEntry);
+    private l(T result, com.uzmap.pkg.a.b.a.a1 cacheEntry) {
+        this.a = result;
+        this.b = cacheEntry;
+        this.c = null;
     }
 
     public static <T> l<T> a(o error) {
@@ -23,10 +20,8 @@ public class l<T> {
         return this.c == null;
     }
 
-    private l(T result, com.uzmap.pkg.a.b.a1.a cacheEntry) {
-        this.a = result;
-        this.b = cacheEntry;
-        this.c = null;
+    public static <T> l<T> a(T result, com.uzmap.pkg.a.b.a.a1 cacheEntry) {
+        return new l(result, cacheEntry);
     }
 
     private l(o error) {
@@ -35,7 +30,7 @@ public class l<T> {
         this.c = error;
     }
 
-    public interface a {
+    public interface a1 {
         void onErrorResponse(o var1);
     }
 

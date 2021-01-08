@@ -1,18 +1,6 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule.aa;
 
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.view.animation.*;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
 import org.json.JSONObject;
@@ -53,7 +41,7 @@ public class e extends s {
             this.h = this.optBoolean("autoreverse");
             if (!this.isNull("alpha")) {
                 this.t = true;
-                this.i = (float)this.optDouble("alpha");
+                this.i = (float) this.optDouble("alpha");
             }
 
             JSONObject transo = this.optJSONObject("translation");
@@ -70,18 +58,18 @@ public class e extends s {
             JSONObject scaleo = this.optJSONObject("scale");
             if (scaleo != null) {
                 this.v = true;
-                this.m = (float)transo.optInt("x");
-                this.n = (float)transo.optInt("y");
-                this.o = (float)transo.optInt("z");
+                this.m = (float) transo.optInt("x");
+                this.n = (float) transo.optInt("y");
+                this.o = (float) transo.optInt("z");
             }
 
             JSONObject rotationo = this.optJSONObject("rotation");
             if (rotationo != null) {
                 this.w = true;
-                this.p = (float)transo.optInt("x");
-                this.q = (float)transo.optInt("y");
-                this.r = (float)transo.optInt("z");
-                this.s = (float)transo.optInt("degree");
+                this.p = (float) transo.optInt("x");
+                this.q = (float) transo.optInt("y");
+                this.r = (float) transo.optInt("z");
+                this.s = (float) transo.optInt("degree");
             }
 
         }
@@ -99,17 +87,17 @@ public class e extends s {
         }
 
         if (this.u) {
-            TranslateAnimation tranAnim = new TranslateAnimation(0.0F, (float)this.j, 0.0F, (float)this.k);
+            TranslateAnimation tranAnim = new TranslateAnimation(0.0F, (float) this.j, 0.0F, (float) this.k);
             tranAnim.setRepeatCount(this.g);
             animset.addAnimation(tranAnim);
         }
 
-        animset.setInterpolator((Interpolator)interpolator);
+        animset.setInterpolator(interpolator);
         if (this.d > 0) {
-            animset.setStartOffset((long)this.d);
+            animset.setStartOffset(this.d);
         }
 
-        animset.setDuration((long)this.e);
+        animset.setDuration(this.e);
         if (!this.h) {
             animset.setFillEnabled(true);
             animset.setFillAfter(true);

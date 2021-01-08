@@ -1,17 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.aa;
 
 import android.text.TextUtils;
 import android.util.Base64;
 import android.webkit.MimeTypeMap;
-import com.uzmap.pkg.uzcore.d;
-import com.uzmap.pkg.uzcore.n;
 import com.uzmap.pkg.uzcore.external.Enslecb;
-import com.uzmap.pkg.uzcore.uzmodule.e;
+import com.uzmap.pkg.uzcore.n;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,17 +27,18 @@ public class j {
             byte[] iK = new byte[256];
 
             int j;
-            for(j = 0; j < 256; iS[j] = j++) {
+            for (j = 0; j < 256; iS[j] = j++) {
             }
 
-            for(short i = 0; i < 256; ++i) {
-                iK[i] = (byte)aKey.charAt(i % aKey.length());
+
+            for (short i = 0; i < 256; ++i) {
+                iK[i] = (byte) aKey.charAt(i % aKey.length());
             }
 
             j = 0;
 
             int i;
-            for(i = 0; i < 255; ++i) {
+            for (i = 0; i < 255; ++i) {
                 j = (j + iS[i] + iK[i]) % 256;
                 int temp = iS[i];
                 iS[i] = iS[j];
@@ -55,7 +50,7 @@ public class j {
             char[] iInputChar = res.toCharArray();
             char[] iOutputChar = new char[iInputChar.length];
 
-            for(short x = 0; x < iInputChar.length; ++x) {
+            for (short x = 0; x < iInputChar.length; ++x) {
                 i = (i + 1) % 256;
                 j = (j + iS[i]) % 256;
                 int temp = iS[i];
@@ -63,8 +58,8 @@ public class j {
                 iS[j] = temp;
                 int t = (iS[i] + iS[j] % 256) % 256;
                 int iY = iS[t];
-                char iCY = (char)iY;
-                iOutputChar[x] = (char)(iInputChar[x] ^ iCY);
+                char iCY = (char) iY;
+                iOutputChar[x] = (char) (iInputChar[x] ^ iCY);
             }
 
             return new String(iOutputChar);
@@ -95,7 +90,7 @@ public class j {
     }
 
     public static byte[] b(byte[] src) {
-        return com.uzmap.pkg.uzcore.d.j ? Enslecb.xohs(src, (String)null) : a(src, a);
+        return com.uzmap.pkg.uzcore.d.j ? Enslecb.xohs(src, null) : a(src, a);
     }
 
     public static byte[] a(byte[] src, String key) {
@@ -106,15 +101,15 @@ public class j {
         int[] res = new int[length];
         int[] out = new int[length];
 
-        for(int i = 0; i < length; ++i) {
+        for (int i = 0; i < length; ++i) {
             res[i] = buffer[i];
         }
 
         a(res, length, out, key);
         byte[] outData = new byte[length];
 
-        for(int k = 0; k < length; ++k) {
-            outData[k] = (byte)out[k];
+        for (int k = 0; k < length; ++k) {
+            outData[k] = (byte) out[k];
         }
 
         return outData;
@@ -126,7 +121,7 @@ public class j {
         a(ns, key);
         int j = 0;
 
-        for(int i = 0; index < length; ++index) {
+        for (int i = 0; index < length; ++index) {
             i = (i + 1) % b.length;
             j = (j + ns[i]) % b.length;
             a(ns, i, j);
@@ -152,7 +147,7 @@ public class j {
         int length = key.length();
         byte[] keys = key.getBytes();
 
-        for(int i = 0; i < b.length; ++i) {
+        for (int i = 0; i < b.length; ++i) {
             int k = i % length;
             st[i] = keys[k];
         }
@@ -168,7 +163,7 @@ public class j {
     private static void a(int[] ns, int[] st) {
         int j = 0;
 
-        for(int i = 0; i < b.length; ++i) {
+        for (int i = 0; i < b.length; ++i) {
             j = (j + ns[i] + st[i]) % b.length;
             a(ns, i, j);
         }
@@ -186,7 +181,7 @@ public class j {
             } else {
                 String[] sp = new String[10];
 
-                for(int i = 0; i < 10; ++i) {
+                for (int i = 0; i < 10; ++i) {
                     sp[i] = key.substring(i * 2, i * 2 + 2);
                 }
 
@@ -213,7 +208,7 @@ public class j {
         return result;
     }
 
-    public static void a(e info) {
+    public static void a(com.uzmap.pkg.uzcore.uzmodule.e info) {
         if (info != null && info.z != null && info.Q) {
             String data = null;
 

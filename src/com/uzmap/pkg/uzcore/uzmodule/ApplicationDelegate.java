@@ -1,18 +1,12 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import android.app.Activity;
 import android.content.Context;
 
 public abstract class ApplicationDelegate {
-    public ApplicationDelegate() {
-    }
-
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
     public void onApplicationCreate(Context context) {
     }
@@ -20,7 +14,9 @@ public abstract class ApplicationDelegate {
     public void onApplicationCreate(Context context, AppInfo info) {
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
     public void onActivityResume(Activity activity) {
     }
@@ -28,7 +24,9 @@ public abstract class ApplicationDelegate {
     public void onActivityResume(Activity activity, AppInfo info) {
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
     public void onActivityPause(Activity activity) {
     }
@@ -36,7 +34,9 @@ public abstract class ApplicationDelegate {
     public void onActivityPause(Activity activity, AppInfo info) {
     }
 
-    /** @deprecated */
+    /**
+     * @deprecated
+     */
     @Deprecated
     public void onActivityFinish(Activity activity) {
     }

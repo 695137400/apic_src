@@ -1,21 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.b;
 
 import android.os.Handler;
 import android.os.Looper;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
+
+import java.util.*;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -66,7 +54,7 @@ public class k {
         this.m = new com.uzmap.pkg.a.b.b(this.d, this.e, this.i, this.k);
         this.m.start();
 
-        for(int i = 0; i < this.l.length; ++i) {
+        for (int i = 0; i < this.l.length; ++i) {
             h networkDispatcher = new h(this.e, this.j, this.i, this.k);
             this.l[i] = networkDispatcher;
             networkDispatcher.start();
@@ -79,7 +67,7 @@ public class k {
             this.m.a();
         }
 
-        for(int i = 0; i < this.l.length; ++i) {
+        for (int i = 0; i < this.l.length; ++i) {
             if (this.l[i] != null) {
                 this.l[i].a();
             }
@@ -92,11 +80,11 @@ public class k {
     }
 
     public void a(k.a filter) {
-        synchronized(this.c) {
+        synchronized (this.c) {
             Iterator var4 = this.c.iterator();
 
-            while(var4.hasNext()) {
-                j<?> request = (j)var4.next();
+            while (var4.hasNext()) {
+                j<?> request = (j) var4.next();
                 if (filter.a(request)) {
                     request.cancel();
                 }
@@ -119,7 +107,7 @@ public class k {
 
     public <T> j<T> a(j<T> request) {
         request.setRequestQueue(this);
-        synchronized(this.c) {
+        synchronized (this.c) {
             this.c.add(request);
         }
 
@@ -129,15 +117,15 @@ public class k {
             this.e.add(request);
             return request;
         } else {
-            synchronized(this.b) {
+            synchronized (this.b) {
                 String cacheKey = request.getCacheKey();
                 if (this.b.containsKey(cacheKey)) {
-                    Queue<j<?>> stagedRequests = (Queue)this.b.get(cacheKey);
+                    Queue<j<?>> stagedRequests = this.b.get(cacheKey);
                     if (stagedRequests == null) {
                         stagedRequests = new LinkedList();
                     }
 
-                    ((Queue)stagedRequests).add(request);
+                    stagedRequests.add(request);
                     this.b.put(cacheKey, stagedRequests);
                 } else {
                     this.b.put(cacheKey, null);
@@ -150,27 +138,27 @@ public class k {
     }
 
     <T> void b(j<T> request) {
-        synchronized(this.c) {
+        synchronized (this.c) {
             this.c.remove(request);
         }
 
-        synchronized(this.n) {
+        synchronized (this.n) {
             Iterator var4 = this.n.iterator();
 
-            while(true) {
+            while (true) {
                 if (!var4.hasNext()) {
                     break;
                 }
 
-                k.b<T> listener = (k.b)var4.next();
+                k.b<T> listener = (k.b) var4.next();
                 listener.a(request);
             }
         }
 
         if (request.shouldCache()) {
-            synchronized(this.b) {
+            synchronized (this.b) {
                 String cacheKey = request.getCacheKey();
-                Queue<j<?>> waitingRequests = (Queue)this.b.remove(cacheKey);
+                Queue<j<?>> waitingRequests = this.b.remove(cacheKey);
                 if (waitingRequests != null) {
                     this.d.addAll(waitingRequests);
                 }

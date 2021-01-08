@@ -1,11 +1,7 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.request;
 
-import com.uzmap.pkg.a.b.d.d;
+import com.uzmap.pkg.a.b.dd.d;
+
 import java.util.Map;
 
 public class Request extends d {

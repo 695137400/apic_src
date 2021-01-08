@@ -1,18 +1,13 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.request;
 
 import android.os.SystemClock;
-import com.uzmap.pkg.a.b.d.a.a;
+
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class HttpPost extends Request {
-    private a c;
+    private com.uzmap.pkg.a.b.dd.aa.a c;
     private Params d;
     private long e;
     private long f;
@@ -43,7 +38,7 @@ public class HttpPost extends Request {
 
     }
 
-    public boolean isEmpty() throws com.uzmap.pkg.a.b.a.a {
+    public boolean isEmpty() throws com.uzmap.pkg.a.b.aa.a {
         this.checkEntity();
         return this.c == null;
     }
@@ -53,7 +48,7 @@ public class HttpPost extends Request {
         return this.c != null ? this.c.f() : 0L;
     }
 
-    public byte[] getBody() throws com.uzmap.pkg.a.b.a.a {
+    public byte[] getBody() throws com.uzmap.pkg.a.b.aa.a {
         this.checkEntity();
         return this.c != null ? this.c.g() : null;
     }
@@ -63,12 +58,12 @@ public class HttpPost extends Request {
         return this.c != null ? this.c.c() : super.getBodyContentType();
     }
 
-    public void writeTo(OutputStream out) throws IOException, com.uzmap.pkg.a.b.a.a {
+    public void writeTo(OutputStream out) throws IOException, com.uzmap.pkg.a.b.aa.a {
         this.checkEntity();
         if (this.c != null) {
             this.e = this.c.f();
-            OutputStream out = new HttpPost.OutputStreamWrap(out);
-            this.c.a(out);
+            out = new HttpPost.OutputStreamWrap(out);
+            this.c.a1(out);
         }
 
     }
@@ -98,7 +93,7 @@ public class HttpPost extends Request {
 
         public void write(byte[] buffer, int offset, int length) throws IOException {
             super.write(buffer, offset, length);
-            HttpPost.this.reportFinishLength((long)length);
+            HttpPost.this.reportFinishLength(length);
         }
     }
 }

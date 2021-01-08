@@ -1,18 +1,13 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzcore;
 
 import android.app.Activity;
 import android.app.ActivityGroup;
-import android.app.Dialog;
 import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -21,47 +16,47 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.webkit.URLUtil;
+import android.widget.FrameLayout;
 import com.uzmap.pkg.openapi.Html5EventListener;
 import com.uzmap.pkg.openapi.WebViewProvider;
-import com.uzmap.pkg.uzcore.external.l;
-import com.uzmap.pkg.uzcore.external.b.e;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzsocket.api.UPnsListener;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
 
 public abstract class UZAppActivity extends ActivityGroup {
     private boolean a = false;
     private boolean b = false;
     private boolean c = false;
     private boolean d = false;
-    private e e;
-    private com.uzmap.pkg.uzcore.external.b.c f;
+    private com.uzmap.pkg.uzcore.external.bb.e e;
+    private com.uzmap.pkg.uzcore.external.bb.c f;
     private f g;
-    private com.uzmap.pkg.uzcore.external.b.a h;
-    private UZAppActivity.a i;
+    private com.uzmap.pkg.uzcore.external.bb.a h;
+    private af i;
     private List<Html5EventListener> j = new ArrayList();
     private boolean k = false;
     private boolean l;
     private final Handler m = new Handler();
     private Thread n;
-    private com.uzmap.pkg.uzcore.b.b o = new com.uzmap.pkg.uzcore.b.b() {
+    private final Runnable p = new Runnable() {
+        public void run() {
+            UZAppActivity.this.removeLaunchView(false, null);
+        }
+    };
+    private final com.uzmap.pkg.uzcore.b.bcl o = new com.uzmap.pkg.uzcore.b.bcl() {
         public void a(boolean success, com.uzmap.pkg.uzcore.uzmodule.e entity, String msg) {
             if (this.a() != null) {
                 entity = entity.e(this.a());
             }
 
             UZAppActivity.this.initializeEngine(success, entity, msg);
-        }
-    };
-    private Runnable p = new Runnable() {
-        public void run() {
-            UZAppActivity.this.removeLaunchView(false, (v)null);
         }
     };
     private Runnable q = new Runnable() {
@@ -92,11 +87,13 @@ public abstract class UZAppActivity extends ActivityGroup {
 
     protected abstract boolean onHtml5AccessRequest(WebViewProvider var1, UZModuleContext var2);
 
-    public UZAppActivity() {
+    // $FF: synthetic method
+    static boolean access$9(UZAppActivity var0) {
+        return var0.k;
     }
 
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate((Bundle)null);
+        super.onCreate(null);
         if (!com.uzmap.pkg.uzcore.external.l.c(this)) {
             this.l = true;
             this.a = true;
@@ -106,14 +103,14 @@ public abstract class UZAppActivity extends ActivityGroup {
             this.initializeNativeUI();
             com.uzmap.pkg.uzcore.b delegate = com.uzmap.pkg.uzcore.b.a();
             delegate.a(this);
-            delegate.a(new UZAppActivity.b((UZAppActivity.b)null));
-            delegate.a(new UZAppActivity.c((UZAppActivity.c)null));
+            delegate.a(new b(null));
+            delegate.a(new c(null));
         }
     }
 
     private final void initializeNativeUI() {
         com.uzmap.pkg.uzcore.external.l.a(this);
-        this.e = new e(this, (Object)null);
+        this.e = new com.uzmap.pkg.uzcore.external.bb.e(this, null);
         this.e.a(new UZAppActivity.d());
         this.setContentView(this.e, com.uzmap.pkg.uzcore.external.l.a(com.uzmap.pkg.uzcore.external.l.d, com.uzmap.pkg.uzcore.external.l.d));
         com.uzmap.pkg.uzcore.uzmodule.e entity = com.uzmap.pkg.uzcore.b.a().f();
@@ -123,11 +120,11 @@ public abstract class UZAppActivity extends ActivityGroup {
 
         if (!this.isFromNativeSDK()) {
             if (com.uzmap.pkg.uzcore.d.a().s) {
-                com.uzmap.pkg.uzcore.external.b.d sheet = new com.uzmap.pkg.uzcore.external.b.d(this, (Object)null);
+                com.uzmap.pkg.uzcore.external.bb.d sheet = new com.uzmap.pkg.uzcore.external.bb.d(this, null);
                 sheet.show();
                 this.f = sheet.a();
             } else {
-                this.f = new com.uzmap.pkg.uzcore.external.b.c(this, (Dialog)null);
+                this.f = new com.uzmap.pkg.uzcore.external.bb.c(this, null);
                 this.addContentView(this.f, com.uzmap.pkg.uzcore.external.l.a(com.uzmap.pkg.uzcore.external.l.d, com.uzmap.pkg.uzcore.external.l.d));
             }
 
@@ -144,7 +141,7 @@ public abstract class UZAppActivity extends ActivityGroup {
                 error_msg = msg;
             }
 
-            this.forceFinishAppWidthAlert(title, error_msg, (String)null);
+            this.forceFinishAppWidthAlert(title, error_msg, null);
         } else {
             if (!entity.L) {
                 com.uzmap.pkg.uzcore.c.a(this.p);
@@ -157,26 +154,13 @@ public abstract class UZAppActivity extends ActivityGroup {
             com.uzmap.pkg.uzcore.external.l.a(this.e, entity.b());
             this.g = com.uzmap.pkg.uzcore.f.a(this);
             this.g.a(this.e);
-            this.i = new UZAppActivity.a(this);
+            this.i = new af(this);
             this.g.a(this.i);
             this.g.b(UZCoreUtil.parseAppParam(this.getIntent()));
             this.g.a(entity);
             this.g.h();
             com.uzmap.pkg.uzcore.b.a().a(entity);
         }
-    }
-
-    private final void blockScreen(String msg) {
-        if (this.h == null) {
-            this.h = new com.uzmap.pkg.uzcore.external.b.a(this, this);
-        }
-
-        this.h.a(msg);
-        com.uzmap.pkg.uzcore.c.a(new Runnable() {
-            public void run() {
-                UZAppActivity.this.h.a();
-            }
-        }, 0L);
     }
 
     private final void unBlockScreen() {
@@ -216,34 +200,27 @@ public abstract class UZAppActivity extends ActivityGroup {
         }
     }
 
+    private final void blockScreen(String msg) {
+        if (this.h == null) {
+            this.h = new com.uzmap.pkg.uzcore.external.bb.a(this, this);
+        }
+
+        this.h.a(msg);
+        com.uzmap.pkg.uzcore.c.a(new Runnable() {
+            public void run() {
+                UZAppActivity.this.h.a();
+            }
+        }, 0L);
+    }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         this.b = true;
-        switch(keyCode) {
+        switch (keyCode) {
             case 4:
             case 82:
                 return true;
             default:
                 return super.onKeyDown(keyCode, event);
-        }
-    }
-
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (!this.b) {
-            return true;
-        } else {
-            this.b = false;
-            switch(keyCode) {
-                case 4:
-                    return this.disPatchKeyBack(keyCode);
-                case 82:
-                    if (this.g != null) {
-                        this.g.a(keyCode);
-                    }
-
-                    return true;
-                default:
-                    return super.onKeyUp(keyCode, event);
-            }
         }
     }
 
@@ -262,20 +239,24 @@ public abstract class UZAppActivity extends ActivityGroup {
         }
     }
 
-    protected void onResume() {
-        if (this.g != null) {
-            this.g.n();
-        }
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (!this.b) {
+            return true;
+        } else {
+            this.b = false;
+            switch (keyCode) {
+                case 4:
+                    return this.disPatchKeyBack(keyCode);
+                case 82:
+                    if (this.g != null) {
+                        this.g.a(keyCode);
+                    }
 
-        super.onResume();
-        this.k = true;
-        if (!this.isModuleRunning()) {
-            com.uzmap.pkg.uzcore.b.a().s();
-            com.uzmap.pkg.uzcore.c.a(this.q, 180000L);
+                    return true;
+                default:
+                    return super.onKeyUp(keyCode, event);
+            }
         }
-
-        this.setModuleRunning(false);
-        com.uzmap.pkg.uzcore.b.a().b(this);
     }
 
     protected void onPause() {
@@ -363,17 +344,20 @@ public abstract class UZAppActivity extends ActivityGroup {
         com.uzmap.pkg.uzcore.c.a(action, 0L);
     }
 
-    private final void finishAppWithConfirm() {
-        Builder tDialog = new Builder(this);
-        tDialog.setTitle(com.uzmap.pkg.uzcore.d.f);
-        tDialog.setNegativeButton(com.uzmap.pkg.uzcore.d.c, (OnClickListener)null);
-        tDialog.setMessage(com.uzmap.pkg.uzcore.d.e);
-        tDialog.setPositiveButton(com.uzmap.pkg.uzcore.d.b, new OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                UZAppActivity.this.finishAppImmediately();
-            }
-        });
-        tDialog.show();
+    protected void onResume() {
+        if (this.g != null) {
+            this.g.n();
+        }
+
+        super.onResume();
+        this.k = true;
+        if (!this.isModuleRunning()) {
+            com.uzmap.pkg.uzcore.b.a().s();
+            com.uzmap.pkg.uzcore.c.a(this.q, 180000L);
+        }
+
+        this.setModuleRunning(false);
+        com.uzmap.pkg.uzcore.b.a().b(this);
     }
 
     private final void finishAppImmediately() {
@@ -481,17 +465,30 @@ public abstract class UZAppActivity extends ActivityGroup {
 
     }
 
-    private class a implements com.uzmap.pkg.uzcore.f.a {
-        private com.uzmap.pkg.uzcore.external.b.b b;
+    private final void finishAppWithConfirm() {
+        Builder tDialog = new Builder(this);
+        tDialog.setTitle(com.uzmap.pkg.uzcore.d.f);
+        tDialog.setNegativeButton(com.uzmap.pkg.uzcore.d.c, null);
+        tDialog.setMessage(com.uzmap.pkg.uzcore.d.e);
+        tDialog.setPositiveButton(com.uzmap.pkg.uzcore.d.b, new OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                UZAppActivity.this.finishAppImmediately();
+            }
+        });
+        tDialog.show();
+    }
+
+    private class af implements com.uzmap.pkg.uzcore.f.af {
+        private com.uzmap.pkg.uzcore.external.bb.b b;
         private com.uzmap.pkg.uzcore.external.e c;
         private Activity d;
 
-        public a(Activity activity) {
+        public af(Activity activity) {
             this.d = activity;
         }
 
         public void a() {
-            UZAppActivity.this.removeLaunchView(false, (v)null);
+            UZAppActivity.this.removeLaunchView(false, null);
             this.d.getWindow().clearFlags(1048576);
         }
 
@@ -505,7 +502,7 @@ public abstract class UZAppActivity extends ActivityGroup {
             return true;
         }
 
-        public final boolean a(com.uzmap.pkg.uzcore.external.b.b view, int requestedOrientation) {
+        public final boolean a(com.uzmap.pkg.uzcore.external.bb.b view, int requestedOrientation) {
             if (this.b != null) {
                 this.b();
                 return false;
@@ -524,7 +521,7 @@ public abstract class UZAppActivity extends ActivityGroup {
             } else {
                 UZAppActivity.this.e.setVisibility(0);
                 if (this.b != null) {
-                    ViewGroup parent = (ViewGroup)this.b.getParent();
+                    ViewGroup parent = (ViewGroup) this.b.getParent();
                     if (parent != null) {
                         parent.removeView(this.b);
                     }
@@ -541,7 +538,7 @@ public abstract class UZAppActivity extends ActivityGroup {
             if (this.c != null && this.c.isShowing()) {
                 this.c.a(error);
             } else {
-                this.c = new com.uzmap.pkg.uzcore.external.e(this.d, (Object)null);
+                this.c = new com.uzmap.pkg.uzcore.external.e(this.d, null);
                 this.c.a(this.d, error);
                 this.c.show();
             }
@@ -607,7 +604,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         }
 
         public boolean b(int eventType) {
-            UZAppActivity.this.handlderIntent((Intent)null, eventType);
+            UZAppActivity.this.handlderIntent(null, eventType);
             return true;
         }
 
@@ -660,8 +657,8 @@ public abstract class UZAppActivity extends ActivityGroup {
                 WebViewProvider provider = view.b();
                 Iterator var6 = UZAppActivity.this.j.iterator();
 
-                while(var6.hasNext()) {
-                    Html5EventListener listener = (Html5EventListener)var6.next();
+                while (var6.hasNext()) {
+                    Html5EventListener listener = (Html5EventListener) var6.next();
                     if (listener.matching(event)) {
                         listener.onReceive(provider, extra);
                     }
@@ -710,9 +707,14 @@ public abstract class UZAppActivity extends ActivityGroup {
 
             return true;
         }
+
+        // $FF: synthetic method
+        b(UZAppActivity.b var2) {
+            this();
+        }
     }
 
-    private class c implements com.uzmap.pkg.uzcore.UZPlatformBridge.a {
+    private class c implements UZPlatformBridge.a {
         private c() {
         }
 
@@ -754,9 +756,14 @@ public abstract class UZAppActivity extends ActivityGroup {
         public void a(String title, String msg, String btnText) {
             UZAppActivity.this.forceFinishAppWidthAlert(title, msg, btnText);
         }
+
+        // $FF: synthetic method
+        c(UZAppActivity.c var2) {
+            this();
+        }
     }
 
-    private class d implements com.uzmap.pkg.uzcore.external.b.e.a {
+    private class d implements com.uzmap.pkg.uzcore.external.bb.e.a {
         private boolean b = false;
 
         public d() {

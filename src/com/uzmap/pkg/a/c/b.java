@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.a.c;
 
 import android.app.Activity;
@@ -14,6 +9,7 @@ import android.webkit.ValueCallback;
 import android.widget.Toast;
 import com.uzmap.pkg.uzcore.f;
 import com.uzmap.pkg.uzcore.uzmodule.UZActivityResult;
+
 import java.io.File;
 
 public class b {
@@ -29,7 +25,7 @@ public class b {
         this.c = activityResult;
     }
 
-    public void a(int resultCode, Intent intent) {
+    public void av(int resultCode, Intent intent) {
         if (resultCode == 0 && this.e) {
             this.e = false;
         } else {
@@ -67,7 +63,7 @@ public class b {
                 String[] var15 = params;
                 int var14 = params.length;
 
-                for(int var13 = 0; var13 < var14; ++var13) {
+                for (int var13 = 0; var13 < var14; ++var13) {
                     String p = var15[var13];
                     String[] keyValue = p.split("=");
                     if (keyValue.length == 2 && "capture".equals(keyValue[0])) {
@@ -80,35 +76,35 @@ public class b {
             Intent chooser;
             if (mimeType.equals("image/*")) {
                 if (mediaSource.equals("camera")) {
-                    this.a(this.e());
+                    this.av(this.e());
                 } else {
-                    chooser = this.a(String.valueOf(this.e()));
-                    chooser.putExtra("android.intent.extra.INTENT", this.a("image/*"));
-                    this.a(chooser);
+                    chooser = this.av(String.valueOf(this.e()));
+                    chooser.putExtra("android.intent.extra.INTENT", this.av("image/*"));
+                    this.av(chooser);
                 }
             } else if (mimeType.equals("video/*")) {
                 if (mediaSource.equals("camcorder")) {
-                    this.a(this.b());
+                    this.av(this.b());
                 } else {
-                    chooser = this.a(String.valueOf(this.b()));
-                    chooser.putExtra("android.intent.extra.INTENT", this.a("video/*"));
-                    this.a(chooser);
+                    chooser = this.av(String.valueOf(this.b()));
+                    chooser.putExtra("android.intent.extra.INTENT", this.av("video/*"));
+                    this.av(chooser);
                 }
             } else if (mimeType.equals("audio/*")) {
                 if (mediaSource.equals("microphone")) {
-                    this.a(this.c());
+                    this.av(this.c());
                 } else {
-                    chooser = this.a(String.valueOf(this.c()));
-                    chooser.putExtra("android.intent.extra.INTENT", this.a("audio/*"));
-                    this.a(chooser);
+                    chooser = this.av(String.valueOf(this.c()));
+                    chooser.putExtra("android.intent.extra.INTENT", this.av("audio/*"));
+                    this.av(chooser);
                 }
             } else {
-                this.a(this.d());
+                this.av(this.d());
             }
         }
     }
 
-    private void a(Intent intent) {
+    private void av(Intent intent) {
         try {
             f engine = com.uzmap.pkg.uzcore.f.b(this.f);
             if (engine == null) {
@@ -136,19 +132,19 @@ public class b {
         Intent i = new Intent("android.intent.action.GET_CONTENT");
         i.addCategory("android.intent.category.OPENABLE");
         i.setType("*/*");
-        Intent chooser = this.a(this.e(), this.b(), this.c());
+        Intent chooser = this.av(this.e(), this.b(), this.c());
         chooser.putExtra("android.intent.extra.INTENT", i);
         return chooser;
     }
 
-    private Intent a(Intent... intents) {
+    private Intent av(Intent... intents) {
         Intent chooser = new Intent("android.intent.action.CHOOSER");
         chooser.putExtra("android.intent.extra.INITIAL_INTENTS", intents);
         chooser.putExtra("android.intent.extra.TITLE", "选择要上传的文件");
         return chooser;
     }
 
-    private Intent a(String type) {
+    private Intent av(String type) {
         Intent i = new Intent("android.intent.action.GET_CONTENT");
         i.addCategory("android.intent.category.OPENABLE");
         i.setType(type);
@@ -157,12 +153,12 @@ public class b {
 
     private Intent e() {
         Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-        this.b = this.a();
+        this.b = this.av();
         cameraIntent.putExtra("output", this.b);
         return cameraIntent;
     }
 
-    protected Uri a() {
+    protected Uri av() {
         File externalDataDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
         File cameraDataDir = new File(externalDataDir.getAbsolutePath() + File.separator + "browser-photos");
         cameraDataDir.mkdirs();

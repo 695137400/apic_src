@@ -1,19 +1,13 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.uzmap.pkg.uzkit.request;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.uzmap.pkg.a.b.e;
+import com.uzmap.pkg.a.b.aa.b;
+import com.uzmap.pkg.a.b.aa.f;
 import com.uzmap.pkg.a.b.i;
+import com.uzmap.pkg.a.b.j;
 import com.uzmap.pkg.a.b.l;
-import com.uzmap.pkg.a.b.p;
-import com.uzmap.pkg.a.b.a.b;
-import com.uzmap.pkg.a.b.a.f;
-import com.uzmap.pkg.a.b.j.a;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,7 +22,7 @@ public class HttpDownload extends Request {
     private long g;
     private long h;
     private boolean i;
-    private boolean j;
+    private boolean aBoolean;
 
     public HttpDownload(String url) {
         super(0, url);
@@ -59,11 +53,11 @@ public class HttpDownload extends Request {
     }
 
     private void setHasCached() {
-        this.j = true;
+        this.aBoolean = true;
     }
 
     public boolean hasCached() {
-        return this.j;
+        return this.aBoolean;
     }
 
     public void onPreExecute() {
@@ -96,12 +90,12 @@ public class HttpDownload extends Request {
         this.addHeader("Accept-Encoding", "identity");
     }
 
-    public a getPriority() {
-        return a.a;
+    public aaemnu getPriority() {
+        return j.aaemnu.a;
     }
 
     protected void deliverResponse(i response) {
-        p.a("deliverResponse", response);
+        com.uzmap.pkg.a.b.p.a("deliverResponse", response);
         if (this.a != null) {
             HttpResult result = new HttpResult(response.a);
             result.headers = response.c;
@@ -119,10 +113,10 @@ public class HttpDownload extends Request {
     }
 
     protected l<i> parseNetworkResponse(i response) {
-        return !this.isCanceled() ? l.a(response, (com.uzmap.pkg.a.b.a.a)null) : l.a(new b());
+        return !this.isCanceled() ? com.uzmap.pkg.a.b.l.a(response, null) : com.uzmap.pkg.a.b.l.a(new b());
     }
 
-    public boolean handleResponse(com.uzmap.pkg.a.b.d.a.a entity) throws IOException, f {
+    public boolean handleResponse(com.uzmap.pkg.a.b.dd.aa.a entity) throws IOException, f {
         File localPath = this.prepare(entity);
         if (localPath != null && this.hasCached()) {
             entity.b();
@@ -137,7 +131,7 @@ public class HttpDownload extends Request {
         }
     }
 
-    private File prepare(com.uzmap.pkg.a.b.d.a.a entity) {
+    private File prepare(com.uzmap.pkg.a.b.dd.aa.a entity) {
         String contentType = entity.c();
         String extension = "." + com.uzmap.pkg.a.b.e.d(contentType);
         String newSavePath = "";
@@ -167,12 +161,12 @@ public class HttpDownload extends Request {
         }
     }
 
-    private long streamWrite(com.uzmap.pkg.a.b.d.a.a entity, long finishSize) throws IllegalStateException, IOException {
+    private long streamWrite(com.uzmap.pkg.a.b.dd.aa.a entity, long finishSize) throws IllegalStateException, IOException {
         if (this.hasCached()) {
             return 0L;
         } else {
             long contentlength = -1L;
-            InputStream inputStream = entity.a();
+            InputStream inputStream = entity.a1();
             if (inputStream == null) {
                 throw new IOException("HTTP entity is empty");
             } else {
@@ -187,7 +181,7 @@ public class HttpDownload extends Request {
                     contentlength += finishSize;
                     String contentEncoding = entity.d();
                     if (contentEncoding != null && "gzip".equalsIgnoreCase(contentEncoding)) {
-                        inputStream = new GZIPInputStream((InputStream)inputStream, 4096);
+                        inputStream = new GZIPInputStream(inputStream, 4096);
                     }
 
                     File localPath = new File(this.e);
@@ -199,7 +193,7 @@ public class HttpDownload extends Request {
                         boolean var13 = false;
 
                         label120:
-                        while(true) {
+                        while (true) {
                             long now;
                             long step;
                             do {
@@ -207,16 +201,16 @@ public class HttpDownload extends Request {
                                     break label120;
                                 }
 
-                                int read = ((InputStream)inputStream).read(buffer);
+                                int read = inputStream.read(buffer);
                                 if (read == -1) {
                                     break label120;
                                 }
 
-                                downSize += (long)read;
+                                downSize += read;
                                 outputStream.write(buffer, 0, read);
                                 now = SystemClock.elapsedRealtime();
                                 step = now - this.h;
-                            } while(step <= 300L && downSize != contentlength);
+                            } while (step <= 300L && downSize != contentlength);
 
                             this.h = now;
                             this.deliverProgress(contentlength, downSize);
