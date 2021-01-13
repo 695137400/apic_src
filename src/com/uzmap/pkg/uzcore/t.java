@@ -3,7 +3,10 @@ package com.uzmap.pkg.uzcore;
 import android.app.Activity;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
-import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
+import com.uzmap.pkg.uzcore.aa.AssetStream;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
+import com.uzmap.pkg.uzcore.aa.UrlUtil;
 
 public class t extends s {
     t(Activity context, Object o) {
@@ -14,8 +17,8 @@ public class t extends s {
         if (!this.b) {
             return super.shouldInterceptRequest(view, u);
         } else {
-            String e = com.uzmap.pkg.uzcore.aa.j.d(u);
-            boolean s = com.uzmap.pkg.uzcore.aa.j.e(e);
+            String e = AssetsFileUtil.getFileExtension(u);
+            boolean s = AssetsFileUtil.checkFileType(e);
             if (!s) {
                 return this.b(u, e);
             } else {
@@ -26,20 +29,20 @@ public class t extends s {
     }
 
     protected com.uzmap.pkg.uzcore.aa.i a(String u, String e) {
-        String p = com.uzmap.pkg.uzcore.aa.b.a();
+        String p = AssetsUtil.a();
         if (u.startsWith(p)) {
-            String mt = com.uzmap.pkg.uzcore.aa.b.a(e);
-            u = com.uzmap.pkg.uzcore.aa.b.c(u);
-            byte[] c = com.uzmap.pkg.uzcore.aa.e.a().a(u);
-            com.uzmap.pkg.uzcore.aa.c s1;
+            String mt = AssetsUtil.a(e);
+            u = AssetsUtil.getFinalDir(u);
+            byte[] c = UrlUtil.getInstance().getUrlBit(u);
+            AssetStream s1;
             if (c != null) {
-                s1 = new com.uzmap.pkg.uzcore.aa.c(c, u);
+                s1 = new AssetStream(c, u);
                 return new com.uzmap.pkg.uzcore.aa.i(mt, s1);
             }
 
-            c = com.uzmap.pkg.uzcore.aa.e.a().c(u);
+            c = UrlUtil.getInstance().putUrl(u);
             if (c != null) {
-                s1 = new com.uzmap.pkg.uzcore.aa.c(c, u);
+                s1 = new AssetStream(c, u);
                 return new com.uzmap.pkg.uzcore.aa.i(mt, s1);
             }
         }
@@ -48,16 +51,16 @@ public class t extends s {
     }
 
     protected com.uzmap.pkg.uzcore.aa.i b(String u, String e) {
-        String p = com.uzmap.pkg.uzcore.aa.b.a();
+        String p = AssetsUtil.a();
         if (u.startsWith(p)) {
             u = UZCoreUtil.makeRealPath(u, null);
-            String mt = com.uzmap.pkg.uzcore.aa.b.a(e);
+            String mt = AssetsUtil.a(e);
             int l = 0;
-            byte[] c = com.uzmap.pkg.uzcore.aa.g.a().a(u);
+            byte[] c = UrlUtil.getInstance().getUrlBit(u);
             if (c != null) {
                 l = c.length;
             } else {
-                c = com.uzmap.pkg.uzcore.aa.g.a().c(u);
+                c = UrlUtil.getInstance().putUrl(u);
                 if (c != null) {
                     l = c.length;
                 }
@@ -66,7 +69,7 @@ public class t extends s {
             if (l <= 0) {
                 return null;
             } else {
-                com.uzmap.pkg.uzcore.aa.c s1 = new com.uzmap.pkg.uzcore.aa.c(c, u);
+                AssetStream s1 = new AssetStream(c, u);
                 return new com.uzmap.pkg.uzcore.aa.i(mt, s1);
             }
         } else {

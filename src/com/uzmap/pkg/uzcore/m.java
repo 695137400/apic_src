@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.webkit.WebView;
+import com.uzmap.pkg.uzcore.aa.JSCore;
 import com.uzmap.pkg.uzcore.external.bb.i;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzcore.uzmodule.aa.e;
@@ -1338,7 +1339,7 @@ public class m extends i implements x {
          target = this.n;
       }
 
-      target.e(com.uzmap.pkg.uzcore.aa.a.a());
+      target.e(JSCore.a());
    }
 
    public com.uzmap.pkg.uzcore.uzmodule.d p() {

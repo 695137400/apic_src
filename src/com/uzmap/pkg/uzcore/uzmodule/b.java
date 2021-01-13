@@ -14,7 +14,7 @@ public final class b {
     private UZCoreModule a;
     private UZSynModule b;
     private Hashtable<String, UZModule> c = new Hashtable();
-    private Hashtable<String, a> d;
+    private Hashtable<String, ModuleMethod> d;
 
     public void a(com.uzmap.pkg.uzcore.a bridge, boolean r, String d) {
         this.a = new UZCoreModule(bridge);
@@ -30,17 +30,17 @@ public final class b {
         bridge.addJavascriptInterface(this.b, moduleName);
         this.c.put(moduleName, this.b);
         com.uzmap.pkg.uzcore.b app = com.uzmap.pkg.uzcore.b.a();
-        c moduleParser = app.e();
+        PluginModule moduleParser = app.e();
         if (moduleParser != null) {
             this.d = moduleParser.a();
-            Collection<a> values = this.d.values();
+            Collection<ModuleMethod> values = this.d.values();
             Iterator var9 = values.iterator();
 
             while (var9.hasNext()) {
-                a entity = (a) var9.next();
+                ModuleMethod entity = (ModuleMethod) var9.next();
                 UZModule module = entity.a(bridge);
                 if (module != null) {
-                    moduleName = entity.a;
+                    moduleName = entity.name;
                     this.c.put(moduleName, module);
                 }
             }
@@ -53,7 +53,7 @@ public final class b {
             return null;
         } else {
             UZModule module = this.c.get(JSclassName);
-            a entity = this.d.get(JSclassName);
+            ModuleMethod entity = this.d.get(JSclassName);
             Object result = null;
             if (entity != null && module != null) {
                 Method javaMethod = entity.a(JSmethod);

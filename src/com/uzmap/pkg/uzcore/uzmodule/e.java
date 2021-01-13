@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.Enslecb;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
@@ -153,7 +154,7 @@ public class e implements Cloneable {
                 if (TextUtils.isEmpty(key)) {
                     return null;
                 } else {
-                    key = com.uzmap.pkg.uzcore.aa.j.b(key, id);
+                    key = AssetsFileUtil.b(key, id);
                     if (key != null) {
                         try {
                             StringBuffer buffer = new StringBuffer(key);

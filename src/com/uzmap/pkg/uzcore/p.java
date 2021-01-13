@@ -20,6 +20,7 @@ import android.webkit.WebStorage.QuotaUpdater;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
+import com.uzmap.pkg.a.intent.b;
 import com.uzmap.pkg.uzcore.uzmodule.UZActivityResult;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class p extends WebChromeClient implements UZActivityResult {
    protected Activity a;
    protected com.uzmap.pkg.uzcore.external.c b;
    protected CustomViewCallback c;
-   protected com.uzmap.pkg.a.c.b d;
+   protected com.uzmap.pkg.a.intent.b d;
    protected f e;
    private com.uzmap.pkg.uzcore.external.a f;
    private p.a g;
@@ -223,7 +224,7 @@ public class p extends WebChromeClient implements UZActivityResult {
 
    public void a(Context context, String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
       if (com.uzmap.pkg.uzcore.external.l.a > 12) {
-         com.uzmap.pkg.a.c.a.a(this.a, url, userAgent, contentDisposition, mimetype);
+         com.uzmap.pkg.a.intent.a.a(this.a, url, userAgent, contentDisposition, mimetype);
       } else if (this.b == null) {
          Intent installIntent = new Intent("android.intent.action.VIEW");
          Uri path = Uri.parse(url);
@@ -359,7 +360,7 @@ public class p extends WebChromeClient implements UZActivityResult {
       if (this.d != null) {
          uploadFile.onReceiveValue(null);
       } else {
-         this.d = new com.uzmap.pkg.a.c.b(this.a, this);
+         this.d = new b(this.a, this);
          this.d.openFileChooser(uploadFile, acceptType, capture);
       }
    }

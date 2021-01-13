@@ -1,6 +1,5 @@
 package com.uzmap.pkg.uzcore.uzmodule.internalmodule;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -11,6 +10,7 @@ import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.widget.Toast;
 import com.uzmap.pkg.uzapp.UZFileSystem;
+import com.uzmap.pkg.uzcore.aa.JSCore;
 import com.uzmap.pkg.uzcore.f;
 import com.uzmap.pkg.uzcore.m;
 import com.uzmap.pkg.uzcore.*;
@@ -45,7 +45,7 @@ public class UZCoreModule extends UZModule {
 
    public UZCoreModule(UZWebView webView) {
       super(webView);
-      this.setModuleName(com.uzmap.pkg.uzcore.aa.a.a);
+      this.setModuleName(JSCore.a);
       this.e = new b(this);
    }
 

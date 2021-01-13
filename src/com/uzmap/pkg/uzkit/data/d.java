@@ -6,8 +6,7 @@ import android.util.Xml;
 import android.webkit.URLUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.UZWebView;
-import com.uzmap.pkg.uzcore.aa.j;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
 import com.uzmap.pkg.uzcore.uzmodule.e;
@@ -216,7 +215,7 @@ public class d {
                 parser.setInput(in, "UTF-8");
             } else {
                 byte[] c = UZCoreUtil.readByte(in);
-                c = j.b(c);
+                c = AssetsFileUtil.b(c);
                 curFeature = new String(c);
                 StringReader r = new StringReader(curFeature);
                 parser.setInput(r);

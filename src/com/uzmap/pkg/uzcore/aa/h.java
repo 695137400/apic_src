@@ -22,7 +22,7 @@ public class h {
 
     private void b(byte[] content) {
         try {
-            content = j.b(content);
+            content = AssetsFileUtil.b(content);
             XmlPullParser parser = Xml.newPullParser();
             String de = new String(content);
             StringReader input = new StringReader(de);

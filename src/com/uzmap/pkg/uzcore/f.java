@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import com.uzmap.pkg.a.intent.d;
 import com.uzmap.pkg.openapi.WebViewProvider;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.annotation.InstanceMethod;
 import com.uzmap.pkg.uzcore.uzmodule.UZActivityResult;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
@@ -17,7 +19,7 @@ import java.util.Hashtable;
 public class f {
     private static boolean l;
     private static final Hashtable<Activity, f> m = new Hashtable();
-    protected com.uzmap.pkg.a.c.d a;
+    protected com.uzmap.pkg.a.intent.d a;
     private final Activity b;
     private boolean c;
     private com.uzmap.pkg.uzcore.external.bb.j d;
@@ -32,8 +34,8 @@ public class f {
     private f(Activity activity) {
         this.b = activity;
         this.j = com.uzmap.pkg.uzcore.b.a();
-        this.a = new com.uzmap.pkg.a.c.d();
-        this.a.a(activity);
+        this.a = new d();
+        this.a.init(activity);
     }
 
     public static f a(Activity activity) {
@@ -70,12 +72,12 @@ public class f {
         try {
             Class[] nones = new Class[0];
             Class<?> clazz = WebView.class;
-            Method g = clazz.getDeclaredMethod(com.uzmap.pkg.uzcore.aa.b.b, nones);
+            Method g = clazz.getDeclaredMethod(AssetsUtil.b, nones);
             g.setAccessible(true);
             Object factory = g.invoke(null);
             clazz = factory.getClass();
             Class[] booleans = new Class[]{Boolean.TYPE};
-            Method m = clazz.getDeclaredMethod(com.uzmap.pkg.uzcore.aa.b.a, booleans);
+            Method m = clazz.getDeclaredMethod(AssetsUtil.a, booleans);
             m.setAccessible(true);
             m.invoke(factory, true);
             m.invoke(factory, false);
@@ -315,7 +317,7 @@ public class f {
 
     @InstanceMethod
     public final boolean a(WebView view, String url) {
-        return this.a.a(view, url);
+        return this.a.loadUrl(url);
     }
 
     @InstanceMethod

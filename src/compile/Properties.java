@@ -1,26 +1,8 @@
 package compile;
 
 public class Properties {
-    static final String MAM_HOST = "https://a.apicloud.com";
-    static final String MCM_HOST = "https://d.apicloud.com";
-    static final String MSM_HOST = "http://s.apicloud.com";
-    static final String PUSH_HOST = "http://p.apicloud.com";
-    static final String REPORT_HOST = "http://r.apicloud.com";
-    static final String STORE_HOST = "http://as.apicloud.com";
-    static final String APPID = "A6907937999534";
-    static final String DESCRIPTOR = "sdk";
-    static final String WIDGET_KEY = "Q+wU4Oby+7GALeG/Wu2oAVEPmBNlwOGaml4tszLHwnyxBgCr";
-    static final String CLOUD_KEY = "04yD0N5y6d1ndfmSw8LF";
-    static final boolean S_MODE = false;
-    static final long CLOUD_STAMP = 1452484708230L;
-    static final boolean LOADER = false;
-    static final String LOADER_VER = "1.1.32";
-    static final String CERT_PSW = null;
     static final String SAND_BOX = null;
-    static final boolean DEVELOPER_MODE = false;
     static final boolean AUTH = !"https://a.apicloud.com".contains("apicloud") && !"https://a.apicloud.com".contains("192.168.13.183");
-    static final boolean TELEVISION = false;
-    static final boolean PROMOTION = false;
 
     public static boolean promotion() {
         return false;
@@ -56,10 +38,6 @@ public class Properties {
 
     public static String widgetKey() {
         return "Q+wU4Oby+7GALeG/Wu2oAVEPmBNlwOGaml4tszLHwnyxBgCr";
-    }
-
-    public static String certPsw() {
-        return CERT_PSW;
     }
 
     public static String sandbox() {

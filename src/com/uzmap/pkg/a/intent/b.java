@@ -1,4 +1,4 @@
-package com.uzmap.pkg.a.c;
+package com.uzmap.pkg.a.intent;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;

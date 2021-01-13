@@ -9,7 +9,7 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
 
-public class b {
+public class AssetsUtil {
     public static String a = "setWebContentsDebuggingEnabled";
     public static String b = "getFactory";
     public static String c = "text/javascript";
@@ -82,7 +82,7 @@ public class b {
         return url.replaceFirst(p, c);
     }
 
-    public static final String c(String url) {
+    public static final String getFinalDir(String url) {
         if (!com.uzmap.pkg.uzcore.n.b()) {
             return url;
         } else {
@@ -105,8 +105,8 @@ public class b {
         }
     }
 
-    public static final String a(Uri u) {
-        return c(u.toString());
+    public static final String getFinalDir(Uri u) {
+        return getFinalDir(u.toString());
     }
 
     public static final String f() {

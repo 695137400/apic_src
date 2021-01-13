@@ -1,22 +1,20 @@
 package com.uzmap.pkg.uzcore.uzmodule;
 
+import com.uzmap.pkg.uzcore.aa.JSCore;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
 
-public final class a {
-    public String a;
+public final class ModuleMethod {
+    public String name;
     public Constructor<?> b;
     public Hashtable<String, Method> c;
     public Hashtable<String, Method> d;
 
-    public a() {
-        this(null);
-    }
-
-    public a(Constructor<?> constructor) {
+    public ModuleMethod(Constructor<?> constructor) {
         this.b = constructor;
     }
 
@@ -58,30 +56,31 @@ public final class a {
     }
 
     public String a() {
-        String object = com.uzmap.pkg.uzcore.aa.a.a + "$md['" + this.a + "']={";
+        String object = JSCore.a + "$md['" + this.name + "']={";
         StringBuffer buffer = new StringBuffer(object);
         Set methods;
         String method;
         Iterator var5;
         String script;
+        //  jsmethod_
         if (this.c != null) {
             methods = this.c.keySet();
             var5 = methods.iterator();
 
             while (var5.hasNext()) {
                 method = (String) var5.next();
-                script = method + ":function(){" + com.uzmap.pkg.uzcore.aa.a.a + ".E('" + this.a + "','" + method + "'," + com.uzmap.pkg.uzcore.aa.a.a + "$e(arguments));},";
+                script = method + ":function(){" + JSCore.a + ".E('" + this.name + "','" + method + "'," + JSCore.a + "$e(arguments));},";
                 buffer.append(script);
             }
         }
-
+// jsget_
         if (this.d != null) {
             methods = this.d.keySet();
             var5 = methods.iterator();
 
             while (var5.hasNext()) {
                 method = (String) var5.next();
-                script = method + ":" + com.uzmap.pkg.uzcore.aa.a.a + ".ES('" + this.a + "','" + method + "'),";
+                script = method + ":" + JSCore.a + ".ES('" + this.name + "','" + method + "'),";
                 buffer.append(script);
             }
         }

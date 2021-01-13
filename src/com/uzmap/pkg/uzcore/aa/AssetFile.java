@@ -7,23 +7,23 @@ import android.os.ParcelFileDescriptor.AutoCloseOutputStream;
 
 import java.io.IOException;
 
-public class d {
-    public static ParcelFileDescriptor a(byte[] data) throws IOException {
+public class AssetFile {
+    public static ParcelFileDescriptor getAssetFile(byte[] data) throws IOException {
         ParcelFileDescriptor[] pipe = ParcelFileDescriptor.createPipe();
         ParcelFileDescriptor readSide = pipe[0];
         ParcelFileDescriptor writeSide = pipe[1];
         AutoCloseOutputStream out = new AutoCloseOutputStream(writeSide);
-        (new d.a(data, out)).execute((Object[]) null);
+        (new AutoFile(data, out)).execute((Object[]) null);
         return readSide;
     }
 
-    public static AssetFileDescriptor a(String u) {
+    public static AssetFileDescriptor getAssetFile(String url) {
         int length = 0;
-        byte[] content = e.a().a(u);
+        byte[] content = UrlUtil.getInstance().getUrlBit(url);
         if (content != null) {
             length = content.length;
         } else {
-            content = e.a().c(u);
+            content = UrlUtil.getInstance().putUrl(url);
             if (content != null) {
                 length = content.length;
             }
@@ -35,7 +35,7 @@ public class d {
             AssetFileDescriptor assetFdes = null;
 
             try {
-                ParcelFileDescriptor fd = a(content);
+                ParcelFileDescriptor fd = getAssetFile(content);
                 if (fd != null) {
                     assetFdes = new AssetFileDescriptor(fd, 0L, length);
                 }
@@ -48,54 +48,24 @@ public class d {
         }
     }
 
-    public static AssetFileDescriptor a(String u, String extension) {
-        try {
-            int length = 0;
-            byte[] content = g.a().a(u);
-            if (content != null) {
-                length = content.length;
-            } else {
-                content = g.a().c(u);
-                if (content != null) {
-                    length = content.length;
-                }
-            }
+    private static class AutoFile extends AsyncTask<Object, Object, Object> {
+        byte[] bytes;
+        AutoCloseOutputStream stream;
 
-            if (length <= 0) {
-                return null;
-            }
-
-            AssetFileDescriptor assetFdes = null;
-            ParcelFileDescriptor fd = a(content);
-            if (fd != null) {
-                assetFdes = new AssetFileDescriptor(fd, 0L, length);
-                return assetFdes;
-            }
-        } catch (IOException var6) {
-            var6.printStackTrace();
-        }
-
-        return null;
-    }
-
-    private static class a extends AsyncTask<Object, Object, Object> {
-        byte[] a;
-        AutoCloseOutputStream b;
-
-        public a(byte[] in, AutoCloseOutputStream output) {
-            this.a = in;
-            this.b = output;
+        public AutoFile(byte[] in, AutoCloseOutputStream output) {
+            this.bytes = in;
+            this.stream = output;
         }
 
         protected Object doInBackground(Object... Params) {
             try {
-                this.b.write(this.a);
-                this.b.flush();
+                this.stream.write(this.bytes);
+                this.stream.flush();
             } catch (IOException var11) {
                 var11.printStackTrace();
             } finally {
                 try {
-                    this.b.close();
+                    this.stream.close();
                 } catch (IOException var10) {
                 }
 

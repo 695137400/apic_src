@@ -3,9 +3,9 @@ package com.uzmap.pkg.uzcore;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import org.json.JSONObject;
 
 public class j {
@@ -21,7 +21,7 @@ public class j {
     }
 
     protected void a(com.uzmap.pkg.uzcore.uzmodule.e rootWidgetInfo) {
-        com.uzmap.pkg.uzcore.aa.j.a(rootWidgetInfo);
+        AssetsFileUtil.a(rootWidgetInfo);
         this.c = rootWidgetInfo;
         this.d = new i(this.a.c(), rootWidgetInfo);
         this.d.b(true);
@@ -36,7 +36,7 @@ public class j {
 
     protected void b(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
         if (!this.c(wgtInfo)) {
-            com.uzmap.pkg.uzcore.aa.j.a(wgtInfo);
+            AssetsFileUtil.a(wgtInfo);
             i newWidget = new i(this.a.c(), wgtInfo);
             newWidget.a();
             LayoutParams parm = com.uzmap.pkg.uzcore.external.l.d(com.uzmap.pkg.uzcore.external.l.d, com.uzmap.pkg.uzcore.external.l.d);

@@ -3,48 +3,48 @@ package com.uzmap.pkg.uzcore.aa;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class c extends InputStream {
-    private byte[] a;
-    private int b;
-    private int c;
-    private String d;
+public class AssetStream extends InputStream {
+    private byte[] buf;
+    private int length;
+    private int bufLength;
+    private String file;
 
-    public c(byte[] buf, String f) {
+    public AssetStream(byte[] buf, String file) {
         if (buf == null) {
             throw new NullPointerException("str == null");
         } else {
-            this.d = f;
-            this.a = buf;
-            this.b = buf.length;
+            this.file = file;
+            this.buf = buf;
+            this.length = buf.length;
         }
     }
 
     public synchronized int available() {
-        int available = this.b - this.c;
+        int available = this.length - this.bufLength;
         return available;
     }
 
     public synchronized int read() {
-        return this.c < this.b ? this.a[this.c++] & 255 : -1;
+        return this.bufLength < this.length ? this.buf[this.bufLength++] & 255 : -1;
     }
 
     public synchronized int read(byte[] buffer, int byteOffset, int byteCount) {
         if (buffer == null) {
             throw new NullPointerException("buffer == null");
         } else {
-            a(buffer.length, byteOffset, byteCount);
+            checkBuf(buffer.length, byteOffset, byteCount);
             if (byteCount == 0) {
                 return 0;
-            } else if (this.c == this.b) {
+            } else if (this.bufLength == this.length) {
                 return -1;
             } else {
-                int copylen = this.b - this.c < byteCount ? this.b - this.c : byteCount;
+                int copylen = this.length - this.bufLength < byteCount ? this.length - this.bufLength : byteCount;
 
                 for (int i = 0; i < copylen; ++i) {
-                    buffer[byteOffset + i] = this.a[this.c + i];
+                    buffer[byteOffset + i] = this.buf[this.bufLength + i];
                 }
 
-                this.c += copylen;
+                this.bufLength += copylen;
                 return copylen;
             }
         }
@@ -54,12 +54,8 @@ public class c extends InputStream {
         return this.read(buffer, 0, buffer.length);
     }
 
-    public synchronized void close() throws IOException {
-        super.close();
-    }
-
     public synchronized void reset() {
-        this.c = 0;
+        this.bufLength = 0;
     }
 
     public synchronized long skip(long charCount) {
@@ -67,25 +63,25 @@ public class c extends InputStream {
             return 0L;
         } else {
             int numskipped;
-            if ((long) (this.b - this.c) < charCount) {
-                numskipped = this.b - this.c;
-                this.c = this.b;
+            if ((long) (this.length - this.bufLength) < charCount) {
+                numskipped = this.length - this.bufLength;
+                this.bufLength = this.length;
             } else {
                 numskipped = (int) charCount;
-                this.c = (int) ((long) this.c + charCount);
+                this.bufLength = (int) ((long) this.bufLength + charCount);
             }
 
             return numskipped;
         }
     }
 
-    public static void a(int arrayLength, int offset, int count) {
+    public static void checkBuf(int arrayLength, int offset, int count) {
         if ((offset | count) < 0 || offset > arrayLength || arrayLength - offset < count) {
             throw new ArrayIndexOutOfBoundsException("length=" + arrayLength + "; regionStart=" + offset + "; regionLength=" + count);
         }
     }
 
     public String toString() {
-        return this.a != null ? new String(this.a, 0, this.a.length) : "SecurityInputStream@" + this.d;
+        return this.buf != null ? new String(this.buf, 0, this.buf.length) : "SecurityInputStream@" + this.file;
     }
 }

@@ -9,16 +9,16 @@ import com.uzmap.pkg.uzcore.n;
 import java.util.ArrayList;
 import java.util.List;
 
-public class j {
+public class AssetsFileUtil {
     static String a = Enslecb.xoc(new Object()) + b();
     static final int[] b = new int[]{239, 157, 102, 150, 29, 86, 207, 230, 165, 46, 102, 181, 75, 90, 17, 62, 153, 44, 78, 204};
     static String c = null;
-    static final List<String> d = new ArrayList();
+    static final List<String> fileTypes = new ArrayList();
 
     static {
-        d.add("js");
-        d.add("css");
-        d.add("html");
+        fileTypes.add("js");
+        fileTypes.add("css");
+        fileTypes.add("html");
     }
 
     private static String c(String res, String aKey) {
@@ -200,7 +200,7 @@ public class j {
     public static String c(String url) {
         String result = null;
         if (url.startsWith("file")) {
-            result = com.uzmap.pkg.uzcore.aa.b.b(url);
+            result = AssetsUtil.b(url);
         } else {
             result = url;
         }
@@ -225,7 +225,7 @@ public class j {
         }
     }
 
-    public static String d(String url) {
+    public static String getFileExtension(String url) {
         String cleanUrl = url;
         int index = url.indexOf(63);
         if (index > 0) {
@@ -242,8 +242,8 @@ public class j {
         return extension;
     }
 
-    public static boolean e(String extension) {
-        return d.contains(extension);
+    public static boolean checkFileType(String extension) {
+        return fileTypes.contains(extension);
     }
 
     public static boolean a() {

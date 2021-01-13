@@ -16,6 +16,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.l;
 import com.uzmap.pkg.uzcore.v;
 
@@ -152,7 +153,7 @@ public class c extends FrameLayout {
             this.c.dismiss();
         }
 
-        if (com.uzmap.pkg.uzcore.aa.j.a()) {
+        if (AssetsFileUtil.a()) {
             com.uzmap.pkg.uzcore.external.j sre = new com.uzmap.pkg.uzcore.external.j();
             com.uzmap.pkg.uzcore.c.a(sre, 500L);
         }

@@ -19,6 +19,7 @@ import android.text.format.Formatter;
 import android.util.Base64;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.b;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 import com.uzmap.pkg.uzcore.external.l;
@@ -144,7 +145,7 @@ public class UZUtility {
       if (TextUtils.isEmpty(path)) {
          return null;
       } else {
-         path = com.uzmap.pkg.uzcore.aa.b.c(path);
+         path = AssetsUtil.getFinalDir(path);
          String realPath = null;
          Uri uri = Uri.parse(path);
          String schame = uri.getScheme();

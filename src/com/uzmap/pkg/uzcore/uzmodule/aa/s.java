@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
@@ -88,10 +90,10 @@ public class s extends b {
                 }
 
                 this.c();
-            } else if (this.z.startsWith(com.uzmap.pkg.uzcore.aa.b.f())) {
+            } else if (this.z.startsWith(AssetsUtil.f())) {
                 if (this.z.contains(d)) {
                     try {
-                        this.z = com.uzmap.pkg.uzcore.aa.j.c(this.z);
+                        this.z = AssetsFileUtil.c(this.z);
                     } catch (Exception var5) {
                         var5.printStackTrace();
                     }
@@ -99,15 +101,15 @@ public class s extends b {
                 }
             } else if (UZCoreUtil.isExtendScheme(this.z)) {
                 this.z = UZUtility.makeRealPath(this.z, wgtInfo);
-                this.z = com.uzmap.pkg.uzcore.aa.b.b(this.z);
+                this.z = AssetsUtil.b(this.z);
                 this.c();
             } else {
-                if (this.A.startsWith(com.uzmap.pkg.uzcore.aa.b.a())) {
-                    this.A = com.uzmap.pkg.uzcore.aa.b.c(this.A);
+                if (this.A.startsWith(AssetsUtil.a())) {
+                    this.A = AssetsUtil.getFinalDir(this.A);
                 }
 
                 this.z = UZUtility.makeAbsUrl(this.A, this.z);
-                this.z = com.uzmap.pkg.uzcore.aa.b.b(this.z);
+                this.z = AssetsUtil.b(this.z);
             }
         }
     }

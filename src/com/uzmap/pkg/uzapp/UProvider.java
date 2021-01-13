@@ -7,7 +7,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Process;
 import android.os.*;
-import com.uzmap.pkg.uzcore.aa.j;
+import com.uzmap.pkg.uzcore.aa.AssetFile;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 
 import java.io.FileNotFoundException;
 
@@ -64,39 +66,19 @@ public final class UProvider extends ContentProvider {
         }
     }
 
-    public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        return super.openFile(uri, mode);
-    }
-
-    public ParcelFileDescriptor openFile(Uri uri, String mode, CancellationSignal signal) throws FileNotFoundException {
-        return super.openFile(uri, mode, signal);
-    }
-
     public AssetFileDescriptor openAssetFile(Uri uri, String mode) throws FileNotFoundException {
         if (!this.a()) {
             return null;
         } else {
-            String u = com.uzmap.pkg.uzcore.aa.b.a(uri);
-            String e = j.d(u);
-            boolean s = j.e(e);
-            return !s ? com.uzmap.pkg.uzcore.aa.d.a(u, e) : com.uzmap.pkg.uzcore.aa.d.a(u);
+            String url = AssetsUtil.getFinalDir(uri);
+            String fileType = AssetsFileUtil.getFileExtension(url);
+            boolean s = AssetsFileUtil.checkFileType(fileType);
+            if (!s) {
+                return AssetFile.getAssetFile(url);
+            } else {
+                throw new FileNotFoundException();
+            }
         }
-    }
-
-    public AssetFileDescriptor openAssetFile(Uri uri, String mode, CancellationSignal signal) throws FileNotFoundException {
-        return super.openAssetFile(uri, mode, signal);
-    }
-
-    public String[] getStreamTypes(Uri uri, String mimeTypeFilter) {
-        return super.getStreamTypes(uri, mimeTypeFilter);
-    }
-
-    public AssetFileDescriptor openTypedAssetFile(Uri uri, String mimeTypeFilter, Bundle opts) throws FileNotFoundException {
-        return super.openTypedAssetFile(uri, mimeTypeFilter, opts);
-    }
-
-    public AssetFileDescriptor openTypedAssetFile(Uri uri, String mimeTypeFilter, Bundle opts, CancellationSignal signal) throws FileNotFoundException {
-        return super.openTypedAssetFile(uri, mimeTypeFilter, opts, signal);
     }
 
     public String getType(Uri uri) {

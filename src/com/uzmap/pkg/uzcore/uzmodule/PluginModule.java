@@ -1,6 +1,7 @@
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import com.uzmap.pkg.uzcore.UZWebView;
+import com.uzmap.pkg.uzcore.aa.JSCore;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -8,44 +9,43 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.*;
 
-public final class c {
-    private Hashtable<String, com.uzmap.pkg.uzcore.uzmodule.a> a = new Hashtable();
-    private List<Class<?>> b = new ArrayList();
-    private static Hashtable<String, c.a> c = new Hashtable();
+public final class PluginModule {
+    private Hashtable<String, ModuleMethod> a = new Hashtable();
+    private List<Class<?>> moduleClassList = new ArrayList();
+    private static Hashtable<String, Module> modules = new Hashtable();
 
     static {
-        c.a module = null;
-        module = new c.a("mam", "com.uzmap.pkg.uzmodules.uzmam.UzMAM");
-        module.a();
-        c.put(module.a, module);
-        module = new c.a("msm", "com.uzmap.pkg.uzmodules.uzmsm.UzMSM");
-        module.a();
-        c.put(module.a, module);
-        module = new c.a("mcm", "com.uzmap.pkg.uzmodules.uzmcm.UzMCM");
-        module.a();
-        c.put(module.a, module);
-        module = new c.a("push", "com.uzmap.pkg.uzmodules.uzpush.UPush");
-        module.a();
-        c.put(module.a, module);
-        module = new c.a("baiduMap", "com.uzmap.pkg.uzmodules.uzBaiduMap.UzBaiduMap");
-        module.a();
-        c.put(module.a, module);
-        module = new c.a("baiduLocation", "com.uzmap.pkg.uzmodules.uzBaiduLocation.UzBaiduLocation");
-        module.a();
-        c.put(module.a, module);
+        Module module = new Module("mam", "com.uzmap.pkg.uzmodules.uzmam.UzMAM");
+        module.LoadClass();
+        modules.put(module.name, module);
+        module = new Module("msm", "com.uzmap.pkg.uzmodules.uzmsm.UzMSM");
+        module.LoadClass();
+        modules.put(module.name, module);
+        module = new Module("mcm", "com.uzmap.pkg.uzmodules.uzmcm.UzMCM");
+        module.LoadClass();
+        modules.put(module.name, module);
+        module = new Module("push", "com.uzmap.pkg.uzmodules.uzpush.UPush");
+        module.LoadClass();
+        modules.put(module.name, module);
+        module = new Module("baiduMap", "com.uzmap.pkg.uzmodules.uzBaiduMap.UzBaiduMap");
+        module.LoadClass();
+        modules.put(module.name, module);
+        module = new Module("baiduLocation", "com.uzmap.pkg.uzmodules.uzBaiduLocation.UzBaiduLocation");
+        module.LoadClass();
+        modules.put(module.name, module);
     }
 
-    public c(String moduleJson) {
+    public PluginModule(String moduleJson) {
         this.b(moduleJson);
     }
 
-    public Hashtable<String, com.uzmap.pkg.uzcore.uzmodule.a> a() {
+    public Hashtable<String, ModuleMethod> a() {
         return this.a;
     }
 
     public static boolean a(String module) {
-        c.a contain = c.get(module);
-        return contain != null && contain.c;
+        Module contain = modules.get(module);
+        return contain != null && contain.falg;
     }
 
     public static boolean c() {
@@ -70,7 +70,7 @@ public final class c {
 
     public List<ApplicationDelegate> b() {
         List<ApplicationDelegate> list = new ArrayList();
-        Iterator var3 = this.b.iterator();
+        Iterator var3 = this.moduleClassList.iterator();
 
         while (var3.hasNext()) {
             Class<?> clazz = (Class) var3.next();
@@ -118,7 +118,7 @@ public final class c {
 
                     if (target != null) {
                         if (delegateClass.equals(target.getSuperclass())) {
-                            this.b.add(target);
+                            this.moduleClassList.add(target);
                         } else {
                             Class[] paramTypes = new Class[]{UZWebView.class};
                             Constructor construct = null;
@@ -130,8 +130,8 @@ public final class c {
                             }
 
                             if (construct != null) {
-                                com.uzmap.pkg.uzcore.uzmodule.a entity = new com.uzmap.pkg.uzcore.uzmodule.a(construct);
-                                entity.a = moduleName;
+                                ModuleMethod entity = new ModuleMethod(construct);
+                                entity.name = moduleName;
                                 Method[] methods = target.getDeclaredMethods();
                                 if (methods != null) {
                                     Method[] var17 = methods;
@@ -158,33 +158,33 @@ public final class c {
             }
 
             StringBuffer moduleScript = new StringBuffer("");
-            Collection<com.uzmap.pkg.uzcore.uzmodule.a> values = this.a.values();
+            Collection<ModuleMethod> values = this.a.values();
             Iterator var26 = values.iterator();
 
             while (var26.hasNext()) {
-                com.uzmap.pkg.uzcore.uzmodule.a entity = (com.uzmap.pkg.uzcore.uzmodule.a) var26.next();
+                ModuleMethod entity = (ModuleMethod) var26.next();
                 moduleScript.append(entity.a());
             }
 
-            com.uzmap.pkg.uzcore.aa.a.a(moduleScript.toString());
+            JSCore.a(moduleScript.toString());
         }
     }
 
-    static class a {
-        public String a;
-        public String b;
-        public boolean c = true;
+    static class Module {
+        public String name;
+        public String clazz;
+        public boolean falg = true;
 
-        public a(String name, String clazz) {
-            this.a = name;
-            this.b = clazz;
+        public Module(String name, String clazz) {
+            this.name = name;
+            this.clazz = clazz;
         }
 
-        public void a() {
+        public void LoadClass() {
             try {
-                Class.forName(this.b);
+                Class.forName(this.clazz);
             } catch (Exception var2) {
-                this.c = false;
+                this.falg = false;
             }
 
         }

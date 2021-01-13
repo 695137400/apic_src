@@ -1,12 +1,11 @@
-package com.uzmap.pkg.a.c;
+package com.uzmap.pkg.a.intent;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.webkit.URLUtil;
-import android.webkit.WebView;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.external.l;
 
 import java.net.URISyntaxException;
@@ -16,12 +15,12 @@ public class d {
    static final Pattern a = Pattern.compile("(?i)((?:http|https|file):\\/\\/|(?:inline|data|about|javascript):|(?:.*:.*@))(.*)");
    Activity b;
 
-   public void a(Activity activity) {
+   public void init(Activity activity) {
       this.b = activity;
    }
 
-   public boolean a(WebView view, String url) {
-      if (!URLUtil.isValidUrl(url) && !url.startsWith(com.uzmap.pkg.uzcore.aa.b.a())) {
+   public boolean loadUrl(String url) {
+      if (!URLUtil.isValidUrl(url) && !url.startsWith(AssetsUtil.a())) {
          if (url.startsWith("wtai://wp/")) {
             if (url.startsWith("wtai://wp/mc;")) {
                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + url.substring("wtai://wp/mc;".length())));
@@ -41,14 +40,14 @@ public class d {
          if (url.startsWith("about:")) {
             return false;
          } else {
-            return this.a(url);
+            return this.load(url);
          }
       } else {
          return false;
       }
    }
 
-   boolean a(String url) {
+  private boolean load(String url) {
       Intent intent;
       try {
          intent = Intent.parseUri(url, 1);
@@ -85,7 +84,9 @@ public class d {
             if (this.b.startActivityIfNeeded(intent, -1)) {
                return true;
             }
-         } catch (ActivityNotFoundException var4) {
+         } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            return false;
          }
 
          return false;

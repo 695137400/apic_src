@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
+import com.uzmap.pkg.uzcore.aa.JSCore;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,7 +17,7 @@ public class UZModuleContext {
     private JSONObject f;
 
     static {
-        a = com.uzmap.pkg.uzcore.aa.a.a + "$cb";
+        a = JSCore.a + "$cb";
         b = a + ".on";
     }
 

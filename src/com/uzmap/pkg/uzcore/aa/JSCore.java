@@ -4,7 +4,7 @@ import com.uzmap.pkg.uzcore.UZCoreUtil;
 
 import java.util.Random;
 
-public final class a {
+public final class JSCore {
     public static final String a = "X" + a(3);
     private static String d;
     private static String e;
@@ -14,7 +14,12 @@ public final class a {
     private static String g;
 
     static {
-        f = "window." + a + "$e = function(p){" + "var op = {};" + "if (p.length === 1) {" + "if (typeof p[0] === 'function') {" + "op.cbId = " + a + "$cb.id++;" + a + "$cb.fn[op.cbId] = p[0];" + "}else{" + "op.arg = p[0];" + "}" + "}else if(p.length === 2){" + "op.arg = p[0];" + "op.cbId = " + a + "$cb.id++;" + a + "$cb.fn[op.cbId] = p[1];" + "}" + "return JSON.stringify(op);" + "};" + "window." + a + "$cb = {fn:{}, id:1, on:function(cbId,ret,err,del) {this.fn[cbId] && this.fn[cbId](ret,err);if(del)delete this.fn[cbId];},gc:function(cbId){delete this.fn[cbId];}};" + "window." + a + "$md = {};";
+        f = "window."
+                + a + "$e = function(p){var op = {};if (p.length === 1) {if (typeof p[0] === 'function') {op.cbId = "
+                + a + "$cb.id++;" + a + "$cb.fn[op.cbId] = p[0];}else{op.arg = p[0];}}else if(p.length === 2){op.arg = p[0];op.cbId = "
+                + a + "$cb.id++;" + a + "$cb.fn[op.cbId] = p[1];}return JSON.stringify(op);};window."
+                + a + "$cb = {fn:{}, id:1, on:function(cbId,ret,err,del) {this.fn[cbId] && this.fn[cbId](ret,err);if(del)delete this.fn[cbId];},gc:function(cbId){delete this.fn[cbId];}};" + "window."
+                + a + "$md = {};";
         g = "if(window.apiready){window.apiready();};" + a + ".ovrri();api.parseTapmode();";
         e = "(function(){var MAX_MOVE = 10;var slop = 1500;var tap = 'tapmode';function addTouchedClass(node, clas) {    if (node && clas) {        if (!hasClass(node, clas)) {            node.className = node.className ? node.className + ' ' + clas : clas;        }    }};function removeTouchedClass(node) {    if (node && node.clicker) {    \tvar clas = node.clicker.clas;    \tvar className = node.className;    \tif(className && clas){    \t\tnode.className = className.replace(clas, '').trim();    \t}    };};function hasClass(el, className) {    return new RegExp('(^|\\s)' + className + '(\\s|$)').test(el.className);};var Clicker = function(){};function parseTapmode(){\tvar nodes = document.querySelectorAll('[' + tap + ']');  \tif(nodes){\t\tfor(var i = 0; i < nodes.length; i++){\t\t\tvar node = nodes[i];\t\t\tnode.removeEventListener('touchstart', handStart, false);\t\t\tnode.removeEventListener('touchmove', handMove, false);\t\t\tnode.removeEventListener('touchend', handEnd, false);\t\t\tnode.removeEventListener('touchcancel', handCancel, false);\t\t\tnode.addEventListener('touchstart', handStart, false);\t\t\tnode.addEventListener('touchmove', handMove, false);\t\t\tnode.addEventListener('touchend', handEnd, false);\t\t\tnode.addEventListener('touchcancel', handCancel, false);\t\t\tif(node.onclick){\t\t\t\tnode.uzclick=node.onclick;\t\t\t\tnode.onclick=null;\t\t\t}\t\t}  \t}};function handStart(e){  \t var node = e.currentTarget;  \t if(node.disabled){ return; }     var c = new Clicker();    c.X = e.touches[0].clientX;    c.Y = e.touches[0].clientY;    var clas = node.getAttribute(tap);    c.clas = clas;    node.clicker = c;    addTouchedClass(node, clas);};function handMove(e){  var node = e.currentTarget;  if(node.disabled){ return; }   var c = node.clicker;  if(!c){  \treturn;  }  var x = e.touches[0].clientX, y = e.touches[0].clientY;  if (Math.abs(x - c.X) > MAX_MOVE || Math.abs(y - c.Y) > MAX_MOVE) {    reset(node, true);  }};function handEnd(e){  var node = e.currentTarget;  if(node.disabled){ return; }   reset(node);  fire(e, node);};function handCancel(e){  var node = e.currentTarget;  if(node.disabled){ return; }   reset(node, true);};function fire(e, node) {\tif(node.uzclick){\t  var c = node.clicker;\t  if(c){\t  \tnode.uzclick.call(node,e);\t\tnode.clicker = null;\t  }\t}};function reset(node, del) {   removeTouchedClass(node);   if(del){\t\tnode.clicker = null;\t}};api.parseTapmode = parseTapmode;})();";
     }
@@ -64,7 +69,7 @@ public final class a {
     public static final void a(byte[] bte) {
         if (bte != null && bte.length != 0) {
             try {
-                bte = j.a(bte);
+                bte = AssetsFileUtil.a(bte);
                 b = new String(bte);
             } catch (Exception var2) {
             }
@@ -75,7 +80,7 @@ public final class a {
     public static final void b(byte[] bte) {
         if (bte != null && bte.length != 0) {
             try {
-                bte = j.b(bte);
+                bte = AssetsFileUtil.b(bte);
                 c = new String(bte);
             } catch (Exception var2) {
             }

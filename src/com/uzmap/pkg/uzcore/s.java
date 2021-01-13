@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Message;
 import android.webkit.*;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzkit.UZUtility;
 import org.json.JSONObject;
 
@@ -43,7 +44,7 @@ public class s extends WebViewClient {
             return true;
         } else {
             if (this.b) {
-                url = com.uzmap.pkg.uzcore.aa.b.c(url);
+                url = AssetsUtil.getFinalDir(url);
             }
 
             if (com.uzmap.pkg.uzcore.external.l.a >= 11 && view.isPrivateBrowsingEnabled()) {
@@ -150,7 +151,7 @@ public class s extends WebViewClient {
             if (input != null) {
                 input.close();
                 if (this.b) {
-                    errHtml = com.uzmap.pkg.uzcore.aa.b.b(errHtml);
+                    errHtml = AssetsUtil.b(errHtml);
                 }
 
                 errorView.loadUrl(errHtml);

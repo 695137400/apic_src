@@ -1,6 +1,7 @@
 package com.uzmap.pkg.uzcore;
 
 import com.uzmap.pkg.uzapp.UZFileSystem;
+import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -71,8 +72,8 @@ public class n {
 
                   try {
                      e = targetPath + entryName;
-                     e = com.uzmap.pkg.uzcore.aa.j.d(e);
-                     boolean s = com.uzmap.pkg.uzcore.aa.j.e(e);
+                     e = AssetsFileUtil.getFileExtension(e);
+                     boolean s = AssetsFileUtil.checkFileType(e);
                      if (s && reliable) {
                         a(zipFile, firstEntry, e);
                      } else {
@@ -107,8 +108,8 @@ public class n {
                         }
 
                         try {
-                           e = com.uzmap.pkg.uzcore.aa.j.d(entryName);
-                           boolean s = com.uzmap.pkg.uzcore.aa.j.e(e);
+                           e = AssetsFileUtil.getFileExtension(entryName);
+                           boolean s = AssetsFileUtil.checkFileType(e);
                            if ((s || b(entryName)) && reliable) {
                               a(zipFile, entry, finalfile);
                            } else {
@@ -141,7 +142,7 @@ public class n {
       InputStream input = f.getInputStream(e);
       byte[] content = UZCoreUtil.readByte(input);
       if (content != null) {
-         content = com.uzmap.pkg.uzcore.aa.j.b(content);
+         content = AssetsFileUtil.b(content);
          bo.write(content);
       }
 

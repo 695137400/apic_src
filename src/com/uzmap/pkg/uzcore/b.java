@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import com.uzmap.pkg.uzapp.UZFileSystem;
+import com.uzmap.pkg.uzcore.aa.AssetsUtil;
+import com.uzmap.pkg.uzcore.aa.JSCore;
 import com.uzmap.pkg.uzcore.external.Enslecb;
 import com.uzmap.pkg.uzcore.uzmodule.AppInfo;
 import com.uzmap.pkg.uzcore.uzmodule.ApplicationDelegate;
+import com.uzmap.pkg.uzcore.uzmodule.PluginModule;
 import com.uzmap.pkg.uzsocket.api.UPnsListener;
 
 import java.io.InputStream;
@@ -16,7 +19,7 @@ import java.util.List;
 public class b {
     public static boolean a = true;
     private static com.uzmap.pkg.uzcore.b i;
-    private com.uzmap.pkg.uzcore.uzmodule.c b;
+    private PluginModule b;
     private com.uzmap.pkg.uzcore.aa.h c;
     private Application d;
     private List<ApplicationDelegate> e;
@@ -123,11 +126,11 @@ public class b {
         String p;
         InputStream i;
         try {
-            p = com.uzmap.pkg.uzcore.aa.b.c();
+            p = AssetsUtil.c();
             i = this.d.getAssets().open(p);
             String c = UZCoreUtil.readString(i);
             i.close();
-            this.b = new com.uzmap.pkg.uzcore.uzmodule.c(c);
+            this.b = new PluginModule(c);
         } catch (Exception var8) {
             var8.printStackTrace();
         }
@@ -135,7 +138,7 @@ public class b {
         byte[] c;
         try {
             this.c = new com.uzmap.pkg.uzcore.aa.h();
-            p = com.uzmap.pkg.uzcore.aa.b.b();
+            p = AssetsUtil.b();
             i = this.d.getAssets().open(p);
             c = UZCoreUtil.readByte(i);
             i.close();
@@ -145,22 +148,22 @@ public class b {
 
         if (su) {
             try {
-                p = com.uzmap.pkg.uzcore.aa.b.d();
+                p = AssetsUtil.d();
                 i = this.d.getAssets().open(p);
                 c = UZCoreUtil.readByte(i);
                 i.close();
-                com.uzmap.pkg.uzcore.aa.a.a(c);
+                JSCore.a(c);
             } catch (Exception var6) {
             }
         }
 
         if (com.uzmap.pkg.uzapp.b.b()) {
             try {
-                p = com.uzmap.pkg.uzcore.aa.b.e();
+                p = AssetsUtil.e();
                 i = this.d.getAssets().open(p);
                 c = UZCoreUtil.readByte(i);
                 i.close();
-                com.uzmap.pkg.uzcore.aa.a.b(c);
+                JSCore.b(c);
             } catch (Exception var5) {
                 var5.printStackTrace();
             }
@@ -204,7 +207,7 @@ public class b {
         return this.f.d();
     }
 
-    public final com.uzmap.pkg.uzcore.uzmodule.c e() {
+    public final PluginModule e() {
         if (this.b == null) {
             this.b(false);
         }
@@ -221,11 +224,11 @@ public class b {
     }
 
     public boolean h() {
-        return "sdk".equals(com.uzmap.pkg.uzapp.b.r()) || com.uzmap.pkg.uzcore.uzmodule.c.c();
+        return "sdk".equals(com.uzmap.pkg.uzapp.b.r()) || PluginModule.c();
     }
 
     public boolean i() {
-        return com.uzmap.pkg.uzcore.uzmodule.c.d();
+        return PluginModule.d();
     }
 
     public boolean j() {
@@ -233,15 +236,15 @@ public class b {
     }
 
     public boolean k() {
-        return com.uzmap.pkg.uzcore.uzmodule.c.e();
+        return PluginModule.e();
     }
 
     public boolean l() {
-        return com.uzmap.pkg.uzcore.uzmodule.c.f();
+        return PluginModule.f();
     }
 
     public boolean m() {
-        return com.uzmap.pkg.uzcore.uzmodule.c.g();
+        return PluginModule.g();
     }
 
     public boolean n() {

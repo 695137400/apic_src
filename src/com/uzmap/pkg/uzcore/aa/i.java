@@ -6,6 +6,6 @@ import java.io.InputStream;
 
 public class i extends WebResourceResponse {
     public i(String mimeType, InputStream data) {
-        super(mimeType, b.g, data);
+        super(mimeType, AssetsUtil.g, data);
     }
 }
