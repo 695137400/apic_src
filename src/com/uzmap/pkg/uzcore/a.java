@@ -2,13 +2,10 @@ package com.uzmap.pkg.uzcore;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Paint;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.*;
 import android.webkit.DownloadListener;
-import android.webkit.WebChromeClient;
-import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 import com.uzmap.pkg.openapi.WebViewProvider;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
@@ -37,7 +34,7 @@ public class a extends UZWebView implements DownloadListener, p.a {
    private m l;
    private s m;
    private p n;
-   private com.uzmap.pkg.a.a.f.a o;
+   private com.uzmap.pkg.ui.a.f.a o;
    private long p;
    private long q = SystemClock.uptimeMillis();
    private Battery.a r;
@@ -448,18 +445,18 @@ public class a extends UZWebView implements DownloadListener, p.a {
 
    private void P() {
       if (this.o == null) {
-         this.o = new com.uzmap.pkg.a.a.f.a() {
+         this.o = new com.uzmap.pkg.ui.a.f.a() {
             public void a() {
                a.this.a(12, null, null);
             }
          };
-         com.uzmap.pkg.a.a.f.a(this.i).a(this.o);
+         com.uzmap.pkg.ui.a.f.a(this.i).a(this.o);
       }
    }
 
    private void Q() {
       if (this.o != null) {
-         com.uzmap.pkg.a.a.f.a(this.i).b(this.o);
+         com.uzmap.pkg.ui.a.f.a(this.i).b(this.o);
          this.o = null;
       }
 

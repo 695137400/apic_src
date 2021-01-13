@@ -2,11 +2,11 @@ package com.uzmap.pkg.uzkit.request;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.uzmap.pkg.a.b.aa.b;
-import com.uzmap.pkg.a.b.aa.f;
-import com.uzmap.pkg.a.b.i;
-import com.uzmap.pkg.a.b.j;
-import com.uzmap.pkg.a.b.l;
+import com.uzmap.pkg.ui.b.aa.b;
+import com.uzmap.pkg.ui.b.aa.f;
+import com.uzmap.pkg.ui.b.i;
+import com.uzmap.pkg.ui.b.j;
+import com.uzmap.pkg.ui.b.l;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -95,7 +95,7 @@ public class HttpDownload extends Request {
     }
 
     protected void deliverResponse(i response) {
-        com.uzmap.pkg.a.b.p.a("deliverResponse", response);
+        com.uzmap.pkg.ui.b.p.a("deliverResponse", response);
         if (this.a != null) {
             HttpResult result = new HttpResult(response.a);
             result.headers = response.c;
@@ -113,10 +113,10 @@ public class HttpDownload extends Request {
     }
 
     protected l<i> parseNetworkResponse(i response) {
-        return !this.isCanceled() ? com.uzmap.pkg.a.b.l.a(response, null) : com.uzmap.pkg.a.b.l.a(new b());
+        return !this.isCanceled() ? com.uzmap.pkg.ui.b.l.a(response, null) : com.uzmap.pkg.ui.b.l.a(new b());
     }
 
-    public boolean handleResponse(com.uzmap.pkg.a.b.dd.aa.a entity) throws IOException, f {
+    public boolean handleResponse(com.uzmap.pkg.ui.b.dd.aa.a entity) throws IOException, f {
         File localPath = this.prepare(entity);
         if (localPath != null && this.hasCached()) {
             entity.b();
@@ -131,9 +131,9 @@ public class HttpDownload extends Request {
         }
     }
 
-    private File prepare(com.uzmap.pkg.a.b.dd.aa.a entity) {
+    private File prepare(com.uzmap.pkg.ui.b.dd.aa.a entity) {
         String contentType = entity.c();
-        String extension = "." + com.uzmap.pkg.a.b.e.d(contentType);
+        String extension = "." + com.uzmap.pkg.ui.b.e.d(contentType);
         String newSavePath = "";
         if (!TextUtils.isEmpty(this.c)) {
             newSavePath = this.e.replace(".tmp", "");
@@ -161,7 +161,7 @@ public class HttpDownload extends Request {
         }
     }
 
-    private long streamWrite(com.uzmap.pkg.a.b.dd.aa.a entity, long finishSize) throws IllegalStateException, IOException {
+    private long streamWrite(com.uzmap.pkg.ui.b.dd.aa.a entity, long finishSize) throws IllegalStateException, IOException {
         if (this.hasCached()) {
             return 0L;
         } else {
@@ -264,6 +264,6 @@ public class HttpDownload extends Request {
     }
 
     private String makeTmpFileName() {
-        return com.uzmap.pkg.a.b.e.e(this.getUrl()) + ".tmp";
+        return com.uzmap.pkg.ui.b.e.e(this.getUrl()) + ".tmp";
     }
 }

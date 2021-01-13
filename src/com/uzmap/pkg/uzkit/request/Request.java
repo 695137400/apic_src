@@ -1,6 +1,6 @@
 package com.uzmap.pkg.uzkit.request;
 
-import com.uzmap.pkg.a.b.dd.d;
+import com.uzmap.pkg.ui.b.dd.d;
 
 import java.util.Map;
 

@@ -2,8 +2,8 @@ package com.uzmap.pkg.uzkit.request;
 
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import com.uzmap.pkg.a.b.dd.aa.*;
-import com.uzmap.pkg.a.b.dd.f;
+import com.uzmap.pkg.ui.b.dd.aa.*;
+import com.uzmap.pkg.ui.b.dd.f;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -150,7 +150,7 @@ public class HttpParams implements Params {
                         File file = new File(value);
                         if (file.exists()) {
                             String mimeType = this.mimeTypeFromUrl(value);
-                            d part = new com.uzmap.pkg.a.b.dd.aa.f(key, file, mimeType, null);
+                            d part = new com.uzmap.pkg.ui.b.dd.aa.f(key, file, mimeType, null);
                             multiEn.a1(part);
                         }
                     }

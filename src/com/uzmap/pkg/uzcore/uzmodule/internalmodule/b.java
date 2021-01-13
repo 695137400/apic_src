@@ -15,7 +15,6 @@ import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.MediaStore.Images.Media;
 import android.telephony.SmsManager;
@@ -24,8 +23,8 @@ import android.webkit.URLUtil;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import com.uzmap.pkg.a.a.d;
-import com.uzmap.pkg.a.a.e;
+import com.uzmap.pkg.ui.a.d;
+import com.uzmap.pkg.ui.a.e;
 import com.uzmap.pkg.uzapp.UPMessage;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
@@ -57,9 +56,9 @@ public class b {
     private q c;
     private UZModuleContext d;
     private String e;
-    private com.uzmap.pkg.a.a.b f;
+    private com.uzmap.pkg.ui.a.b f;
     private e g;
-    private com.uzmap.pkg.a.a.a.a1 h;
+    private com.uzmap.pkg.ui.a.a.a1 h;
     private UPMessage i;
 
     public b(UZCoreModule module) {
@@ -750,7 +749,7 @@ public class b {
             }
 
             if (this.f == null) {
-                this.f = new com.uzmap.pkg.a.a.b();
+                this.f = new com.uzmap.pkg.ui.a.b();
             }
 
             this.f.a(path);
@@ -781,7 +780,7 @@ public class b {
         if (!TextUtils.isEmpty(path)) {
             path = UZUtility.makeRealPath(path, this.a.getWidgetInfo());
             if (this.f == null) {
-                this.f = new com.uzmap.pkg.a.a.b();
+                this.f = new com.uzmap.pkg.ui.a.b();
             }
 
             this.f.a(new d() {
@@ -838,20 +837,20 @@ public class b {
             float filter = (float) moduleContext.optDouble("filter");
             final boolean autoStop = moduleContext.optBoolean("autoStop", true);
             this.b();
-            this.h = new com.uzmap.pkg.a.a.a.a1() {
+            this.h = new com.uzmap.pkg.ui.a.a.a1() {
                 public void a(JSONObject location) {
                     moduleContext.success(location, autoStop);
                 }
             };
-            com.uzmap.pkg.a.a.a.c option = new com.uzmap.pkg.a.a.a.c(accuracy, filter, autoStop);
-            com.uzmap.pkg.a.a.a.a(this.a.getContext()).a(option, this.h);
+            com.uzmap.pkg.ui.a.a.c option = new com.uzmap.pkg.ui.a.a.c(accuracy, filter, autoStop);
+            com.uzmap.pkg.ui.a.a.a(this.a.getContext()).a(option, this.h);
         }
     }
 
     public void b() {
         if (this.a != null) {
             if (this.h != null) {
-                com.uzmap.pkg.a.a.a.a(this.a.getContext()).b(this.h);
+                com.uzmap.pkg.ui.a.a.a(this.a.getContext()).b(this.h);
                 this.h = null;
             }
 
@@ -860,12 +859,12 @@ public class b {
 
     public void i(final k moduleContext) {
         this.b();
-        this.h = new com.uzmap.pkg.a.a.a.a1() {
+        this.h = new com.uzmap.pkg.ui.a.a.a1() {
             public void a(JSONObject location) {
                 moduleContext.success(location, true);
             }
         };
-        com.uzmap.pkg.a.a.a.a(this.a.getContext()).a(this.h);
+        com.uzmap.pkg.ui.a.a.a(this.a.getContext()).a(this.h);
     }
 
     public void a(String args) {
@@ -902,7 +901,7 @@ public class b {
     }
 
     public void a(com.uzmap.pkg.uzcore.uzmodule.aa.l moduleContext) {
-        int nid = com.uzmap.pkg.a.a.c.a().a(moduleContext);
+        int nid = com.uzmap.pkg.ui.a.c.a().a(moduleContext);
         if (moduleContext.b()) {
             JSONObject json = new JSONObject();
 
@@ -925,7 +924,7 @@ public class b {
 
     public void b(com.uzmap.pkg.uzcore.uzmodule.aa.l moduleContext) {
         int nid = moduleContext.optInt("id");
-        com.uzmap.pkg.a.a.c.a().a(nid);
+        com.uzmap.pkg.ui.a.c.a().a(nid);
     }
 
     public void a(k moduleContext, String targetId) {

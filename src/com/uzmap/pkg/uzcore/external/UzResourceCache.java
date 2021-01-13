@@ -6,18 +6,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.uzmap.pkg.a.b.dd.c;
+import com.uzmap.pkg.ui.b.dd.c;
 import com.uzmap.pkg.uzkit.UZUtility;
 
 import java.io.File;
 import java.io.InputStream;
 
 public class UzResourceCache {
-    private final com.uzmap.pkg.a.b.dd.c a;
+    private final com.uzmap.pkg.ui.b.dd.c a;
     private static UzResourceCache b;
 
     private UzResourceCache(Context context) {
-        this.a = com.uzmap.pkg.a.b.dd.c.c(com.uzmap.pkg.a.b.e.a(context));
+        this.a = com.uzmap.pkg.ui.b.dd.c.c(com.uzmap.pkg.ui.b.e.a(context));
     }
 
     public static UzResourceCache get() {
@@ -65,7 +65,7 @@ public class UzResourceCache {
     }
 
     public static final File transImageThumbPath(File image) {
-        return com.uzmap.pkg.a.b.dd.c.a(image);
+        return com.uzmap.pkg.ui.b.dd.c.a(image);
     }
 
     public final c.a1 hasDiskCache(String url) {

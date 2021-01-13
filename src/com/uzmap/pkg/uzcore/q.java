@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.webkit.ValueCallback;
 import android.webkit.WebView;
-import com.uzmap.pkg.a.intent.c;
+import com.uzmap.pkg.ui.intent.c;
 
 public class q extends p {
     q(Activity context, Object o) {
@@ -17,7 +17,7 @@ public class q extends p {
             return false;
         } else {
             this.d = new c(this.a, this);
-            ((com.uzmap.pkg.a.intent.c) this.d).av(filePathCallback, fileChooserParams);
+            ((com.uzmap.pkg.ui.intent.c) this.d).av(filePathCallback, fileChooserParams);
             return true;
         }
     }

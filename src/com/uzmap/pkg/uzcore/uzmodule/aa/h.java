@@ -47,7 +47,7 @@ public class h extends UZModuleContext implements ProgressListener {
 
     public boolean a() {
         if (this.b == 1 || this.b == 3) {
-            com.uzmap.pkg.a.b.dd.c.a1 entity = UzResourceCache.get().hasDiskCache(this.a);
+            com.uzmap.pkg.ui.b.dd.c.a1 entity = UzResourceCache.get().hasDiskCache(this.a);
             if (entity != null) {
                 String local;
                 if (this.c) {

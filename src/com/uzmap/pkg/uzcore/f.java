@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
-import com.uzmap.pkg.a.intent.d;
+import com.uzmap.pkg.ui.intent.d;
 import com.uzmap.pkg.openapi.WebViewProvider;
 import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.annotation.InstanceMethod;
@@ -19,7 +19,7 @@ import java.util.Hashtable;
 public class f {
     private static boolean l;
     private static final Hashtable<Activity, f> m = new Hashtable();
-    protected com.uzmap.pkg.a.intent.d a;
+    protected com.uzmap.pkg.ui.intent.d a;
     private final Activity b;
     private boolean c;
     private com.uzmap.pkg.uzcore.external.bb.j d;

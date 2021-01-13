@@ -4,7 +4,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-import com.uzmap.pkg.a.b.dd.c;
+import com.uzmap.pkg.ui.b.dd.c;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 import com.uzmap.pkg.uzkit.UZUtility;
