@@ -69,7 +69,7 @@ public class d {
       } else {
          intent.addCategory("android.intent.category.BROWSABLE");
          intent.setComponent(null);
-         if (l.a >= 15) {
+         if (l.SDK_INT >= 15) {
             Intent selector = intent.getSelector();
             if (selector != null) {
                selector.addCategory("android.intent.category.BROWSABLE");

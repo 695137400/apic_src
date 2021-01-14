@@ -27,6 +27,7 @@ import com.uzmap.pkg.ui.a.d;
 import com.uzmap.pkg.ui.a.e;
 import com.uzmap.pkg.uzapp.UPMessage;
 import com.uzmap.pkg.uzapp.UZFileSystem;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.external.l;
 import com.uzmap.pkg.uzcore.external.n;
@@ -533,7 +534,7 @@ public class b {
                         intent = new Intent("android.intent.action.PICK");
                         if (mContext.c == 2) {
                             String type;
-                            if (l.a < 11) {
+                            if (l.SDK_INT < 11) {
                                 type = "*/*;image/*;video/*";
                             } else {
                                 type = "image/*,video/*";
@@ -931,7 +932,7 @@ public class b {
         long length = 0L;
         String state = Environment.getExternalStorageState();
         if ("mounted".equals(state)) {
-            Context context = com.uzmap.pkg.uzcore.b.a().b();
+            Context context = ApplicationProcess.initialize().b();
             File boxcache = context.getCacheDir();
             if (boxcache != null) {
                 length += UZCoreUtil.computeDirOrFileSize(boxcache);
@@ -1212,7 +1213,7 @@ public class b {
                 String idKey = "_id";
                 String nameKey = "display_name";
                 String numberKey = "data1";
-                if (l.a < 11) {
+                if (l.SDK_INT < 11) {
                     cursor = crls.query(content, null, null, null, null);
                     nameKey = "display_name";
                     numberKey = "data1";

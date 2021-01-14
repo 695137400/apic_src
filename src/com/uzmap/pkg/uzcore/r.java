@@ -83,26 +83,26 @@ public class r {
         }
 
         this.d.setUserAgentString(ua);
-        if (com.uzmap.pkg.uzcore.external.l.a >= 8) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 8) {
             this.d.setPluginState(PluginState.ON);
         }
 
-        if (com.uzmap.pkg.uzcore.external.l.a >= 11) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 11) {
             this.d.setAllowContentAccess(true);
             this.d.setEnableSmoothTransition(true);
         }
 
-        if (com.uzmap.pkg.uzcore.external.l.a >= 16) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 16) {
             this.d.setAllowFileAccessFromFileURLs(true);
             this.d.setAllowUniversalAccessFromFileURLs(!r);
         }
 
         com.uzmap.pkg.uzapp.e.a().a(this.c, true);
-        if (com.uzmap.pkg.uzcore.external.l.a >= 21) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 21) {
             this.d.setMixedContentMode(0);
         }
 
-        if (com.uzmap.pkg.uzcore.external.l.a <= 11) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT <= 11) {
             this.c();
         }
 
@@ -121,7 +121,7 @@ public class r {
 
     private String b() {
         String ua = this.d.getUserAgentString();
-        if (TextUtils.isEmpty(ua) && com.uzmap.pkg.uzcore.external.l.a >= 17) {
+        if (TextUtils.isEmpty(ua) && com.uzmap.pkg.uzcore.external.l.SDK_INT >= 17) {
             String dua = WebSettings.getDefaultUserAgent(this.c.getContext());
             if (!TextUtils.isEmpty(dua)) {
                 ua = dua;

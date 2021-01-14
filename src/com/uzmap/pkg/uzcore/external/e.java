@@ -29,7 +29,7 @@ public class e extends Dialog {
         Window window = this.getWindow();
         window.setBackgroundDrawableResource(17170445);
         window.setGravity(55);
-        if (l.a >= 14) {
+        if (l.SDK_INT >= 14) {
             window.setDimAmount(0.0F);
         }
 

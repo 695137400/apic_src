@@ -3,6 +3,7 @@ package com.uzmap.pkg.uzcore.external;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 
 public class m {
     private static m c;
@@ -16,7 +17,7 @@ public class m {
 
     public static m a() {
         if (c == null) {
-            c = new m(com.uzmap.pkg.uzcore.b.a().b());
+            c = new m(ApplicationProcess.initialize().b());
         }
 
         return c;

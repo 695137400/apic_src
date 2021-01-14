@@ -2,6 +2,7 @@ package com.uzmap.pkg.uzcore.uzmodule.internalmodule;
 
 import android.content.Context;
 import com.uzmap.pkg.uzapp.UZFileSystem;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 
@@ -28,7 +29,7 @@ public class a implements Runnable {
     }
 
     public void run() {
-        Context context = com.uzmap.pkg.uzcore.b.a().b();
+        Context context = ApplicationProcess.initialize().b();
         File boxcache = context.getCacheDir();
         if (boxcache != null) {
             if (this.c > 0L) {

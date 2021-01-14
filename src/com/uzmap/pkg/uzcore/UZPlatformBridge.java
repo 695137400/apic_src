@@ -385,7 +385,7 @@ public class UZPlatformBridge extends BroadcastReceiver {
     }
 
     private boolean f() {
-        return com.uzmap.pkg.uzcore.b.a().l();
+        return ApplicationProcess.initialize().l();
     }
 
     private boolean a(int lt, double lat, double log, String addr, float limit) {

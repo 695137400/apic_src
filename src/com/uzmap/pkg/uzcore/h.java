@@ -40,7 +40,7 @@ public class h extends ViewPager {
         this.setAnimationCacheEnabled(false);
         this.setAlwaysDrawnWithCacheEnabled(false);
         this.setFocusable(false);
-        if (l.a >= 9) {
+        if (l.SDK_INT >= 9) {
             this.setOverScrollMode(2);
         }
 
@@ -274,7 +274,7 @@ public class h extends ViewPager {
 
         public void onPageSelected(int position) {
             if (!h.this.g.isEmpty()) {
-                long delay = h.this.e ? 350 : (l.a <= 16 ? 70 : 50);
+                long delay = h.this.e ? 350 : (l.SDK_INT <= 16 ? 70 : 50);
                 if (!h.this.f) {
                     com.uzmap.pkg.uzcore.g child = h.this.g.get(position);
                     if (!child.c()) {

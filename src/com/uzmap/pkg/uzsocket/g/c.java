@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzapp.PropertiesUtil;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzkit.UZOpenApi;
 import com.uzmap.pkg.uzsocket.UPnsService;
@@ -61,7 +62,7 @@ public class c {
                 case 2:
                     this.c = intent.getBooleanExtra("value", true);
                     this.g.a(this.c);
-                    if (!this.c && !com.uzmap.pkg.uzcore.b.a().i()) {
+                    if (!this.c && !ApplicationProcess.initialize().i()) {
                         this.a.stopSelf();
                         return 1;
                     }
@@ -113,7 +114,7 @@ public class c {
     }
 
     private void f() {
-        if (!this.g() && !com.uzmap.pkg.uzcore.b.a().n()) {
+        if (!this.g() && !ApplicationProcess.initialize().n()) {
             this.a(null, false);
         }
 
@@ -273,7 +274,7 @@ public class c {
     }
 
     private void a(com.uzmap.pkg.uzsocket.f.c data) {
-        if (com.uzmap.pkg.uzcore.b.a().i()) {
+        if (ApplicationProcess.initialize().i()) {
             if (101 == data.b) {
                 this.e.a(this.a, this.b);
             } else {

@@ -32,10 +32,10 @@ public class AssetsUtil {
     protected static Hashtable<String, String> i;
 
     static {
-        m = com.uzmap.pkg.uzcore.external.l.a >= 11 ? k : l + com.uzmap.pkg.uzcore.d.a().b() + j;
+        m = com.uzmap.pkg.uzcore.external.l.SDK_INT >= 11 ? k : l + com.uzmap.pkg.uzcore.d.a().b() + j;
         n = "file";
         o = "file://";
-        p = com.uzmap.pkg.uzcore.external.l.a >= 11 ? n : o;
+        p = com.uzmap.pkg.uzcore.external.l.SDK_INT >= 11 ? n : o;
         f = "momenc";
         g = "UTF-8";
         q = "widget/res/key.xml";
@@ -87,7 +87,7 @@ public class AssetsUtil {
             return url;
         } else {
             String finalDir;
-            if (com.uzmap.pkg.uzcore.external.l.a > 10) {
+            if (com.uzmap.pkg.uzcore.external.l.SDK_INT > 10) {
                 finalDir = UZFileSystem.get().getExtStorageDir();
                 int index = url.indexOf(finalDir);
                 if (index > 0) {

@@ -47,7 +47,7 @@ public abstract class a extends Dialog implements OnShowListener, OnItemClickLis
         Window window = this.getWindow();
         window.setBackgroundDrawableResource(17170445);
         window.setGravity(87);
-        if (com.uzmap.pkg.uzcore.external.l.a >= 14) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 14) {
             window.setDimAmount(0.4F);
         }
 

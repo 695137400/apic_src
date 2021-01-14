@@ -3,16 +3,16 @@ package com.uzmap.pkg.openapi;
 import android.app.Application;
 import android.content.Context;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.b;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 
 public class APICloud {
     private Application a;
-    private b b;
+    private ApplicationProcess b;
     private static APICloud c;
 
     private APICloud(Context context) {
         this.a = (Application) context.getApplicationContext();
-        this.b = com.uzmap.pkg.uzcore.b.a(UZCoreUtil.isMainProcess(context));
+        this.b = ApplicationProcess.initialize(UZCoreUtil.isMainProcess(context));
         this.b.a(this.a);
     }
 

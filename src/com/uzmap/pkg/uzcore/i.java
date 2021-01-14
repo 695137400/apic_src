@@ -65,7 +65,7 @@ public class i extends com.uzmap.pkg.uzcore.external.bb.g {
    }
 
    public void d() {
-      this.d.a(this.c.z);
+      this.d.a(this.c.url);
    }
 
    protected void onAnimationEnd() {

@@ -2,6 +2,7 @@ package com.uzmap.pkg.uzkit.a.aa;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 
@@ -128,7 +129,7 @@ public final class a {
     }
 
     public final synchronized void b(ApiConfig wgtInfo) {
-        if (!com.uzmap.pkg.uzcore.b.a().o() && com.uzmap.pkg.uzcore.b.a().h()) {
+        if (!ApplicationProcess.initialize().o() && ApplicationProcess.initialize().h()) {
             if (!this.e() && this.f()) {
                 this.e.a(wgtInfo);
             }

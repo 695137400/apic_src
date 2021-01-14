@@ -1,6 +1,7 @@
 package com.uzmap.pkg.uzcore.uzmodule;
 
 import android.webkit.WebView;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.external.l;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZCoreModule;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZSynModule;
@@ -29,7 +30,7 @@ public final class b {
         moduleName = this.b.getModuleName();
         bridge.addJavascriptInterface(this.b, moduleName);
         this.c.put(moduleName, this.b);
-        com.uzmap.pkg.uzcore.b app = com.uzmap.pkg.uzcore.b.a();
+        ApplicationProcess app = ApplicationProcess.initialize();
         PluginModule moduleParser = app.e();
         if (moduleParser != null) {
             this.d = moduleParser.a();
@@ -95,7 +96,7 @@ public final class b {
             module.destroy();
         }
 
-        if (l.a >= 11) {
+        if (l.SDK_INT >= 11) {
             String name = this.a.getModuleName();
             view.removeJavascriptInterface(name);
             name = this.b.getModuleName();

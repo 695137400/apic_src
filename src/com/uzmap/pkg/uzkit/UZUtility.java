@@ -20,7 +20,7 @@ import android.util.Base64;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsUtil;
-import com.uzmap.pkg.uzcore.b;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 import com.uzmap.pkg.uzcore.external.l;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
@@ -44,7 +44,7 @@ public class UZUtility {
    }
 
    public static String getExternalCacheDir() {
-      File external = b.a().b().getExternalCacheDir();
+      File external = ApplicationProcess.initialize().b().getExternalCacheDir();
       return external != null ? external.getAbsolutePath() + File.separator : null;
    }
 
@@ -154,7 +154,7 @@ public class UZUtility {
             if ("content".equals(schame)) {
                appId = "_data";
                String[] proj = new String[]{appId};
-               ContentResolver cr = b.a().b().getContentResolver();
+               ContentResolver cr = ApplicationProcess.initialize().b().getContentResolver();
                Cursor cursor = cr.query(uri, proj, null, null, null);
                if (cursor != null) {
                   try {
@@ -220,7 +220,7 @@ public class UZUtility {
          int duration = 0;
          Uri video = Uri.parse(uri);
          String schame = video.getScheme();
-         Context context = b.a().b();
+         Context context = ApplicationProcess.initialize().b();
          if ("content".equals(schame)) {
             String durationcolumns = "duration";
             String[] proj = new String[]{durationcolumns};
@@ -242,7 +242,7 @@ public class UZUtility {
       } else {
          Uri uri = Uri.parse(resurl);
          String schame = uri.getScheme();
-         Context context = b.a().b();
+         Context context = ApplicationProcess.initialize().b();
          if ("content".equals(schame)) {
             return context.getContentResolver().openInputStream(uri);
          } else if ("file".equals(schame)) {
@@ -332,7 +332,7 @@ public class UZUtility {
          String url = makeRealPath(drawableStr, wgtInfo);
          Bitmap bitmap = UzResourceCache.get().getImage(url);
          if (bitmap != null) {
-            return new BitmapDrawable(b.a().b().getResources(), bitmap);
+            return new BitmapDrawable(ApplicationProcess.initialize().b().getResources(), bitmap);
          }
       }
 
@@ -398,7 +398,7 @@ public class UZUtility {
    }
 
    public static Context getBaseContext() {
-      return b.a().b();
+      return ApplicationProcess.initialize().b();
    }
 
    public static int dipToPix(int dip) {
@@ -458,7 +458,7 @@ public class UZUtility {
    }
 
    public static String formatFileSize(long size) {
-      return Formatter.formatFileSize(b.a().b(), size);
+      return Formatter.formatFileSize(ApplicationProcess.initialize().b(), size);
    }
 
    public static boolean unzip(String archive, String targetPath) {

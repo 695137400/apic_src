@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.n;
 import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
@@ -34,7 +35,7 @@ public class e extends Handler {
     private final Context a;
     private Activity b;
     private boolean c;
-    private final com.uzmap.pkg.uzcore.b d;
+    private final ApplicationProcess d;
     private final com.uzmap.pkg.uzkit.a.aa.a e;
     private final c f;
     private ProgressDialog g;
@@ -44,7 +45,7 @@ public class e extends Handler {
     private e(Context context) {
         super(Looper.getMainLooper());
         this.a = context;
-        this.d = com.uzmap.pkg.uzcore.b.a();
+        this.d = ApplicationProcess.initialize();
         this.f = com.uzmap.pkg.uzkit.a.c.a(context);
         this.e = com.uzmap.pkg.uzkit.a.aa.a.a(context);
     }
@@ -628,7 +629,7 @@ public class e extends Handler {
             deviceInfo.put("resolution", resolution);
             deviceInfo.put("width", sw);
             deviceInfo.put("height", sh);
-            String connectedType = com.uzmap.pkg.uzcore.b.a().c();
+            String connectedType = ApplicationProcess.initialize().c();
             deviceInfo.put("connectedType", connectedType);
             deviceInfo.put("deviceId", UZCoreUtil.getDeviceId());
             deviceInfo.put("longitude", asp.b("last_lat", "0.0"));

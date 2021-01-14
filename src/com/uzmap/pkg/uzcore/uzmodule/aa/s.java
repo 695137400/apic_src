@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
@@ -27,7 +28,7 @@ public class s extends b {
     public boolean F;
     public String G;
     static {
-        x = com.uzmap.pkg.uzcore.external.l.a >= 21 ? 100 : (com.uzmap.pkg.uzcore.external.l.a >= 14 ? 0 : 10);
+        x = com.uzmap.pkg.uzcore.external.l.SDK_INT >= 21 ? 100 : (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 14 ? 0 : 10);
     }
     public boolean I;
     public boolean J;
@@ -129,7 +130,7 @@ public class s extends b {
 
                 Bitmap bitmap = UzResourceCache.get().getImage(bgUrl);
                 if (bitmap != null) {
-                    drawable = new BitmapDrawable(com.uzmap.pkg.uzcore.b.a().b().getResources(), bitmap);
+                    drawable = new BitmapDrawable(ApplicationProcess.initialize().b().getResources(), bitmap);
                 } else {
                     drawable = new ColorDrawable(com.uzmap.pkg.uzcore.external.l.c);
                 }

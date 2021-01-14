@@ -23,10 +23,10 @@ public class s extends WebViewClient {
     }
 
     static s a(Activity context) {
-        if (com.uzmap.pkg.uzcore.external.l.a < 11) {
+        if (com.uzmap.pkg.uzcore.external.l.SDK_INT < 11) {
             return new s(context, null);
         } else {
-            return com.uzmap.pkg.uzcore.external.l.a < 21 ? new t(context, null) : new u(context, null);
+            return com.uzmap.pkg.uzcore.external.l.SDK_INT < 21 ? new t(context, null) : new u(context, null);
         }
     }
 
@@ -47,7 +47,7 @@ public class s extends WebViewClient {
                 url = AssetsUtil.getFinalDir(url);
             }
 
-            if (com.uzmap.pkg.uzcore.external.l.a >= 11 && view.isPrivateBrowsingEnabled()) {
+            if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 11 && view.isPrivateBrowsingEnabled()) {
                 return false;
             } else {
                 return !URLUtil.isValidUrl(url) || this.e.b((a) view, url);

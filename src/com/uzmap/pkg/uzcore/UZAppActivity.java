@@ -49,7 +49,7 @@ public abstract class UZAppActivity extends ActivityGroup {
             UZAppActivity.this.removeLaunchView(false, null);
         }
     };
-    private final com.uzmap.pkg.uzcore.b.bcl o = new com.uzmap.pkg.uzcore.b.bcl() {
+    private final ApplicationProcess.bcl o = new ApplicationProcess.bcl() {
         public void a(boolean success, ApiConfig entity, String msg) {
             if (this.a() != null) {
                 entity = entity.e(this.a());
@@ -65,7 +65,7 @@ public abstract class UZAppActivity extends ActivityGroup {
                 wgtInfo = UZAppActivity.this.g.g();
             }
 
-            com.uzmap.pkg.uzcore.b.a().b(wgtInfo);
+            ApplicationProcess.initialize().b(wgtInfo);
             com.uzmap.pkg.uzcore.c.a(UZAppActivity.this.q, 180000L);
         }
     };
@@ -100,7 +100,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         } else {
             this.n = Thread.currentThread();
             this.initializeNativeUI();
-            com.uzmap.pkg.uzcore.b delegate = com.uzmap.pkg.uzcore.b.a();
+            ApplicationProcess delegate = ApplicationProcess.initialize();
             delegate.a(this);
             delegate.a(new b(null));
             delegate.a(new c(null));
@@ -112,7 +112,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         this.e = new com.uzmap.pkg.uzcore.external.bb.e(this, null);
         this.e.a(new UZAppActivity.d());
         this.setContentView(this.e, com.uzmap.pkg.uzcore.external.l.a(com.uzmap.pkg.uzcore.external.l.d, com.uzmap.pkg.uzcore.external.l.d));
-        ApiConfig entity = com.uzmap.pkg.uzcore.b.a().f();
+        ApiConfig entity = ApplicationProcess.initialize().f();
         if (entity != null && entity.R) {
             com.uzmap.pkg.uzcore.external.l.b(this);
         }
@@ -158,7 +158,7 @@ public abstract class UZAppActivity extends ActivityGroup {
             this.g.b(UZCoreUtil.parseAppParam(this.getIntent()));
             this.g.a(entity);
             this.g.h();
-            com.uzmap.pkg.uzcore.b.a().a(entity);
+            ApplicationProcess.initialize().a(entity);
         }
     }
 
@@ -268,10 +268,10 @@ public abstract class UZAppActivity extends ActivityGroup {
 
             if (!this.isModuleRunning()) {
                 com.uzmap.pkg.uzcore.c.a(this.q);
-                com.uzmap.pkg.uzcore.b.a().r();
+                ApplicationProcess.initialize().r();
             }
 
-            com.uzmap.pkg.uzcore.b.a().c(this);
+            ApplicationProcess.initialize().c(this);
         }
     }
 
@@ -293,7 +293,7 @@ public abstract class UZAppActivity extends ActivityGroup {
     public void finish() {
         super.finish();
         if (!this.l) {
-            com.uzmap.pkg.uzcore.b.a().d(this);
+            ApplicationProcess.initialize().d(this);
         }
 
     }
@@ -310,11 +310,11 @@ public abstract class UZAppActivity extends ActivityGroup {
     }
 
     public final void registerUPnsListener(UPnsListener listener) {
-        com.uzmap.pkg.uzcore.b.a().a(listener);
+        ApplicationProcess.initialize().a(listener);
     }
 
     public final void unRegisterUPnsListener(UPnsListener listener) {
-        com.uzmap.pkg.uzcore.b.a().b(listener);
+        ApplicationProcess.initialize().b(listener);
     }
 
     private void setModuleRunning(boolean flag) {
@@ -351,12 +351,12 @@ public abstract class UZAppActivity extends ActivityGroup {
         super.onResume();
         this.k = true;
         if (!this.isModuleRunning()) {
-            com.uzmap.pkg.uzcore.b.a().s();
+            ApplicationProcess.initialize().s();
             com.uzmap.pkg.uzcore.c.a(this.q, 180000L);
         }
 
         this.setModuleRunning(false);
-        com.uzmap.pkg.uzcore.b.a().b(this);
+        ApplicationProcess.initialize().b(this);
     }
 
     private final void finishAppImmediately() {
@@ -375,7 +375,7 @@ public abstract class UZAppActivity extends ActivityGroup {
 
         this.j.clear();
         if (!this.isFromNativeSDK()) {
-            com.uzmap.pkg.uzcore.b.a().q();
+            ApplicationProcess.initialize().q();
             Runtime.getRuntime().gc();
         }
     }
@@ -749,7 +749,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         }
 
         public void a(double lat, double log, String widgetId) {
-            com.uzmap.pkg.uzcore.b.a().a(lat, log, widgetId);
+            ApplicationProcess.initialize().a(lat, log, widgetId);
         }
 
         public void a(String title, String msg, String btnText) {
@@ -778,7 +778,7 @@ public abstract class UZAppActivity extends ActivityGroup {
                     }
                 }
 
-                com.uzmap.pkg.uzcore.b.a().a(UZAppActivity.this.o);
+                ApplicationProcess.initialize().a(UZAppActivity.this.o);
             }
         }
     }

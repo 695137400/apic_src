@@ -3,6 +3,7 @@ package com.uzmap.pkg.uzkit.fineHttp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
 
 public class UZHttpClient {
@@ -16,7 +17,7 @@ public class UZHttpClient {
             if (!TransitionPhase) {
                 instance = new UZHttpClient();
             } else {
-                instance = new m(com.uzmap.pkg.uzcore.b.a().b(), null);
+                instance = new m(ApplicationProcess.initialize().b(), null);
             }
         }
 

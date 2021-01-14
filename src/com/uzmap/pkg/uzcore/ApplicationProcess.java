@@ -3,6 +3,7 @@ package com.uzmap.pkg.uzcore;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import com.uzmap.pkg.uzapp.ApiExceptionHandler;
 import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.aa.AssetsUtil;
@@ -19,37 +20,37 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 
-public class b {
+public class ApplicationProcess {
     public static boolean a = true;
-    private static com.uzmap.pkg.uzcore.b i;
+    private static ApplicationProcess process;
     private PluginModule b;
     private com.uzmap.pkg.uzcore.aa.h c;
     private Application d;
-    private List<ApplicationDelegate> e;
+    private List<ApplicationDelegate> e; // ApplicationProcess
     private UZPlatformBridge f;
     private com.uzmap.pkg.uzkit.a.e g;
     private final boolean h;
-    private ApiConfig j;
+    private ApiConfig apiConfig;
     private ApiConfig k;
 
-    private b(boolean isFromMainProcess) {
+    private ApplicationProcess(boolean isFromMainProcess) {
         this.h = isFromMainProcess;
     }
 
-    public static com.uzmap.pkg.uzcore.b a() {
-        if (i == null) {
+    public static ApplicationProcess initialize() {
+        if (process == null) {
             throw new IllegalAccessError("Application do not createInstance");
         } else {
-            return i;
+            return process;
         }
     }
 
-    public static com.uzmap.pkg.uzcore.b a(boolean isFromMainProcess) {
-        if (i == null) {
-            i = new com.uzmap.pkg.uzcore.b(isFromMainProcess);
+    public static ApplicationProcess initialize(boolean isFromMainProcess) {
+        if (process == null) {
+            process = new ApplicationProcess(isFromMainProcess);
         }
 
-        return i;
+        return process;
     }
 
     public void a(Application context) {
@@ -70,8 +71,8 @@ public class b {
     }
 
     private void t() {
-        com.uzmap.pkg.uzapp.f.a();
-        com.uzmap.pkg.uzcore.d.a(this.d);
+        ApiExceptionHandler.initialize();
+        com.uzmap.pkg.uzcore.d.create(this.d);
         UZFileSystem.initialize(this.d);
         UZResourcesIDFinder.init(this.d);
         if (this.h) {
@@ -83,10 +84,10 @@ public class b {
     }
 
     public final void a(bcl callback) {
-        if (this.j != null && this.j.z != null) {
-            callback.a(true, this.j, null);
+        if (this.apiConfig != null && this.apiConfig.url != null) {
+            callback.a(true, this.apiConfig, null);
         } else {
-            (new com.uzmap.pkg.uzcore.b.a(callback)).start();
+            (new ApplicationProcess.a(callback)).start();
         }
 
     }
@@ -95,7 +96,7 @@ public class b {
         boolean s = n.b();
         ApiConfig assetEntity = ApiConfigUtil.getConfig(s);
         this.k = assetEntity;
-        this.b(assetEntity != null && assetEntity.O);
+        this.initialize(assetEntity != null && assetEntity.O);
         if (PropertiesUtil.o()) {
             ApiConfig ls = ApiConfigUtil.getConfig(assetEntity.r, s);
             if (ls != null) {
@@ -103,7 +104,7 @@ public class b {
                 ls.r = id;
             }
 
-            this.j = ls;
+            this.apiConfig = ls;
             return ls;
         } else {
             if (!UZCoreUtil.isDebug && assetEntity != null && assetEntity.N) {
@@ -119,7 +120,7 @@ public class b {
                 }
             }
 
-            this.j = assetEntity;
+            this.apiConfig = assetEntity;
             return assetEntity;
         }
     }
@@ -211,7 +212,7 @@ public class b {
 
     public final PluginModule e() {
         if (this.b == null) {
-            this.b(false);
+            this.initialize(false);
         }
 
         return this.b;
@@ -265,7 +266,7 @@ public class b {
         if (PropertiesUtil.a()) {
             return false;
         } else if (PropertiesUtil.o()) {
-            return this.j != null && this.j.S;
+            return this.apiConfig != null && this.apiConfig.S;
         } else {
             return com.uzmap.pkg.uzcore.d.a().c();
         }
@@ -287,14 +288,14 @@ public class b {
 
     public final void r() {
         if (this.g != null) {
-            this.g.b(this.j);
+            this.g.b(this.apiConfig);
         }
 
     }
 
     public final void s() {
         if (this.g != null) {
-            this.g.a(this.j);
+            this.g.a(this.apiConfig);
         }
 
     }
@@ -308,7 +309,7 @@ public class b {
 
     public void a(Context context) {
         this.v();
-        AppInfo info = this.j != null ? this.j.h() : null;
+        AppInfo info = this.apiConfig != null ? this.apiConfig.initAppInfo() : null;
         Iterator var4 = this.e.iterator();
 
         while (var4.hasNext()) {
@@ -321,7 +322,7 @@ public class b {
 
     public void b(Activity activity) {
         this.v();
-        AppInfo info = this.j != null ? this.j.h() : null;
+        AppInfo info = this.apiConfig != null ? this.apiConfig.initAppInfo() : null;
         Iterator var4 = this.e.iterator();
 
         while (var4.hasNext()) {
@@ -334,7 +335,7 @@ public class b {
 
     public void c(Activity activity) {
         this.v();
-        AppInfo info = this.j != null ? this.j.h() : null;
+        AppInfo info = this.apiConfig != null ? this.apiConfig.initAppInfo() : null;
         Iterator var4 = this.e.iterator();
 
         while (var4.hasNext()) {
@@ -347,7 +348,7 @@ public class b {
 
     public void d(Activity activity) {
         this.v();
-        AppInfo info = this.j != null ? this.j.h() : null;
+        AppInfo info = this.apiConfig != null ? this.apiConfig.initAppInfo() : null;
         Iterator var4 = this.e.iterator();
 
         while (var4.hasNext()) {
@@ -396,12 +397,12 @@ public class b {
             ApiConfig entity = null;
             String msg = null;
             ApiConfig as = u();
-            if (as != null && as.z != null) {
+            if (as != null && as.url != null) {
                 success = true;
                 entity = as;
             } else if (k != null && PropertiesUtil.o()) {
                 msg = "调试路径下未找到id为：\n" + k.r + "\n的项目\n" + "请确认本项目config文件中id是否与服务器端一致";
-            } else if (!com.uzmap.pkg.uzcore.b.a) {
+            } else if (!ApplicationProcess.a) {
                 msg = "应用签名被篡改";
             } else {
                 msg = "无法解析config文件";

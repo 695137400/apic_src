@@ -83,11 +83,11 @@ public class UZCoreUtil {
    }
 
    public static boolean checkPermission(String permission) {
-      return com.uzmap.pkg.uzcore.b.a().b().checkPermission(permission, Process.myPid(), Process.myUid()) == 0;
+      return ApplicationProcess.initialize().b().checkPermission(permission, Process.myPid(), Process.myUid()) == 0;
    }
 
    public static boolean appExist(Intent intent) {
-      PackageManager pmgr = com.uzmap.pkg.uzcore.b.a().b().getPackageManager();
+      PackageManager pmgr = ApplicationProcess.initialize().b().getPackageManager();
       List<ResolveInfo> list = pmgr.queryIntentActivities(intent, 0);
       return list != null && list.size() > 0;
    }
@@ -97,7 +97,7 @@ public class UZCoreUtil {
          return false;
       } else {
          try {
-            PackageManager pmgr = com.uzmap.pkg.uzcore.b.a().b().getPackageManager();
+            PackageManager pmgr = ApplicationProcess.initialize().b().getPackageManager();
             ApplicationInfo info = pmgr.getApplicationInfo(packageName, 8192);
             if (info != null) {
                return true;
@@ -498,7 +498,7 @@ public class UZCoreUtil {
             deviceId = result;
             return result;
          } else {
-            Context context = com.uzmap.pkg.uzcore.b.a().b();
+            Context context = ApplicationProcess.initialize().b();
 
             try {
                TelephonyManager tMgr = null;
@@ -596,7 +596,7 @@ public class UZCoreUtil {
 
    public static int getConnectedType() {
       checkPermission();
-      Context context = com.uzmap.pkg.uzcore.b.a().b();
+      Context context = ApplicationProcess.initialize().b();
       ConnectivityManager cManager = (ConnectivityManager) context.getSystemService("connectivity");
       NetworkInfo nInfo = cManager.getActiveNetworkInfo();
       if (nInfo != null && nInfo.isAvailable()) {
@@ -693,8 +693,8 @@ public class UZCoreUtil {
          if (dir.isDirectory() && dir.canWrite()) {
             try {
                StatFs stat = new StatFs(DIRECTORY);
-               long available = com.uzmap.pkg.uzcore.external.l.a >= 18 ? stat.getAvailableBlocksLong() : (long) stat.getAvailableBlocks();
-               long blockSize = com.uzmap.pkg.uzcore.external.l.a >= 18 ? stat.getBlockSizeLong() : (long) stat.getBlockSize();
+               long available = com.uzmap.pkg.uzcore.external.l.SDK_INT >= 18 ? stat.getAvailableBlocksLong() : (long) stat.getAvailableBlocks();
+               long blockSize = com.uzmap.pkg.uzcore.external.l.SDK_INT >= 18 ? stat.getBlockSizeLong() : (long) stat.getBlockSize();
                return available * blockSize;
             } catch (Exception var8) {
                var8.printStackTrace();
@@ -736,7 +736,7 @@ public class UZCoreUtil {
 
    public static final boolean SIMCardReady() {
       checkPermission();
-      Context context = com.uzmap.pkg.uzcore.b.a().b();
+      Context context = ApplicationProcess.initialize().b();
       TelephonyManager telephonyMgr = (TelephonyManager) context.getSystemService("phone");
       int simState = telephonyMgr.getSimState();
       switch (simState) {
@@ -802,7 +802,7 @@ public class UZCoreUtil {
 
    public static String getMobileOperatorName() {
       String name = "unknown";
-      Context context = com.uzmap.pkg.uzcore.b.a().b();
+      Context context = ApplicationProcess.initialize().b();
       TelephonyManager telephonyMgr = (TelephonyManager) context.getSystemService("phone");
       if (telephonyMgr.getSimState() == 5) {
          String imsi = telephonyMgr.getNetworkOperator();
@@ -889,7 +889,7 @@ public class UZCoreUtil {
          }
 
          String action = "android.intent.action.VIEW";
-         int var10000 = com.uzmap.pkg.uzcore.external.l.a;
+         int var10000 = com.uzmap.pkg.uzcore.external.l.SDK_INT;
          Intent intent = new Intent(action);
          String mime = getMimeType("apk");
          reallyPath = reallyPath.startsWith("file://") ? reallyPath : "file://" + reallyPath;

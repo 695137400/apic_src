@@ -393,7 +393,7 @@ public class g extends FrameLayout {
         if (!this.w()) {
             this.u();
             if (this.t()) {
-                int var10000 = com.uzmap.pkg.uzcore.external.l.a;
+                int var10000 = com.uzmap.pkg.uzcore.external.l.SDK_INT;
             }
 
             Animation animation = args.b();
@@ -404,7 +404,7 @@ public class g extends FrameLayout {
                     }
 
                     g.this.clearAnimation();
-                    int var10000 = com.uzmap.pkg.uzcore.external.l.a;
+                    int var10000 = com.uzmap.pkg.uzcore.external.l.SDK_INT;
                     args.success(new JSONObject(), true);
                     g.this.v();
                 }

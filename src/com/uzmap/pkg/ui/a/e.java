@@ -4,6 +4,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.uzmodule.aa.k;
 import org.json.JSONObject;
 
@@ -22,7 +23,7 @@ public class e {
       }
 
       if (this.a == null) {
-         this.a = (SensorManager) com.uzmap.pkg.uzcore.b.a().b().getSystemService("sensor");
+         this.a = (SensorManager) ApplicationProcess.initialize().b().getSystemService("sensor");
       }
 
       if (this.a == null) {
