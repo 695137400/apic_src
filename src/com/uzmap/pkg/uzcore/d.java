@@ -84,10 +84,10 @@ public class d {
     public int y;
 
     private d(Context context) {
-        this.initialization(context);
+        this.b(context);
     }
 
-    public static d create(Context context) {
+    public static d a(Context context) {
         if (B == null) {
             B = new d(context);
         }
@@ -107,7 +107,7 @@ public class d {
         return this.t.versionName.equals("0.0.0");
     }
 
-    private void initialization(Context context) {
+    private void b(Context context) {
         Resources resources = context.getResources();
         DisplayMetrics dispm = resources.getDisplayMetrics();
         this.k = dispm.heightPixels;
@@ -115,30 +115,31 @@ public class d {
         this.n = dispm.density;
         this.o = dispm.densityDpi;
         this.r = ViewConfiguration.get(context).getScaledTouchSlop();
-        this.initStatusBar(context);
-        this.s = this.initSmartBar();
+        this.c(context);
+        this.s = this.f();
         this.l = this.k - this.p;
         this.q = (int) (45.0F * this.n);
-        this.initUi(context);
-        this.initIcon(context);
-        this.initAppVersion();
-        this.initDevice(context);
+        this.d(context);
+        this.e(context);
+        this.e();
+        this.f(context);
     }
 
-    private final void initStatusBar(Context context) {
+    private final void c(Context context) {
+        boolean var5 = false;
+
         try {
             Class<?> classl = Class.forName("com.android.internal.R$dimen");
             Object dimen = classl.newInstance();
             Field field = classl.getField("status_bar_height");
             int dimenH = Integer.parseInt(field.get(dimen).toString());
             this.p = context.getResources().getDimensionPixelSize(dimenH);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception var7) {
         }
 
     }
 
-    private void initUi(Context context) {
+    private void d(Context context) {
         String pkg = context.getPackageName();
         PackageManager pkm = context.getPackageManager();
         char flags = '\uffff';
@@ -150,7 +151,7 @@ public class d {
             var7.printStackTrace();
         }
 
-        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 13) {
+        if (com.uzmap.pkg.uzcore.external.l.a >= 13) {
             UiModeManager uiModeManager = (UiModeManager) context.getSystemService("uimode");
             int type = uiModeManager.getCurrentModeType();
             if (type == 4) {
@@ -160,7 +161,7 @@ public class d {
 
     }
 
-    private void initIcon(Context context) {
+    private void e(Context context) {
         String packageName = context.getPackageName();
         Resources resources = context.getResources();
         this.w = this.applicationInfo.icon;
@@ -168,7 +169,7 @@ public class d {
         this.y = resources.getIdentifier("uz_pull_down_refresh_arrow", "drawable", packageName);
     }
 
-    private void initAppVersion() {
+    private void e() {
         try {
             if ("sdk".equals(PropertiesUtil.r())) {
                 j = true;
@@ -215,7 +216,7 @@ public class d {
         return (var10000.flags &= 2) != 0;
     }
 
-    private boolean initSmartBar() {
+    private boolean f() {
         try {
             Method method = Class.forName("android.os.Build").getMethod("hasSmartBar");
             return (Boolean) method.invoke(null);
@@ -224,8 +225,8 @@ public class d {
         }
     }
 
-    private void initDevice(Context context) {
-        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 11) {
+    private void f(Context context) {
+        if (com.uzmap.pkg.uzcore.external.l.a >= 11) {
             String fingerprint = Build.FINGERPRINT != null ? Build.FINGERPRINT.toLowerCase() : "";
             Iterator var4 = C.iterator();
 

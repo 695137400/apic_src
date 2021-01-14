@@ -21,7 +21,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.webkit.WebView;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.external.bb.g.a;
 
 import java.lang.reflect.Method;
@@ -29,7 +28,7 @@ import java.util.HashMap;
 
 public class l {
    static final HashMap<Integer, Integer> h;
-   public static int SDK_INT;
+   public static int a;
    public static int b;
    public static int c;
    public static int d;
@@ -39,12 +38,12 @@ public class l {
    static Method i;
 
    static {
-      SDK_INT = VERSION.SDK_INT;
-      b = SDK_INT < 11 ? 0 : 4;
-      c = SDK_INT < 16 ? 0 : 16777216;
+      a = VERSION.SDK_INT;
+      b = a < 11 ? 0 : 4;
+      c = a < 16 ? 0 : 16777216;
       d = -1;
       e = -2;
-      f = SDK_INT >= 10 ? 3 : 3;
+      f = a >= 10 ? 3 : 3;
       g = new Paint();
       g.setAlpha(255);
       h = new HashMap();
@@ -91,7 +90,7 @@ public class l {
    }
 
    public static void a(View view, Drawable background) {
-      if (SDK_INT >= 16) {
+      if (a >= 16) {
          view.setBackground(background);
       } else {
          view.setBackgroundDrawable(background);
@@ -188,7 +187,7 @@ public class l {
    public static Intent a() {
       Intent intent = new Intent("android.intent.action.PICK");
       intent.setData(Phone.CONTENT_URI);
-      if (SDK_INT < 11) {
+      if (a < 11) {
          intent.setData(Contacts.CONTENT_URI);
       }
 
@@ -253,18 +252,18 @@ public class l {
 
    public static void a(Activity a) {
       Window w = a.getWindow();
-      if (ApplicationProcess.initialize().m()) {
+      if (com.uzmap.pkg.uzcore.b.a().m()) {
          w.setBackgroundDrawableResource(17170445);
       }
 
-      if (l.SDK_INT >= 21) {
+      if (l.a >= 21) {
          w.setStatusBarColor(-16777216);
       }
 
    }
 
    public static void b(final Activity a) {
-      if (l.SDK_INT >= 19) {
+      if (l.a >= 19) {
          Runnable action = new Runnable() {
             public void run() {
                l.e(a);
@@ -275,7 +274,7 @@ public class l {
    }
 
    public static void a(final Activity a, final int color) {
-      if (l.SDK_INT >= 21) {
+      if (l.a >= 21) {
          Runnable action = new Runnable() {
             public void run() {
                l.c(a, color);
@@ -311,16 +310,16 @@ public class l {
       visibility = visibility | 1024;
       w.getDecorView().setSystemUiVisibility(visibility);
       int aflag = 0;
-      if (l.SDK_INT >= 21) {
+      if (l.a >= 21) {
          aflag |= -2147483648;
       }
 
-      if (l.SDK_INT < 21) {
+      if (l.a < 21) {
          aflag |= 67108864;
       }
 
       w.addFlags(aflag);
-      if (l.SDK_INT >= 21) {
+      if (l.a >= 21) {
          w.setStatusBarColor(c);
       }
 
@@ -339,7 +338,7 @@ public class l {
    }
 
    public static void a(View view, int type) {
-      if (SDK_INT >= 11) {
+      if (a >= 11) {
          view.setLayerType(type, g);
       }
    }

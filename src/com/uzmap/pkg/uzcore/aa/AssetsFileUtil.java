@@ -211,17 +211,17 @@ public class AssetsFileUtil {
     }
 
     public static void a(ApiConfig info) {
-        if (info != null && info.url != null && info.Q) {
+        if (info != null && info.z != null && info.Q) {
             String data = null;
 
             try {
-                data = c(info.url);
+                data = c(info.z);
             } catch (Exception var3) {
                 var3.printStackTrace();
             }
 
             if (data != null) {
-                info.url = data;
+                info.z = data;
             }
 
         }

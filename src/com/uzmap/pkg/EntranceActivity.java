@@ -7,6 +7,7 @@ import com.uzmap.pkg.uzcore.UZAppActivity;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 
 public final class EntranceActivity extends UZAppActivity {
+    static String a = "Decompile Is A Stupid Behavior";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

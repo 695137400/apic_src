@@ -3,20 +3,19 @@ package com.uzmap.pkg.uzapp;
 import android.app.Application;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 
 import java.util.Locale;
 
 public class UZApplication extends Application {
-    private ApplicationProcess a;
+    private com.uzmap.pkg.uzcore.b a;
     private Resources b;
     private static UZApplication c;
 
     public void onCreate() {
         super.onCreate();
         c = this;
-        this.a = ApplicationProcess.initialize(UZCoreUtil.isMainProcess(this));
+        this.a = com.uzmap.pkg.uzcore.b.a(UZCoreUtil.isMainProcess(this));
         this.a.a(this);
     }
 

@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzapp.PropertiesUtil;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.Enslecb;
@@ -46,7 +45,7 @@ public class ApiConfig implements Cloneable {
     public String w;
     public String x;
     public String y;
-    public String url;
+    public String z;
     public String A;
     public String B;
     public String C;
@@ -204,7 +203,7 @@ public class ApiConfig implements Cloneable {
                 String url = UZUtility.makeAbsUrl(this.y, res);
                 Bitmap bitmap = UzResourceCache.get().getImage(url);
                 if (bitmap != null) {
-                    drawable = new BitmapDrawable(ApplicationProcess.initialize().b().getResources(), bitmap);
+                    drawable = new BitmapDrawable(com.uzmap.pkg.uzcore.b.a().b().getResources(), bitmap);
                 }
             } else {
                 int color = UZCoreUtil.parseColor(res);
@@ -335,7 +334,7 @@ public class ApiConfig implements Cloneable {
         sb.append("\n");
         sb.append("authorHref: " + this.x);
         sb.append("\n");
-        sb.append("content: " + this.url);
+        sb.append("content: " + this.z);
         sb.append("\n");
         sb.append("access: " + this.A);
         sb.append("\n");
@@ -348,7 +347,7 @@ public class ApiConfig implements Cloneable {
         return this.W != null && featureName != null ? this.W.get(featureName) : null;
     }
 
-    public AppInfo initAppInfo() {
+    public AppInfo h() {
         if (this.aa != null) {
             return this.aa;
         } else {
@@ -384,11 +383,11 @@ public class ApiConfig implements Cloneable {
             resultInfo = (ApiConfig) this.clone();
         } catch (CloneNotSupportedException var5) {
             var5.printStackTrace();
-            this.url = newUrl;
+            this.z = newUrl;
             return this;
         }
 
-        resultInfo.url = newUrl;
+        resultInfo.z = newUrl;
         return resultInfo;
     }
 }

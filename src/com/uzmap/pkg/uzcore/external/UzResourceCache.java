@@ -7,7 +7,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.uzmap.pkg.ui.b.dd.c;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzkit.UZUtility;
 
 import java.io.File;
@@ -23,7 +22,7 @@ public class UzResourceCache {
 
     public static UzResourceCache get() {
         if (b == null) {
-            b = new UzResourceCache(ApplicationProcess.initialize().b());
+            b = new UzResourceCache(com.uzmap.pkg.uzcore.b.a().b());
         }
 
         return b;

@@ -2,6 +2,8 @@ package com.uzmap.pkg.uzcore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.text.TextUtils;
@@ -73,7 +75,7 @@ public class o extends com.uzmap.pkg.uzcore.external.bb.f implements com.uzmap.p
         this.addView(slidPane);
         slidPane.a(sargs.h);
         this.e = slidPane;
-        if (15 == com.uzmap.pkg.uzcore.external.l.SDK_INT) {
+        if (15 == com.uzmap.pkg.uzcore.external.l.a) {
             this.setLayerType(1, null);
         }
 

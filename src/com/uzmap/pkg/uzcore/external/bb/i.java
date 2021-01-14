@@ -11,7 +11,7 @@ public class i extends RelativeLayout {
    }
 
    public boolean post(Runnable action) {
-      if (l.SDK_INT >= 16) {
+      if (l.a >= 16) {
          this.postOnAnimation(action);
          return true;
       } else {
@@ -20,7 +20,7 @@ public class i extends RelativeLayout {
    }
 
    public boolean postDelayed(Runnable action, long delayMillis) {
-      if (l.SDK_INT >= 16) {
+      if (l.a >= 16) {
          this.postOnAnimationDelayed(action, delayMillis);
          return true;
       } else {

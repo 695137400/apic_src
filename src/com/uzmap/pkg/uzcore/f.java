@@ -29,12 +29,12 @@ public class f {
     private af g;
     private UZActivityResult h;
     private j i;
-    private final ApplicationProcess j;
+    private final b j;
     private String k;
 
     private f(Activity activity) {
         this.b = activity;
-        this.j = ApplicationProcess.initialize();
+        this.j = com.uzmap.pkg.uzcore.b.a();
         this.a = new d();
         this.a.init(activity);
     }
@@ -123,7 +123,7 @@ public class f {
     public void h() {
         if (this.i != null) {
             this.i.b();
-            if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 19) {
+            if (com.uzmap.pkg.uzcore.external.l.a >= 19) {
                 WebView.setWebContentsDebuggingEnabled(false);
                 v();
             }

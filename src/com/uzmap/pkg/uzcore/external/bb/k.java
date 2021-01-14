@@ -2,6 +2,7 @@ package com.uzmap.pkg.uzcore.external.bb;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
 import android.view.KeyEvent;
 import android.view.View;
@@ -65,7 +66,7 @@ public abstract class k extends WebView implements OnLongClickListener {
         this.setOnLongClickListener(this);
         this.setVerticalScrollbarOverlay(true);
         this.setHorizontalScrollbarOverlay(true);
-        if (l.SDK_INT >= 9) {
+        if (l.a >= 9) {
             this.setOverScrollMode(2);
         }
 
@@ -131,7 +132,7 @@ public abstract class k extends WebView implements OnLongClickListener {
 
     public final void J() {
         if (!this.H()) {
-            if (l.SDK_INT >= 11) {
+            if (l.a >= 11) {
                 super.onPause();
             } else {
                 try {
@@ -341,7 +342,7 @@ public abstract class k extends WebView implements OnLongClickListener {
     }
 
     public boolean post(Runnable action) {
-        if (l.SDK_INT >= 16) {
+        if (l.a >= 16) {
             this.postOnAnimation(action);
             return true;
         } else {
@@ -350,7 +351,7 @@ public abstract class k extends WebView implements OnLongClickListener {
     }
 
     public boolean postDelayed(Runnable action, long delayMillis) {
-        if (l.SDK_INT >= 16) {
+        if (l.a >= 16) {
             this.postOnAnimationDelayed(action, delayMillis);
             return true;
         } else {
@@ -392,7 +393,7 @@ public abstract class k extends WebView implements OnLongClickListener {
         }
 
         public void run() {
-            if (l.SDK_INT >= 19) {
+            if (l.a >= 19) {
                 k.this.evaluateJavascript(this.a, null);
             } else {
                 k.this.loadUrl("javascript:" + this.a);

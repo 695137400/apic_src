@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.support.v4.app.NotificationCompat.Builder;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.uzmodule.aa.l;
 import org.json.JSONArray;
@@ -40,7 +39,7 @@ public class c {
 
          String title = moduleContext.d();
          String content = moduleContext.e();
-         Context c = ApplicationProcess.initialize().b();
+         Context c = com.uzmap.pkg.uzcore.b.a().b();
          Builder builder = new Builder(c);
          builder.setContentTitle(title);
          builder.setContentText(content);
@@ -74,7 +73,7 @@ public class c {
    }
 
    public void a(int id) {
-      com.uzmap.pkg.uzapp.d.a().a(ApplicationProcess.initialize().b(), id);
+      com.uzmap.pkg.uzapp.d.a().a(com.uzmap.pkg.uzcore.b.a().b(), id);
    }
 
    protected int b(l moduleContext) {
@@ -113,7 +112,7 @@ public class c {
       }
 
       try {
-         notifyId = com.uzmap.pkg.uzcore.external.aa.c.a(ApplicationProcess.initialize().b(), hour, minutes, daysOfWeek, time, notify.toString());
+         notifyId = com.uzmap.pkg.uzcore.external.aa.c.a(com.uzmap.pkg.uzcore.b.a().b(), hour, minutes, daysOfWeek, time, notify.toString());
       } catch (Exception var14) {
          var14.printStackTrace();
       }

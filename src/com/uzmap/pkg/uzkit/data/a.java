@@ -3,7 +3,6 @@ package com.uzmap.pkg.uzkit.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.external.l;
 
 import java.util.Calendar;
@@ -133,7 +132,7 @@ public class a {
     }
 
     private void i() {
-        Context context = ApplicationProcess.initialize().b();
+        Context context = com.uzmap.pkg.uzcore.b.a().b();
         this.a = context.getSharedPreferences("UzAppStorage", l.b);
         this.b = this.a.edit();
     }

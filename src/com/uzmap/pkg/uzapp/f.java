@@ -11,35 +11,35 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ApiExceptionHandler implements UncaughtExceptionHandler {
-    private static ApiExceptionHandler handler;
-    private final UncaughtExceptionHandler exceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-    private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+public class f implements UncaughtExceptionHandler {
+    private static f c;
+    private final UncaughtExceptionHandler a = Thread.getDefaultUncaughtExceptionHandler();
+    private final DateFormat b = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
-    private ApiExceptionHandler() {
+    private f() {
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
-    public static void initialize() {
-        if (handler == null) {
-            handler = new ApiExceptionHandler();
+    public static void a() {
+        if (c == null) {
+            c = new f();
         }
 
     }
 
     public void uncaughtException(Thread thread, Throwable ex) {
-        if (!this.isSuccessful(ex)) {
-            this.exceptionHandler.uncaughtException(thread, ex);
+        if (!this.b(ex)) {
+            this.a.uncaughtException(thread, ex);
         }
 
     }
 
-    private boolean isSuccessful(Throwable ex) {
-        this.saveLog(ex);
+    private boolean b(Throwable ex) {
+        this.a(ex);
         return false;
     }
 
-    public void saveLog(Throwable ex) {
+    public void a(Throwable ex) {
         if (ex != null) {
             StringBuffer sb = new StringBuffer();
             Writer writer = new StringWriter();
@@ -79,7 +79,7 @@ public class ApiExceptionHandler implements UncaughtExceptionHandler {
                     dir.mkdirs();
                 }
 
-                String time = this.dateFormat.format(new Date());
+                String time = this.b.format(new Date());
                 String fileName = time + ".log";
 
                 try {

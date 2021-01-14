@@ -674,7 +674,7 @@ public class a extends UZWebView implements DownloadListener, p.a {
    }
 
    public void x() {
-      if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 11) {
+      if (com.uzmap.pkg.uzcore.external.l.a >= 11) {
          if (this.b(0) && this.getLayerType() != 0) {
             this.setLayerType(0, null);
          }
@@ -730,7 +730,7 @@ public class a extends UZWebView implements DownloadListener, p.a {
          }
 
          this.j.a(this);
-         if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 18) {
+         if (com.uzmap.pkg.uzcore.external.l.a >= 18) {
             this.loadUrl("about:blank");
          }
 

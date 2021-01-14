@@ -38,7 +38,7 @@ public class o implements OnCancelListener {
         confirm.setCancelable(true);
         confirm.setOnCancelListener(this);
         String[] buttons = this.b.e;
-        if (l.SDK_INT > 10) {
+        if (l.a > 10) {
             confirm.setNegativeButton(buttons[0], new OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     o.this.a(1, null);
@@ -94,7 +94,7 @@ public class o implements OnCancelListener {
         prompt.setView(input);
         prompt.setCancelable(true);
         prompt.setOnCancelListener(this);
-        if (l.SDK_INT > 10) {
+        if (l.a > 10) {
             prompt.setNegativeButton(buttons[0], new OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     o.this.a(1, input.getText().toString());

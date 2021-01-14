@@ -3,7 +3,10 @@ package com.uzmap.pkg.uzcore.uzmodule;
 import android.content.Intent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import com.uzmap.pkg.uzcore.*;
+import com.uzmap.pkg.uzcore.UZAppActivity;
+import com.uzmap.pkg.uzcore.UZWebView;
+import com.uzmap.pkg.uzcore.f;
+import com.uzmap.pkg.uzcore.m;
 import com.uzmap.pkg.uzcore.uzmodule.aa.o;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
 import com.uzmap.pkg.uzkit.UZUtility;
@@ -52,7 +55,7 @@ public abstract class UZModule implements UZActivityResult {
     }
 
     public String getSecureValue(String key) {
-        return ApplicationProcess.initialize().g().a(key);
+        return com.uzmap.pkg.uzcore.b.a().g().a(key);
     }
 
     public final boolean runOnUiThread(Runnable action) {

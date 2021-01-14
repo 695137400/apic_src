@@ -3,7 +3,6 @@ package com.uzmap.pkg.uzcore.external;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 
 public class p {
     private static p c;
@@ -11,7 +10,7 @@ public class p {
     private final Editor b;
 
     private p() {
-        Context context = ApplicationProcess.initialize().b();
+        Context context = com.uzmap.pkg.uzcore.b.a().b();
         this.a = context.getSharedPreferences("UzLocalStorage", l.b);
         this.b = this.a.edit();
     }

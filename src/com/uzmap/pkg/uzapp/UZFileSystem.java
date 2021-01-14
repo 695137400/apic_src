@@ -3,7 +3,6 @@ package com.uzmap.pkg.uzapp;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzkit.UZUtility;
 import org.json.JSONObject;
@@ -250,7 +249,7 @@ public class UZFileSystem {
     }
 
     private boolean recurAsset(String assetDir, String dir) {
-        Context context = ApplicationProcess.initialize().b();
+        Context context = com.uzmap.pkg.uzcore.b.a().b();
         AssetManager assetManager = context.getAssets();
         String[] files = null;
 

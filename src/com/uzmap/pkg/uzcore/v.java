@@ -21,13 +21,13 @@ public class v {
     public void a() {
         this.a.setFillEnabled(true);
         this.a.setFillAfter(true);
-        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 14) {
+        if (com.uzmap.pkg.uzcore.external.l.a >= 14) {
             this.a.setBackgroundColor(com.uzmap.pkg.uzcore.external.l.c);
         }
 
         this.a.setDetachWallpaper(false);
         this.a.setInterpolator(new AccelerateDecelerateInterpolator());
-        if (com.uzmap.pkg.uzcore.external.l.SDK_INT >= 14) {
+        if (com.uzmap.pkg.uzcore.external.l.a >= 14) {
             this.b.setBackgroundColor(com.uzmap.pkg.uzcore.external.l.c);
         }
 

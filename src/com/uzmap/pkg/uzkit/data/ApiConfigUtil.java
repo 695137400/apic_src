@@ -6,7 +6,6 @@ import android.util.Xml;
 import android.webkit.URLUtil;
 import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
@@ -147,12 +146,12 @@ public class ApiConfigUtil {
         String config = path + "config.xml";
 
         try {
-            Context context = ApplicationProcess.initialize().b();
+            Context context = com.uzmap.pkg.uzcore.b.a().b();
             InputStream input = context.getAssets().open(config);
             resultInfo = getConfig(input, s);
             input.close();
             if (resultInfo != null) {
-                String content = resultInfo.url;
+                String content = resultInfo.z;
                 String widgetRoot = "file:///android_asset/" + path;
                 if (content != null && !URLUtil.isValidUrl(content)) {
                     String abs = widgetRoot + "index.html";
@@ -160,7 +159,7 @@ public class ApiConfigUtil {
                 }
 
                 resultInfo.D = widgetRoot;
-                resultInfo.url = content;
+                resultInfo.z = content;
                 resultInfo.y = content;
                 resultInfo.C = widgetRoot + "icon";
                 resultInfo.j();
@@ -184,7 +183,7 @@ public class ApiConfigUtil {
                 resultInfo = getConfig(input, s);
                 input.close();
                 if (resultInfo != null) {
-                    String content = resultInfo.url;
+                    String content = resultInfo.z;
                     String wgtPath = wgtDir.getAbsolutePath();
                     String widgetRoot = "file://" + wgtPath + File.separator;
                     if (content != null && !URLUtil.isValidUrl(content)) {
@@ -192,7 +191,7 @@ public class ApiConfigUtil {
                         content = UZUtility.makeAbsUrl(abs, content);
                     }
 
-                    resultInfo.url = content;
+                    resultInfo.z = content;
                     resultInfo.y = content;
                     resultInfo.D = widgetRoot;
                     resultInfo.C = "file://" + wgtPath + File.separator + "icon";
@@ -257,7 +256,7 @@ public class ApiConfigUtil {
                             resultInfo.x = parser.getAttributeValue(null, "href");
                             resultInfo.v = parser.nextText();
                         } else if ("content".equals(localName)) {
-                            resultInfo.url = parser.getAttributeValue(null, "src");
+                            resultInfo.z = parser.getAttributeValue(null, "src");
                         } else if ("access".equals(localName)) {
                             resultInfo.B = parser.getAttributeValue(null, "origin");
                         } else if ("preference".equals(localName)) {

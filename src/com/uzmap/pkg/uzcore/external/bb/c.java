@@ -16,7 +16,6 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.uzmap.pkg.uzapp.PropertiesUtil;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.l;
@@ -76,7 +75,7 @@ public class c extends FrameLayout {
             this.addView(background);
         }
 
-        boolean showCopyRight = ApplicationProcess.initialize().p();
+        boolean showCopyRight = com.uzmap.pkg.uzcore.b.a().p();
         if (showCopyRight) {
             this.b = new c.a(context);
             backgroundPa = l.d(l.d, l.d);

@@ -44,7 +44,7 @@ public class p extends WebChromeClient implements UZActivityResult {
    }
 
    static p a(Activity context) {
-      return com.uzmap.pkg.uzcore.external.l.SDK_INT < 21 ? new p(context, null) : new q(context, null);
+      return com.uzmap.pkg.uzcore.external.l.a < 21 ? new p(context, null) : new q(context, null);
    }
 
    // $FF: synthetic method
@@ -223,7 +223,7 @@ public class p extends WebChromeClient implements UZActivityResult {
    }
 
    public void a(Context context, String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-      if (com.uzmap.pkg.uzcore.external.l.SDK_INT > 12) {
+      if (com.uzmap.pkg.uzcore.external.l.a > 12) {
          com.uzmap.pkg.ui.intent.a.a(this.a, url, userAgent, contentDisposition, mimetype);
       } else if (this.b == null) {
          Intent installIntent = new Intent("android.intent.action.VIEW");

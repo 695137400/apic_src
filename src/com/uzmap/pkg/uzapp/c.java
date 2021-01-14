@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Process;
 import android.text.TextUtils;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.external.Alarm;
 import com.uzmap.pkg.uzsocket.UPnsService;
@@ -30,11 +29,11 @@ public class c {
             String action = intent.getAction();
             UZCoreUtil.logi("UPnsReceiver onReceive: " + Process.myPid() + " , " + action);
             if ("android.intent.action.BOOT_COMPLETED".equals(action)) {
-                if (!ApplicationProcess.initialize().n()) {
+                if (!com.uzmap.pkg.uzcore.b.a().n()) {
                     UPnsService.a(context);
                 }
             } else if ("android.net.conn.CONNECTIVITY_CHANGE".equals(action)) {
-                if (!ApplicationProcess.initialize().n()) {
+                if (!com.uzmap.pkg.uzcore.b.a().n()) {
                     UPnsService.a(context);
                 }
             } else if ("android.intent.action.DOWNLOAD_COMPLETE".equals(action)) {

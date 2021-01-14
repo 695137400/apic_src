@@ -4,7 +4,6 @@ import android.content.Context;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
-import com.uzmap.pkg.uzcore.ApplicationProcess;
 import com.uzmap.pkg.uzcore.external.l;
 
 public class e {
@@ -20,11 +19,11 @@ public class e {
 
         this.a = CookieManager.getInstance();
         this.a.setAcceptCookie(true);
-        if (l.SDK_INT >= 12) {
+        if (l.a >= 12) {
             CookieManager.setAcceptFileSchemeCookies(true);
         }
 
-        if (l.SDK_INT < 21) {
+        if (l.a < 21) {
             this.a.removeSessionCookie();
             this.a.removeExpiredCookie();
         }
@@ -33,14 +32,14 @@ public class e {
 
     public static final synchronized e a() {
         if (c == null) {
-            c = new e(ApplicationProcess.initialize().b());
+            c = new e(com.uzmap.pkg.uzcore.b.a().b());
         }
 
         return c;
     }
 
     public final void b() {
-        if (l.SDK_INT < 21) {
+        if (l.a < 21) {
             if (this.b == null) {
                 return;
             }
@@ -53,7 +52,7 @@ public class e {
     }
 
     public final void c() {
-        if (l.SDK_INT < 21) {
+        if (l.a < 21) {
             if (this.b == null) {
                 return;
             }
@@ -64,7 +63,7 @@ public class e {
     }
 
     public final void a(WebView webview, boolean accept) {
-        if (l.SDK_INT >= 21) {
+        if (l.a >= 21) {
             this.a.setAcceptThirdPartyCookies(webview, accept);
         }
 
