@@ -15,9 +15,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.n;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.fineHttp.*;
 import com.uzmap.pkg.uzsocket.UPnsService;
@@ -59,12 +61,12 @@ public class e extends Handler {
         this.b = activity;
     }
 
-    public final void a(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void a(ApiConfig wgtInfo) {
         com.uzmap.pkg.uzkit.a.b.a("UZPlatform DisPatchAppResume");
         this.e.b();
     }
 
-    public final void b(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void b(ApiConfig wgtInfo) {
         com.uzmap.pkg.uzkit.a.b.a("UZPlatform DisPatchAppPause");
         this.e.a(wgtInfo);
     }
@@ -90,7 +92,7 @@ public class e extends Handler {
         this.h = callback;
     }
 
-    public final void c(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void c(ApiConfig wgtInfo) {
         if (this.d.j()) {
             this.f(wgtInfo);
         }
@@ -105,7 +107,7 @@ public class e extends Handler {
 
     }
 
-    private void e(final com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    private void e(final ApiConfig wgtInfo) {
         (new Thread("##Thread-" + Thread.currentThread().getId() + "##") {
             public void run() {
                 while (e.this.b()) {
@@ -172,7 +174,7 @@ public class e extends Handler {
         }).start();
     }
 
-    private void f(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    private void f(ApiConfig wgtInfo) {
         String widgetId = wgtInfo.r;
         String host = com.uzmap.pkg.uzkit.a.c.e;
         RequestParam argument = new RequestParam();
@@ -202,20 +204,20 @@ public class e extends Handler {
         UZHttpClient.get().execute(argument, callback);
     }
 
-    public final void d(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void d(ApiConfig wgtInfo) {
         this.e.b(wgtInfo);
     }
 
     public void a(double lat, double log, String widgetId) {
-        if (com.uzmap.pkg.uzapp.b.o()) {
+        if (PropertiesUtil.o()) {
             widgetId = "A6965066952332";
         }
 
         this.e.a(lat, log, widgetId);
     }
 
-    private void a(String result, com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
-        if (!com.uzmap.pkg.uzapp.b.o()) {
+    private void a(String result, ApiConfig wgtInfo) {
+        if (!PropertiesUtil.o()) {
             JSONObject json = com.uzmap.pkg.uzkit.a.a.a(result);
             if (json != null) {
                 int status = json.optInt("status");
@@ -264,7 +266,7 @@ public class e extends Handler {
         }
     }
 
-    private void g(com.uzmap.pkg.uzcore.uzmodule.e wgtinfo) {
+    private void g(ApiConfig wgtinfo) {
         if (wgtinfo.N && this.e()) {
             while (UZFileSystem.assetLocked()) {
                 try {
@@ -369,14 +371,14 @@ public class e extends Handler {
         }
     }
 
-    private void h(com.uzmap.pkg.uzcore.uzmodule.e info) {
+    private void h(ApiConfig info) {
         Bundle data = new Bundle();
         data.putString("wid", info.r);
         data.putString("cur_wgt_version", info.s);
         UPnsService.a(this.a, data);
     }
 
-    private void a(boolean flag, com.uzmap.pkg.uzcore.uzmodule.e info) {
+    private void a(boolean flag, ApiConfig info) {
         Bundle data = new Bundle();
         data.putString("wid", info.r);
         UPnsService.a(this.a, flag, data);
@@ -503,7 +505,7 @@ public class e extends Handler {
 
     private final void b(final d inePackage) {
         String appVersion = UZCoreUtil.getAppVersionName();
-        String host = com.uzmap.pkg.uzapp.b.h() + "/AM_Service_API/IncpkgUpdateStatusReport";
+        String host = PropertiesUtil.h() + "/AM_Service_API/IncpkgUpdateStatusReport";
         RequestParam argument = new RequestParam();
         argument.setUrl(host);
         argument.setMethod(1);
@@ -591,7 +593,7 @@ public class e extends Handler {
         }
     }
 
-    private JSONObject i(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    private JSONObject i(ApiConfig wgtInfo) {
         JSONObject deviceInfo = new JSONObject();
 
         try {
@@ -687,7 +689,7 @@ public class e extends Handler {
         }
     }
 
-    private void a(com.uzmap.pkg.uzcore.uzmodule.e wgtinfo, JSONObject object) {
+    private void a(ApiConfig wgtinfo, JSONObject object) {
         if (object != null) {
             JSONArray pakages = object.optJSONArray("widgets");
             if (pakages != null) {

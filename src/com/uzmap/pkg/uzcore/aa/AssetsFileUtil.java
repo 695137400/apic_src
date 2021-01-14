@@ -3,8 +3,10 @@ package com.uzmap.pkg.uzcore.aa;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.webkit.MimeTypeMap;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzcore.external.Enslecb;
 import com.uzmap.pkg.uzcore.n;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -208,7 +210,7 @@ public class AssetsFileUtil {
         return result;
     }
 
-    public static void a(com.uzmap.pkg.uzcore.uzmodule.e info) {
+    public static void a(ApiConfig info) {
         if (info != null && info.z != null && info.Q) {
             String data = null;
 
@@ -247,7 +249,7 @@ public class AssetsFileUtil {
     }
 
     public static boolean a() {
-        if (!com.uzmap.pkg.uzapp.b.n()) {
+        if (!PropertiesUtil.n()) {
             return false;
         } else {
             boolean code = true;

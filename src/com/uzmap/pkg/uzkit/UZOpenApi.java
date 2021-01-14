@@ -1,12 +1,12 @@
 package com.uzmap.pkg.uzkit;
 
 import android.content.Context;
-import com.uzmap.pkg.uzapp.b;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
-import com.uzmap.pkg.uzcore.uzmodule.e;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 import com.uzmap.pkg.uzkit.data.a;
-import com.uzmap.pkg.uzkit.data.d;
+import com.uzmap.pkg.uzkit.data.ApiConfigUtil;
 
 public class UZOpenApi {
     public static final String ACTION = "UZMAP.UPUSH";
@@ -62,11 +62,11 @@ public class UZOpenApi {
     }
 
     public static String getUserToken(String widgetId) {
-        return b.a(widgetId);
+        return PropertiesUtil.a(widgetId);
     }
 
     public static String getWidgetKey(String widgetId) {
-        return b.b(widgetId);
+        return PropertiesUtil.b(widgetId);
     }
 
     public static String getUUID() {
@@ -74,35 +74,35 @@ public class UZOpenApi {
     }
 
     public static String getClientId(String widgetId) {
-        return b.c(widgetId);
+        return PropertiesUtil.c(widgetId);
     }
 
     public static String mamHost() {
-        return b.c();
+        return PropertiesUtil.c();
     }
 
     public static String mcmHost() {
-        return b.d();
+        return PropertiesUtil.d();
     }
 
     public static String msmHost() {
-        return b.e();
+        return PropertiesUtil.e();
     }
 
     public static String pushHost() {
-        return b.f();
+        return PropertiesUtil.f();
     }
 
     public static String storeHost() {
-        return b.g();
+        return PropertiesUtil.g();
     }
 
     public static String analysisHost() {
-        return b.h();
+        return PropertiesUtil.h();
     }
 
     public static UZWidgetInfo queryWidgetInfo(Context context, String widgetId) {
-        e entity = d.a(widgetId, false);
+        ApiConfig entity = ApiConfigUtil.getConfig(widgetId, false);
         return entity != null ? entity.i() : null;
     }
 }

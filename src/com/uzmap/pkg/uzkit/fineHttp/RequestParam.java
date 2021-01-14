@@ -1,6 +1,7 @@
 package com.uzmap.pkg.uzkit.fineHttp;
 
 import android.text.TextUtils;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZConstant;
 import com.uzmap.pkg.uzkit.UZUtility;
@@ -328,7 +329,7 @@ public class RequestParam {
 
     public void setInSecure(String widgetId) {
         this.setRqHeads("X-APICloud-AppId", widgetId);
-        this.setRqHeads("X-APICloud-AppKey", com.uzmap.pkg.uzapp.b.a(widgetId));
+        this.setRqHeads("X-APICloud-AppKey", PropertiesUtil.a(widgetId));
         this.setRqHeads("X-APICloud-UUID", UZCoreUtil.getUUID());
         this.setRqHeads("X-APICloud-Platform", "0");
     }

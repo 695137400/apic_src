@@ -48,7 +48,7 @@ public class c {
          com.uzmap.pkg.uzapp.d instance = com.uzmap.pkg.uzapp.d.a();
          int notifyId = instance.a(false);
          if (moduleContext.b()) {
-            int iconId = com.uzmap.pkg.uzcore.d.a().u.icon;
+            int iconId = com.uzmap.pkg.uzcore.d.a().applicationInfo.icon;
             String extra = moduleContext.f();
             boolean updateCurrent = moduleContext.g();
             if (!updateCurrent) {

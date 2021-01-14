@@ -2,11 +2,10 @@ package com.uzmap.pkg.uzsocket.g;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzkit.UZOpenApi;
 import com.uzmap.pkg.uzsocket.UPnsService;
@@ -161,7 +160,7 @@ public class c {
     private void h() {
         com.uzmap.pkg.uzsocket.g.f.a("UPns Service openSocketClient: " + this.i);
         if (this.i == null) {
-            String server = com.uzmap.pkg.uzapp.b.f();
+            String server = PropertiesUtil.f();
             if (TextUtils.isEmpty(server)) {
                 return;
             }

@@ -10,13 +10,14 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 
 public final class c {
-    public static final String b = com.uzmap.pkg.uzapp.b.h() + "/AM_Service_API/StatisticAnalysis";
-    public static final String c = com.uzmap.pkg.uzapp.b.h() + "/AM_Service_API/GeoDataReport";
-    public static final String d = com.uzmap.pkg.uzapp.b.c() + "/AM_Service_API/StartupReport";
-    public static final String e = com.uzmap.pkg.uzapp.b.e() + "/getUserStatus";
-    public static boolean a = com.uzmap.pkg.uzapp.b.o();
+    public static final String b = PropertiesUtil.h() + "/AM_Service_API/StatisticAnalysis";
+    public static final String c = PropertiesUtil.h() + "/AM_Service_API/GeoDataReport";
+    public static final String d = PropertiesUtil.c() + "/AM_Service_API/StartupReport";
+    public static final String e = PropertiesUtil.e() + "/getUserStatus";
+    public static boolean a = PropertiesUtil.o();
     private static c t;
     public DisplayMetrics f;
     public PackageInfo g;
@@ -81,10 +82,10 @@ public final class c {
             }
 
             if (a) {
-                this.k = com.uzmap.pkg.uzapp.b.p();
+                this.k = PropertiesUtil.p();
             }
 
-            this.s = "sdk".equals(com.uzmap.pkg.uzapp.b.r());
+            this.s = "sdk".equals(PropertiesUtil.r());
         } catch (NameNotFoundException var6) {
             var6.printStackTrace();
         }

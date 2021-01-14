@@ -8,6 +8,7 @@ import android.view.*;
 import android.webkit.DownloadListener;
 import android.widget.RelativeLayout;
 import com.uzmap.pkg.openapi.WebViewProvider;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 import org.json.JSONObject;
@@ -66,7 +67,7 @@ public class a extends UZWebView implements DownloadListener, p.a {
 
    protected void a() {
       this.setNetworkAvailable(true);
-      com.uzmap.pkg.uzcore.uzmodule.e info = this.u();
+      ApiConfig info = this.u();
       boolean r = info.Q;
       String d = info.f();
       this.k = new r(this);
@@ -598,7 +599,7 @@ public class a extends UZWebView implements DownloadListener, p.a {
       return this.w;
    }
 
-   public com.uzmap.pkg.uzcore.uzmodule.e u() {
+   public ApiConfig u() {
       return this.H() ? null : this.l.l();
    }
 

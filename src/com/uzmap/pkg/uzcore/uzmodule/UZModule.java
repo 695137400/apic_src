@@ -1,9 +1,7 @@
 package com.uzmap.pkg.uzcore.uzmodule;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.uzmap.pkg.uzcore.UZAppActivity;
 import com.uzmap.pkg.uzcore.UZWebView;
@@ -12,6 +10,7 @@ import com.uzmap.pkg.uzcore.m;
 import com.uzmap.pkg.uzcore.uzmodule.aa.o;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
 import com.uzmap.pkg.uzkit.UZUtility;
+import com.uzmap.pkg.uzkit.data.ApiConfigUtil;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 
 public abstract class UZModule implements UZActivityResult {
@@ -34,7 +33,7 @@ public abstract class UZModule implements UZActivityResult {
         if (!this.valid()) {
             return null;
         } else {
-            e entity = this.mWebView.u();
+            ApiConfig entity = this.mWebView.u();
             return entity != null ? entity.i() : null;
         }
     }
@@ -43,7 +42,7 @@ public abstract class UZModule implements UZActivityResult {
         if (!this.valid()) {
             return null;
         } else {
-            e info = this.mWebView.u();
+            ApiConfig info = this.mWebView.u();
             if (info != null) {
                 com.uzmap.pkg.uzkit.data.b feature = info.a(featureName);
                 if (feature != null) {
@@ -128,7 +127,7 @@ public abstract class UZModule implements UZActivityResult {
         this.runOnUiThread(action);
     }
 
-    protected final void openWidgetWidthInfo(final e wgtInfo) {
+    protected final void openWidgetWidthInfo(final ApiConfig wgtInfo) {
         Runnable action = new Runnable() {
             public void run() {
                 if (UZModule.this.valid()) {
@@ -143,7 +142,7 @@ public abstract class UZModule implements UZActivityResult {
         if (!this.valid()) {
             return false;
         } else {
-            e entity = com.uzmap.pkg.uzkit.data.d.a(widgetId, false);
+            ApiConfig entity = ApiConfigUtil.getConfig(widgetId, false);
             if (entity != null) {
                 this.openWidgetWidthInfo(entity);
                 return true;

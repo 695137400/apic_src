@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.animation.Animation;
 import android.webkit.WebView;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzcore.uzmodule.internalmodule.UZConstant;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class i extends com.uzmap.pkg.uzcore.external.bb.g {
    private int a;
    private boolean b;
-   private final com.uzmap.pkg.uzcore.uzmodule.e c;
+   private final ApiConfig c;
    private x d;
    private final Activity e;
    private final l f;
@@ -28,7 +28,7 @@ public class i extends com.uzmap.pkg.uzcore.external.bb.g {
       }
    };
 
-   public i(Context context, com.uzmap.pkg.uzcore.uzmodule.e inWidget) {
+   public i(Context context, ApiConfig inWidget) {
       super(context, null);
       this.c = inWidget;
       this.e = (Activity) context;
@@ -335,7 +335,7 @@ public class i extends com.uzmap.pkg.uzcore.external.bb.g {
       return this.d.n();
    }
 
-   public com.uzmap.pkg.uzcore.uzmodule.e j() {
+   public ApiConfig j() {
       return this.c;
    }
 

@@ -3,6 +3,7 @@ package com.uzmap.pkg.uzkit.a.aa;
 import android.content.Context;
 import android.text.TextUtils;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 
 import java.util.Hashtable;
 
@@ -50,7 +51,7 @@ public final class a {
         this.a(false);
     }
 
-    public final void a(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void a(ApiConfig wgtInfo) {
         this.b.c();
         this.b(false);
         this.b(wgtInfo);
@@ -126,7 +127,7 @@ public final class a {
         }
     }
 
-    public final synchronized void b(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final synchronized void b(ApiConfig wgtInfo) {
         if (!com.uzmap.pkg.uzcore.b.a().o() && com.uzmap.pkg.uzcore.b.a().h()) {
             if (!this.e() && this.f()) {
                 this.e.a(wgtInfo);

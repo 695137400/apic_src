@@ -1,6 +1,7 @@
 package com.uzmap.pkg.uzkit.a.aa;
 
 import android.text.TextUtils;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzkit.fineHttp.RequestListener;
 import com.uzmap.pkg.uzkit.fineHttp.RequestParam;
 import com.uzmap.pkg.uzkit.fineHttp.Response;
@@ -18,7 +19,7 @@ class c {
         this.c = analyticsStorage;
     }
 
-    public final void a(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void a(ApiConfig wgtInfo) {
         if (wgtInfo != null) {
             String behavior = this.c.e();
             String eventInfo = this.c.f();

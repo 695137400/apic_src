@@ -45,7 +45,7 @@ public class Properties {
     }
 
     public static boolean developerMode() {
-        return false;
+        return true;
     }
 
     public static boolean auth() {

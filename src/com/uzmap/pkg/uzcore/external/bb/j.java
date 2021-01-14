@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzkit.UZUtility;
 
 public class j extends ImageView implements Runnable {
@@ -80,7 +81,7 @@ public class j extends ImageView implements Runnable {
         this.setImageDrawable(drawable);
     }
 
-    public void a(com.uzmap.pkg.uzcore.uzmodule.aa.k args, com.uzmap.pkg.uzcore.uzmodule.e wInfo) {
+    public void a(com.uzmap.pkg.uzcore.uzmodule.aa.k args, ApiConfig wInfo) {
         int duration = args.optInt("duration", 5000);
         Drawable drawable = null;
         String iconPath = args.optString("iconPath", null);

@@ -5,7 +5,7 @@ import android.widget.FrameLayout;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.l;
 import com.uzmap.pkg.uzcore.i;
-import com.uzmap.pkg.uzcore.uzmodule.e;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 
 final class APICloudWidget extends FrameLayout {
     private i a;
@@ -14,7 +14,7 @@ final class APICloudWidget extends FrameLayout {
         super(context);
     }
 
-    void initialize(Context context, e wgtInfo) {
+    void initialize(Context context, ApiConfig wgtInfo) {
         AssetsFileUtil.a(wgtInfo);
         this.a = new i(context, wgtInfo);
         this.a.a();

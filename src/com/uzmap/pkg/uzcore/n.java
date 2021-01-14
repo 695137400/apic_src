@@ -1,7 +1,9 @@
 package com.uzmap.pkg.uzcore;
 
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -11,14 +13,14 @@ import java.util.zip.ZipFile;
 
 public class n {
    public static final String a() {
-      return com.uzmap.pkg.uzapp.b.j();
+      return PropertiesUtil.j();
    }
 
    public static boolean b() {
-      return com.uzmap.pkg.uzapp.b.n();
+      return PropertiesUtil.n();
    }
 
-   public static boolean a(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo, int version, String zipPath) {
+   public static boolean a(ApiConfig wgtInfo, int version, String zipPath) {
       boolean success = a(zipPath, c(), wgtInfo.Q);
       if (success) {
          success = a(version, wgtInfo.r);

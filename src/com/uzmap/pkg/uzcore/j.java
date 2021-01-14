@@ -6,12 +6,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import org.json.JSONObject;
 
 public class j {
     private final f a;
     private final k b;
-    private com.uzmap.pkg.uzcore.uzmodule.e c;
+    private ApiConfig c;
     private i d;
     private i e;
 
@@ -20,7 +21,7 @@ public class j {
         this.b = new k();
     }
 
-    protected void a(com.uzmap.pkg.uzcore.uzmodule.e rootWidgetInfo) {
+    protected void a(ApiConfig rootWidgetInfo) {
         AssetsFileUtil.a(rootWidgetInfo);
         this.c = rootWidgetInfo;
         this.d = new i(this.a.c(), rootWidgetInfo);
@@ -34,7 +35,7 @@ public class j {
         this.e = this.d;
     }
 
-    protected void b(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    protected void b(ApiConfig wgtInfo) {
         if (!this.c(wgtInfo)) {
             AssetsFileUtil.a(wgtInfo);
             i newWidget = new i(this.a.c(), wgtInfo);
@@ -74,7 +75,7 @@ public class j {
         }
     }
 
-    private boolean c(com.uzmap.pkg.uzcore.uzmodule.e info) {
+    private boolean c(ApiConfig info) {
         String key = info.r;
         return this.b.a(key) != null;
     }
@@ -83,7 +84,7 @@ public class j {
         this.b.a(widget);
     }
 
-    protected com.uzmap.pkg.uzcore.uzmodule.e a() {
+    protected ApiConfig a() {
         return this.c;
     }
 

@@ -1,13 +1,15 @@
 package com.uzmap.pkg.uzkit.a;
 
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
+
 public class d {
     public int a;
     public String b;
     public boolean c;
     public String d;
-    public com.uzmap.pkg.uzcore.uzmodule.e e;
+    public ApiConfig e;
 
-    public d(com.uzmap.pkg.uzcore.uzmodule.e info) {
+    public d(ApiConfig info) {
         this.e = info;
     }
 

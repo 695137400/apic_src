@@ -3,7 +3,6 @@ package com.uzmap.pkg.uzcore;
 import android.app.Activity;
 import android.app.ActivityGroup;
 import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -19,9 +18,9 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.webkit.URLUtil;
-import android.widget.FrameLayout;
 import com.uzmap.pkg.openapi.Html5EventListener;
 import com.uzmap.pkg.openapi.WebViewProvider;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzsocket.api.UPnsListener;
 import org.json.JSONObject;
@@ -51,7 +50,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         }
     };
     private final com.uzmap.pkg.uzcore.b.bcl o = new com.uzmap.pkg.uzcore.b.bcl() {
-        public void a(boolean success, com.uzmap.pkg.uzcore.uzmodule.e entity, String msg) {
+        public void a(boolean success, ApiConfig entity, String msg) {
             if (this.a() != null) {
                 entity = entity.e(this.a());
             }
@@ -61,7 +60,7 @@ public abstract class UZAppActivity extends ActivityGroup {
     };
     private Runnable q = new Runnable() {
         public void run() {
-            com.uzmap.pkg.uzcore.uzmodule.e wgtInfo = null;
+            ApiConfig wgtInfo = null;
             if (UZAppActivity.this.g != null) {
                 wgtInfo = UZAppActivity.this.g.g();
             }
@@ -113,7 +112,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         this.e = new com.uzmap.pkg.uzcore.external.bb.e(this, null);
         this.e.a(new UZAppActivity.d());
         this.setContentView(this.e, com.uzmap.pkg.uzcore.external.l.a(com.uzmap.pkg.uzcore.external.l.d, com.uzmap.pkg.uzcore.external.l.d));
-        com.uzmap.pkg.uzcore.uzmodule.e entity = com.uzmap.pkg.uzcore.b.a().f();
+        ApiConfig entity = com.uzmap.pkg.uzcore.b.a().f();
         if (entity != null && entity.R) {
             com.uzmap.pkg.uzcore.external.l.b(this);
         }
@@ -132,7 +131,7 @@ public abstract class UZAppActivity extends ActivityGroup {
         }
     }
 
-    private final void initializeEngine(boolean success, com.uzmap.pkg.uzcore.uzmodule.e entity, String msg) {
+    private final void initializeEngine(boolean success, ApiConfig entity, String msg) {
         if (!success) {
             String title = null;
             String error_msg = com.uzmap.pkg.uzcore.d.i;

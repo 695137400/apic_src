@@ -2,6 +2,7 @@ package com.uzmap.pkg.uzsocket.g;
 
 import android.content.Context;
 import android.util.Log;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzkit.fineHttp.RequestListener;
@@ -16,7 +17,7 @@ public class f {
     public static final boolean a;
 
     static {
-        a = UZCoreUtil.a;
+        a = UZCoreUtil.isDebug;
     }
 
     private boolean b;
@@ -34,9 +35,9 @@ public class f {
     }
 
     public void a(String widgetId, final f.a callback) {
-        String deviceToken = com.uzmap.pkg.uzapp.b.c(widgetId);
+        String deviceToken = PropertiesUtil.c(widgetId);
         String systemType = "android";
-        String host = com.uzmap.pkg.uzapp.b.f() + "/BindPush";
+        String host = PropertiesUtil.f() + "/BindPush";
         RequestParam argument = new RequestParam();
         argument.setUrl(host);
         argument.setMethod(1);

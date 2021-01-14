@@ -41,7 +41,7 @@ public class UZFileSystem {
     }
 
     public static final void initialize(Context context) {
-        String sandbox = com.uzmap.pkg.uzapp.b.k();
+        String sandbox = PropertiesUtil.k();
         if (!TextUtils.isEmpty(sandbox)) {
             if (!sandbox.endsWith(File.separator)) {
                 sandbox = sandbox + File.separator;
@@ -93,7 +93,7 @@ public class UZFileSystem {
             this.c = context.getFilesDir().getAbsolutePath() + File.separator;
         }
 
-        this.e = com.uzmap.pkg.uzcore.d.a().u.dataDir + File.separator;
+        this.e = com.uzmap.pkg.uzcore.d.a().applicationInfo.dataDir + File.separator;
         this.f = this.e + "widget" + File.separator;
         File wgtsandbox = new File(this.f);
         if (!wgtsandbox.exists()) {

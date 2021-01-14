@@ -19,6 +19,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.webkit.WebView;
 import com.uzmap.pkg.uzcore.aa.JSCore;
 import com.uzmap.pkg.uzcore.external.bb.i;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzcore.uzmodule.aa.e;
 import com.uzmap.pkg.uzcore.uzmodule.aa.f;
@@ -1227,7 +1228,7 @@ public class m extends i implements x {
 
    }
 
-   protected com.uzmap.pkg.uzcore.uzmodule.e l() {
+   protected ApiConfig l() {
       return this.o.j();
    }
 

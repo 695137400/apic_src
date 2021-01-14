@@ -3,13 +3,16 @@ package com.uzmap.pkg.uzcore;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.aa.JSCore;
 import com.uzmap.pkg.uzcore.external.Enslecb;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzcore.uzmodule.AppInfo;
 import com.uzmap.pkg.uzcore.uzmodule.ApplicationDelegate;
 import com.uzmap.pkg.uzcore.uzmodule.PluginModule;
+import com.uzmap.pkg.uzkit.data.ApiConfigUtil;
 import com.uzmap.pkg.uzsocket.api.UPnsListener;
 
 import java.io.InputStream;
@@ -26,8 +29,8 @@ public class b {
     private UZPlatformBridge f;
     private com.uzmap.pkg.uzkit.a.e g;
     private final boolean h;
-    private com.uzmap.pkg.uzcore.uzmodule.e j;
-    private com.uzmap.pkg.uzcore.uzmodule.e k;
+    private ApiConfig j;
+    private ApiConfig k;
 
     private b(boolean isFromMainProcess) {
         this.h = isFromMainProcess;
@@ -88,14 +91,13 @@ public class b {
 
     }
 
-    private com.uzmap.pkg.uzcore.uzmodule.e u() {
-        com.uzmap.pkg.uzcore.uzmodule.e assetEntity = null;
+    private ApiConfig u() {
         boolean s = n.b();
-        assetEntity = com.uzmap.pkg.uzkit.data.d.a(s);
+        ApiConfig assetEntity = ApiConfigUtil.getConfig(s);
         this.k = assetEntity;
         this.b(assetEntity != null && assetEntity.O);
-        if (com.uzmap.pkg.uzapp.b.o()) {
-            com.uzmap.pkg.uzcore.uzmodule.e ls = com.uzmap.pkg.uzkit.data.d.a(assetEntity.r, s);
+        if (PropertiesUtil.o()) {
+            ApiConfig ls = ApiConfigUtil.getConfig(assetEntity.r, s);
             if (ls != null) {
                 String id = assetEntity.r;
                 ls.r = id;
@@ -104,11 +106,11 @@ public class b {
             this.j = ls;
             return ls;
         } else {
-            if (!UZCoreUtil.a && assetEntity != null && assetEntity.N) {
+            if (!UZCoreUtil.isDebug && assetEntity != null && assetEntity.N) {
                 String id = assetEntity.r;
                 boolean fromSandbox = UZFileSystem.get().synchronizedAsset();
                 if (fromSandbox) {
-                    com.uzmap.pkg.uzcore.uzmodule.e ls = com.uzmap.pkg.uzkit.data.d.b(id, s);
+                    ApiConfig ls = ApiConfigUtil.b(id, s);
                     if (ls != null) {
                         ls.Q = assetEntity.Q = s;
                         assetEntity = ls;
@@ -157,7 +159,7 @@ public class b {
             }
         }
 
-        if (com.uzmap.pkg.uzapp.b.b()) {
+        if (PropertiesUtil.b()) {
             try {
                 p = AssetsUtil.e();
                 i = this.d.getAssets().open(p);
@@ -179,11 +181,11 @@ public class b {
         this.g.a(activity);
     }
 
-    public final void a(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void a(ApiConfig wgtInfo) {
         this.g.c(wgtInfo);
     }
 
-    public final void b(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public final void b(ApiConfig wgtInfo) {
         this.g.d(wgtInfo);
     }
 
@@ -215,7 +217,7 @@ public class b {
         return this.b;
     }
 
-    public com.uzmap.pkg.uzcore.uzmodule.e f() {
+    public ApiConfig f() {
         return this.k;
     }
 
@@ -224,7 +226,7 @@ public class b {
     }
 
     public boolean h() {
-        return "sdk".equals(com.uzmap.pkg.uzapp.b.r()) || PluginModule.c();
+        return "sdk".equals(PropertiesUtil.r()) || PluginModule.c();
     }
 
     public boolean i() {
@@ -232,7 +234,7 @@ public class b {
     }
 
     public boolean j() {
-        return this.i() && com.uzmap.pkg.uzapp.b.m();
+        return this.i() && PropertiesUtil.m();
     }
 
     public boolean k() {
@@ -260,9 +262,9 @@ public class b {
     }
 
     public boolean p() {
-        if (com.uzmap.pkg.uzapp.b.a()) {
+        if (PropertiesUtil.a()) {
             return false;
-        } else if (com.uzmap.pkg.uzapp.b.o()) {
+        } else if (PropertiesUtil.o()) {
             return this.j != null && this.j.S;
         } else {
             return com.uzmap.pkg.uzcore.d.a().c();
@@ -374,7 +376,7 @@ public class b {
             return this.a;
         }
 
-        abstract void a(boolean var1, com.uzmap.pkg.uzcore.uzmodule.e var2, String var3);
+        abstract void a(boolean var1, ApiConfig var2, String var3);
     }
 
     private class a extends Thread {
@@ -391,13 +393,13 @@ public class b {
 
         private void a() {
             boolean success = false;
-            com.uzmap.pkg.uzcore.uzmodule.e entity = null;
+            ApiConfig entity = null;
             String msg = null;
-            com.uzmap.pkg.uzcore.uzmodule.e as = u();
+            ApiConfig as = u();
             if (as != null && as.z != null) {
                 success = true;
                 entity = as;
-            } else if (k != null && com.uzmap.pkg.uzapp.b.o()) {
+            } else if (k != null && PropertiesUtil.o()) {
                 msg = "调试路径下未找到id为：\n" + k.r + "\n的项目\n" + "请确认本项目config文件中id是否与服务器端一致";
             } else if (!com.uzmap.pkg.uzcore.b.a) {
                 msg = "应用签名被篡改";

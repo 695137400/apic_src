@@ -11,6 +11,7 @@ import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.external.UzResourceCache;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
 
@@ -114,7 +115,7 @@ public class s extends b {
         }
     }
 
-    public Drawable a(com.uzmap.pkg.uzcore.uzmodule.e info) {
+    public Drawable a(ApiConfig info) {
         Drawable drawable = null;
         if (!TextUtils.isEmpty(this.G)) {
             char first = this.G.charAt(0);

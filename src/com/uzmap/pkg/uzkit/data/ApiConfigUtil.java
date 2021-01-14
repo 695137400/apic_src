@@ -4,12 +4,13 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Xml;
 import android.webkit.URLUtil;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
-import com.uzmap.pkg.uzcore.uzmodule.e;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzkit.UZUtility;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,22 +18,22 @@ import org.xmlpull.v1.XmlPullParser;
 
 import java.io.*;
 
-public class d {
+public class ApiConfigUtil {
     static String a = "";
 
-    public static e a(String appId, boolean s) {
+    public static ApiConfig getConfig(String appId, boolean s) {
         r args = new r(null, null, false);
         args.d = appId;
-        return a(args, s);
+        return getConfig(args, s);
     }
 
-    public static e a(r args, boolean s) {
+    public static ApiConfig getConfig(r args, boolean s) {
         String appId = args.d;
         if (TextUtils.isEmpty(appId)) {
             return null;
         } else {
-            e resultInfo = null;
-            if (com.uzmap.pkg.uzapp.b.o()) {
+            ApiConfig resultInfo = null;
+            if (PropertiesUtil.o()) {
                 resultInfo = e(appId, s);
                 if (resultInfo != null) {
                     resultInfo.U = args;
@@ -40,7 +41,7 @@ public class d {
 
                 return resultInfo;
             } else {
-                boolean smode = com.uzmap.pkg.uzapp.b.n();
+                boolean smode = PropertiesUtil.n();
                 if (smode) {
                     resultInfo = c(appId, smode);
                     if (resultInfo != null) {
@@ -83,7 +84,7 @@ public class d {
                 JSONArray data = new JSONArray();
 
                 for (int i = 0; i < dirFiles.length; ++i) {
-                    e info = a(dirFiles[i], false);
+                    ApiConfig info = getConfig(dirFiles[i], false);
                     if (info != null) {
                         JSONObject item = new JSONObject();
                         item.put("name", info.t);
@@ -112,8 +113,8 @@ public class d {
         }
     }
 
-    public static e a(boolean s) {
-        e resultInfo = null;
+    public static ApiConfig getConfig(boolean s) {
+        ApiConfig resultInfo = null;
         String path = "widget" + File.separator;
         resultInfo = d(path, s);
         if (resultInfo != null) {
@@ -123,31 +124,31 @@ public class d {
         return resultInfo;
     }
 
-    public static e b(String widgetId, boolean s) {
-        e resultInfo = null;
+    public static ApiConfig b(String widgetId, boolean s) {
+        ApiConfig resultInfo = null;
         String path = UZFileSystem.get().getAssetPath();
         File wgtDir = new File(path);
-        resultInfo = a(wgtDir, s);
+        resultInfo = getConfig(wgtDir, s);
         return resultInfo;
     }
 
-    private static e c(String widgetId, boolean s) {
-        e resultInfo = null;
+    private static ApiConfig c(String widgetId, boolean s) {
+        ApiConfig resultInfo = null;
         String path = UZFileSystem.get().getAssetPath();
         path = path + "wgt/" + widgetId + File.separator;
         File wgtDir = new File(path);
-        resultInfo = a(wgtDir, s);
+        resultInfo = getConfig(wgtDir, s);
         return resultInfo;
     }
 
-    private static e d(String path, boolean s) {
-        e resultInfo = null;
+    private static ApiConfig d(String path, boolean s) {
+        ApiConfig resultInfo = null;
         String config = path + "config.xml";
 
         try {
             Context context = com.uzmap.pkg.uzcore.b.a().b();
             InputStream input = context.getAssets().open(config);
-            resultInfo = a(input, s);
+            resultInfo = getConfig(input, s);
             input.close();
             if (resultInfo != null) {
                 String content = resultInfo.z;
@@ -170,8 +171,8 @@ public class d {
         return resultInfo;
     }
 
-    private static e a(File wgtDir, boolean s) {
-        e resultInfo = null;
+    private static ApiConfig getConfig(File wgtDir, boolean s) {
+        ApiConfig resultInfo = null;
 
         try {
             File config = new File(wgtDir, "config.xml");
@@ -179,7 +180,7 @@ public class d {
                 return null;
             } else {
                 InputStream input = new FileInputStream(config);
-                resultInfo = a(input, s);
+                resultInfo = getConfig(input, s);
                 input.close();
                 if (resultInfo != null) {
                     String content = resultInfo.z;
@@ -205,8 +206,8 @@ public class d {
         }
     }
 
-    private static e a(InputStream in, boolean s) {
-        e resultInfo = new e();
+    private static ApiConfig getConfig(InputStream in, boolean s) {
+        ApiConfig resultInfo = new ApiConfig();
 
         try {
             XmlPullParser parser = Xml.newPullParser();
@@ -285,16 +286,16 @@ public class d {
         }
     }
 
-    private static e e(String appId, boolean s) {
-        e resultInfo = null;
+    private static ApiConfig e(String appId, boolean s) {
+        ApiConfig resultInfo = null;
         if (appId != null) {
             String loaderPath = UZFileSystem.get().getWidgetLoadPath();
             String separator = File.separator;
             String absolutePath = loaderPath + a + separator + "wgt" + separator + appId + separator;
-            resultInfo = a(new File(absolutePath), s);
+            resultInfo = getConfig(new File(absolutePath), s);
             if (resultInfo == null) {
                 absolutePath = loaderPath + appId + separator;
-                resultInfo = a(new File(absolutePath), s);
+                resultInfo = getConfig(new File(absolutePath), s);
             }
         }
 

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.l;
@@ -116,10 +117,10 @@ public class c extends FrameLayout {
 
             this.a(false);
             this.startAnimation(outAnim);
-            if (com.uzmap.pkg.uzapp.b.t()) {
+            if (PropertiesUtil.t()) {
                 String title = "温馨提示";
                 String msg = "APP已过期，让Ta给你“正式版”的爱吧！";
-                if (com.uzmap.pkg.uzapp.b.o()) {
+                if (PropertiesUtil.o()) {
                     title = "强制关闭";
                     msg = "自定义Apploader已超过30天的使用期限\n请重新为本应用编译新的Apploader";
                 }

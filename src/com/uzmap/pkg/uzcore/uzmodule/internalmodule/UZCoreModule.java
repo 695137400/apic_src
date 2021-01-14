@@ -29,7 +29,8 @@ import com.uzmap.pkg.uzcore.uzmodule.aa.p;
 import com.uzmap.pkg.uzcore.uzmodule.aa.q;
 import com.uzmap.pkg.uzcore.uzmodule.aa.r;
 import com.uzmap.pkg.uzcore.uzmodule.aa.s;
-import com.uzmap.pkg.uzcore.uzmodule.e;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
+import com.uzmap.pkg.uzkit.data.ApiConfigUtil;
 import com.uzmap.pkg.uzkit.fineHttp.RequestParam;
 import com.uzmap.pkg.uzkit.fineHttp.UZHttpClient;
 import org.json.JSONException;
@@ -80,7 +81,7 @@ public class UZCoreModule extends UZModule {
       if (!com.uzmap.pkg.uzcore.f.f()) {
          if (this.getWindow() != null) {
             r moduleContext = new r(args, this.mWebView, false);
-            e wgtInfo = com.uzmap.pkg.uzkit.data.d.a(moduleContext, false);
+            ApiConfig wgtInfo = ApiConfigUtil.getConfig(moduleContext, false);
             if (wgtInfo != null) {
                this.openWidgetWidthInfo(wgtInfo);
             } else {
@@ -115,7 +116,7 @@ public class UZCoreModule extends UZModule {
    @JavascriptInterface
    public void getFsWidgets(String args) {
       UZModuleContext moduleContext = new k(args, this.mWebView);
-      JSONObject jsonResult = com.uzmap.pkg.uzkit.data.d.a(moduleContext);
+      JSONObject jsonResult = ApiConfigUtil.a(moduleContext);
       moduleContext.success(jsonResult, true);
    }
 

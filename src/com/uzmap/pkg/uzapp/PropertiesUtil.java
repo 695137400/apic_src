@@ -1,9 +1,10 @@
 package com.uzmap.pkg.uzapp;
 
 import com.uzmap.pkg.uzcore.UZCoreUtil;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import compile.Properties;
 
-public class b {
+public class PropertiesUtil {
     public static boolean a() {
         return Properties.promotion();
     }
@@ -48,7 +49,7 @@ public class b {
         return Properties.sandbox();
     }
 
-    public static boolean l() {
+    public static boolean isDebug() {
         return Properties.developerMode();
     }
 
@@ -93,11 +94,11 @@ public class b {
     }
 
     public static String a(String wId) {
-        return com.uzmap.pkg.uzcore.uzmodule.e.d(wId);
+        return ApiConfig.d(wId);
     }
 
     public static String b(String wId) {
-        return com.uzmap.pkg.uzcore.uzmodule.e.c(wId);
+        return ApiConfig.c(wId);
     }
 
     public static String c(String wId) {

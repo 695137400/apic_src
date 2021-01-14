@@ -9,6 +9,7 @@ import com.uzmap.pkg.ui.intent.d;
 import com.uzmap.pkg.openapi.WebViewProvider;
 import com.uzmap.pkg.uzcore.aa.AssetsUtil;
 import com.uzmap.pkg.uzcore.annotation.InstanceMethod;
+import com.uzmap.pkg.uzcore.uzmodule.ApiConfig;
 import com.uzmap.pkg.uzcore.uzmodule.UZActivityResult;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
 import org.json.JSONObject;
@@ -87,7 +88,7 @@ public class f {
 
     }
 
-    public void a(com.uzmap.pkg.uzcore.uzmodule.e rootWidgetInfo) {
+    public void a(ApiConfig rootWidgetInfo) {
         if (this.i == null) {
             this.i = new j(this);
             this.i.a(rootWidgetInfo);
@@ -115,7 +116,7 @@ public class f {
         return this.b;
     }
 
-    public com.uzmap.pkg.uzcore.uzmodule.e g() {
+    public ApiConfig g() {
         return this.i.a();
     }
 
@@ -245,7 +246,7 @@ public class f {
         return this.i != null && this.i.f();
     }
 
-    public void b(com.uzmap.pkg.uzcore.uzmodule.e wgtInfo) {
+    public void b(ApiConfig wgtInfo) {
         if (this.i != null) {
             this.i.b(wgtInfo);
         }
@@ -279,7 +280,7 @@ public class f {
         this.k = appParam;
     }
 
-    public void a(com.uzmap.pkg.uzcore.uzmodule.aa.k args, com.uzmap.pkg.uzcore.uzmodule.e wInfo) {
+    public void a(com.uzmap.pkg.uzcore.uzmodule.aa.k args, ApiConfig wInfo) {
         if (this.d == null) {
             int aid = 17104896;
             int appsize = this.b.getResources().getDimensionPixelSize(aid);

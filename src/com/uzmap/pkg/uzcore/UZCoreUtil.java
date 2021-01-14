@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzapp.UZFileSystem;
 import com.uzmap.pkg.uzkit.UZUtility;
 import com.uzmap.pkg.uzkit.data.UZWidgetInfo;
@@ -38,9 +39,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class UZCoreUtil {
-   public static final boolean a = com.uzmap.pkg.uzapp.b.l();
-   public static final String[] e = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-   static String b = null;
+   public static final boolean isDebug = PropertiesUtil.isDebug();
+   public static final String[] dictArr = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+   static String deviceId = null;
    static String c = null;
    static String d = null;
    static SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -54,25 +55,25 @@ public class UZCoreUtil {
    private static MessageDigest n = null;
 
    public static void logi(String msg) {
-      if (a) {
+      if (isDebug) {
          Log.i("ldx", msg);
       }
    }
 
    public static void logd(String msg) {
-      if (a) {
+      if (isDebug) {
          Log.d("ldx", msg);
       }
    }
 
    public static void loge(String msg) {
-      if (a) {
+      if (isDebug) {
          Log.e("ldx", msg);
       }
    }
 
    public static void logw(String msg) {
-      if (a) {
+      if (isDebug) {
          Log.w("ldx", msg);
       }
    }
@@ -162,7 +163,7 @@ public class UZCoreUtil {
          needLength = 1;
       }
 
-      int max = e.length;
+      int max = dictArr.length;
       if (needLength > max) {
          needLength = max;
       }
@@ -171,7 +172,7 @@ public class UZCoreUtil {
       String result = "";
 
       for (int i = 0; i < needLength; ++i) {
-         result = result + e[random.nextInt(max)];
+         result = result + dictArr[random.nextInt(max)];
       }
 
       return result;
@@ -487,14 +488,14 @@ public class UZCoreUtil {
 
    public static String getDeviceId() {
       checkPermission();
-      if (!TextUtils.isEmpty(b)) {
-         return b;
+      if (!TextUtils.isEmpty(deviceId)) {
+         return deviceId;
       } else {
          String result = null;
          com.uzmap.pkg.uzkit.data.a uzsp = com.uzmap.pkg.uzkit.data.a.a();
          result = uzsp.b("device_id", null);
          if (!TextUtils.isEmpty(result)) {
-            b = result;
+            deviceId = result;
             return result;
          } else {
             Context context = com.uzmap.pkg.uzcore.b.a().b();
@@ -552,7 +553,7 @@ public class UZCoreUtil {
                uzsp.a("device_id", result);
             }
 
-            b = result;
+            deviceId = result;
             return result;
          }
       }
@@ -589,7 +590,7 @@ public class UZCoreUtil {
    }
 
    public static String getMetaStringData(String key) {
-      Bundle metaData = com.uzmap.pkg.uzcore.d.a().u.metaData;
+      Bundle metaData = com.uzmap.pkg.uzcore.d.a().applicationInfo.metaData;
       return metaData != null ? metaData.getString(key) : null;
    }
 

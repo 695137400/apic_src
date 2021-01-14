@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 import com.uzmap.pkg.uzcore.UZCoreUtil;
 import com.uzmap.pkg.uzcore.aa.AssetsFileUtil;
 import com.uzmap.pkg.uzcore.external.Enslecb;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-public class e implements Cloneable {
+public class ApiConfig implements Cloneable {
     static Hashtable<String, String> a = new Hashtable();
     static Hashtable<String, String> b = new Hashtable();
     static String c = "pageBounce";
@@ -74,13 +75,13 @@ public class e implements Cloneable {
     private AppInfo aa;
 
     static {
-        if (com.uzmap.pkg.uzapp.b.o()) {
+        if (PropertiesUtil.o()) {
             b.put("A6965066952332", "62587239-AD3C-8190-47B4-37DE080D7E9D");
         }
 
     }
 
-    public e() {
+    public ApiConfig() {
         this.I = com.uzmap.pkg.uzcore.external.l.c;
         this.J = true;
         this.K = true;
@@ -150,7 +151,7 @@ public class e implements Cloneable {
                 b.put(id, key);
                 return key;
             } else {
-                key = com.uzmap.pkg.uzapp.b.i();
+                key = PropertiesUtil.i();
                 if (TextUtils.isEmpty(key)) {
                     return null;
                 } else {
@@ -245,10 +246,10 @@ public class e implements Cloneable {
     }
 
     public String g() {
-        if (com.uzmap.pkg.uzapp.b.o()) {
+        if (PropertiesUtil.o()) {
             return "A6965066952332";
         } else {
-            return "sdk".equals(com.uzmap.pkg.uzapp.b.r()) ? com.uzmap.pkg.uzapp.b.q() : this.r;
+            return "sdk".equals(PropertiesUtil.r()) ? PropertiesUtil.q() : this.r;
         }
     }
 
@@ -364,7 +365,7 @@ public class e implements Cloneable {
         }
     }
 
-    public e e(String url) {
+    public ApiConfig e(String url) {
         String newUrl = url;
         String wgt;
         if (!url.startsWith("http")) {
@@ -377,9 +378,9 @@ public class e implements Cloneable {
 
         wgt = null;
 
-        e resultInfo;
+        ApiConfig resultInfo;
         try {
-            resultInfo = (e) this.clone();
+            resultInfo = (ApiConfig) this.clone();
         } catch (CloneNotSupportedException var5) {
             var5.printStackTrace();
             this.z = newUrl;

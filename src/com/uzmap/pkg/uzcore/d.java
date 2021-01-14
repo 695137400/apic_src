@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.ViewConfiguration;
+import com.uzmap.pkg.uzapp.PropertiesUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -33,7 +34,7 @@ public class d {
     private static final List<d.a> C = new ArrayList();
     private static final List<d.a> D;
     public static boolean j = false;
-    public static boolean v = com.uzmap.pkg.uzapp.b.b();
+    public static boolean v = PropertiesUtil.b();
     public static boolean z = false;
     public static boolean A = false;
     private static d B;
@@ -77,7 +78,7 @@ public class d {
     public int r;
     public boolean s;
     public PackageInfo t;
-    public ApplicationInfo u;
+    public ApplicationInfo applicationInfo;
     public int w;
     public int x;
     public int y;
@@ -145,7 +146,7 @@ public class d {
 
         try {
             this.t = pkm.getPackageInfo(pkg, flags);
-            this.u = pkm.getApplicationInfo(pkg, flags);
+            this.applicationInfo = pkm.getApplicationInfo(pkg, flags);
         } catch (NameNotFoundException var7) {
             var7.printStackTrace();
         }
@@ -163,19 +164,19 @@ public class d {
     private void e(Context context) {
         String packageName = context.getPackageName();
         Resources resources = context.getResources();
-        this.w = this.u.icon;
+        this.w = this.applicationInfo.icon;
         this.x = resources.getIdentifier("uz_splash_bg", "drawable", packageName);
         this.y = resources.getIdentifier("uz_pull_down_refresh_arrow", "drawable", packageName);
     }
 
     private void e() {
         try {
-            if ("sdk".equals(com.uzmap.pkg.uzapp.b.r())) {
+            if ("sdk".equals(PropertiesUtil.r())) {
                 j = true;
                 return;
             }
 
-            Bundle metaData = this.u.metaData;
+            Bundle metaData = this.applicationInfo.metaData;
             String v = metaData.getString("uz_version");
             if (TextUtils.isEmpty(v)) {
                 return;
@@ -202,7 +203,7 @@ public class d {
         }
 
         try {
-            Bundle metaData = this.u.metaData;
+            Bundle metaData = this.applicationInfo.metaData;
             String channal = metaData.getString(channelId);
             return channal;
         } catch (Exception var4) {
@@ -211,7 +212,7 @@ public class d {
     }
 
     public boolean d() {
-        ApplicationInfo var10000 = this.u;
+        ApplicationInfo var10000 = this.applicationInfo;
         return (var10000.flags &= 2) != 0;
     }
 

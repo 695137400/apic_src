@@ -50,7 +50,7 @@ public final class JSCore {
             l = 1;
         }
 
-        String[] A = UZCoreUtil.e;
+        String[] A = UZCoreUtil.dictArr;
         int max = A.length;
         if (l > max) {
             l = max;
